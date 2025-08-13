@@ -1,0 +1,11 @@
+# build artifacts
+*.zip
+build/
+
+# editors
+.vscode/
+*.code-workspace
+
+# OS junk
+.DS_Store
+Thumbs.db
