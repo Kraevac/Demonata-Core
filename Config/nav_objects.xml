@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+  Demonata Gaming Metadata Format ©2025
+  Licensed for use under terms in LICENSE.md.
+-->
+<!--
+  ==================================================
+  Nav Objects Modification - Remove Zombie Compass Icons
+  @version    1.0.0
+  @date       2025-07-14
+  @author     Demonata Gaming
+
+  @group      NavObjectCompassTweaks
+  @description
+    Removes zombie and sleeper-related nav objects from the player compass
+    to reduce clutter and improve navigation clarity.
+    @notes
+    - Removes compass_settings nodes from zombie, clear_sleeper, and sleeper_volume nav objects.
+    - This disables the display of these entities on the player compass.
+  ==================================================
+-->
+<configs>
+  <!--
+  ===============================
+  SECTION: REMOVE ZOMBIE AND SLEEPER COMPASS ICONS
+  ===============================
+  @group    NavObjectCompassTweaks
+  @desc
+    Removes compass overlays for zombies and sleeper volumes to improve HUD clarity.
+-->
+  <remove xpath="/nav_object_classes/nav_object_class[@name='zombie']/compass_settings" />
+  <remove xpath="/nav_object_classes/nav_object_class[@name='clear_sleeper']/compass_settings" />
+  <remove xpath="/nav_object_classes/nav_object_class[@name='sleeper_volume']/compass_settings" />
+</configs>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml>
+  <Name value="DemonataCoreCreator" />
+  <DisplayName value="Demonata Core Creator" />
+  <Version value="1.0.0" />
+  <Description value="Temporarily restores XP gains for crafting, looting, and other tasks. Intended for content creators only." />
+  <Author value="DemonataGaming" />
+  <Website value="https://www.youtube.com/channel/UCm8o-2ZJERLqcowIEsTjJYA" />
+  <GameVersion value="2.0" />
+  <LoadAfter value="zzzz_DemonataCore" />
+  
+  <ModDependencies>
+    <Dependency value="zzzz_DemonataCore" />
+  </ModDependencies>
+</xml>

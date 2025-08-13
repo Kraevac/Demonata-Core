@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+  Demonata Gaming Metadata Format ©2025
+  Licensed for use under terms in LICENSE.md.
+-->
+<!--
+    ==================================================
+    Trader Hours Modification - Staggered by Biome Progression
+    @version     1.0.0
+    @date        2025-07-20
+    @author      Demonata Gaming
+
+    @group       TraderSchedules
+    @description
+      Adjusts each trader's operating hours based on biome difficulty, ensuring
+      overlap in open/close times. Traders open for 12 hours each, progressing from
+      safest to most dangerous biome. This supports pacing, biome migration,
+      and encourages nighttime risk-taking in later stages.
+
+    @notes
+      - Pine Forest (Rekt): Daylight hours, 06:00–18:00.
+      - Burnt Forest (Jen): Mid-morning to evening.
+      - Desert (Bob): Afternoon to midnight.
+      - Snow (Hugh): Early evening to pre-dawn.
+      - Wasteland (Joel): Full night, 18:00–06:00.
+  ==================================================
+  -->
+<configs>
+  <!--
+  ===============================
+  SECTION: TRADER HOURS BY BIOME
+  ===============================
+  @group    TraderOpenCloseTimes
+  @desc
+    Sets each trader's hours with a 3-hour stagger and 12-hour duration.
+  -->
+  <!-- Joel - Wasteland - ID=1 -->
+  <set xpath="traders/trader_info[@id='1']/@open_time">18:00</set>
+  <set xpath="traders/trader_info[@id='1']/@close_time">06:00</set>
+  <!-- Jen - Burnt Forest - ID=2 -->
+  <set xpath="traders/trader_info[@id='2']/@open_time">09:00</set>
+  <set xpath="traders/trader_info[@id='2']/@close_time">21:00</set>
+  <!-- Bob - Desert - ID=6 -->
+  <set xpath="traders/trader_info[@id='6']/@open_time">12:00</set>
+  <set xpath="traders/trader_info[@id='6']/@close_time">00:00</set>
+  <!-- Hugh - Snow - ID=7 -->
+  <set xpath="traders/trader_info[@id='7']/@open_time">15:00</set>
+  <set xpath="traders/trader_info[@id='7']/@close_time">03:00</set>
+  <!-- Rekt - Pine Forest - ID=8 -->
+  <set xpath="traders/trader_info[@id='8']/@open_time">06:00</set>
+  <set xpath="traders/trader_info[@id='8']/@close_time">18:00</set>
+</configs>

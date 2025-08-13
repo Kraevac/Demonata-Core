@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+  Demonata Gaming Metadata Format ©2025
+  Licensed for use under terms in LICENSE.md.
+-->
+<!--
+  ==================================================
+  Spawning Modification - Biome-Based Zombie Distribution
+  @version     1.0.0
+  @date        2025-07-14
+  @author      Demonata Gaming
+
+  @group       BiomeSpawnBalance
+  @description
+    Adjusts entity spawns across all biomes to increase urban density,
+    decrease wilderness spawns, and align day/night activity patterns.
+  @notes
+    - Spawn rules are grouped by biome and preserved in order.
+    - Increased city spawns for realism and threat escalation.
+    - Reduced wilderness zombie density; kept wildlife consistent.
+    - No major overhauls to entity groups—vanilla base assumed.
+  @xref			entitygroups.xml → FOREST AND SNOW BIOME SPAWNS
+  ==================================================
+-->
+<configs>
+  <!-- ***Remove original Biome spawns -->
+  <remove xpath="/spawning/biome[@name='pine_forest']/spawn" />
+  <remove xpath="/spawning/biome[@name='burnt_forest']/spawn" />
+  <remove xpath="/spawning/biome[@name='desert']/spawn" />
+  <remove xpath="/spawning/biome[@name='snow']/spawn" />
+  <remove xpath="/spawning/biome[@name='wasteland']/spawn" />
+  <!-- *** PINE FOREST_SPAWNS -->
+  <append xpath="/spawning/biome[@name='pine_forest']">
+    <!-- ==================== Downtown ==================== -->
+    <spawn id="pf_dz_downtown" maxcount="8" respawndelay="0.7" time="Day" entitygroup="ZombiesPineForestDowntown" tags="downtown"/>
+    <spawn id="pf_nz_downtown" maxcount="10" respawndelay="0.35" time="Night" entitygroup="ZombiesPineForestDowntownNight" tags="downtown,gateway"/>
+    <!-- ==================== Commercial + Industrial ==================== -->
+    <spawn id="pf_dz_commercial" maxcount="6" respawndelay="0.8" time="Day" entitygroup="ZombiesPineForestCommercial" tags="commercial,industrial" notags="downtown"/>
+    <spawn id="pf_nz_commercial" maxcount="8" respawndelay="0.4" time="Night" entitygroup="ZombiesPineForestCommercialNight" tags="commercial,industrial,gateway" notags="downtown"/>
+    <!-- ==================== Residential (Gateway-friendly) ==================== -->
+    <spawn id="pf_dz_residential" maxcount="3" respawndelay="0.9" time="Day" entitygroup="ZombiesPineForestResidential" tags="residential,gateway" notags="commercial,industrial,downtown"/>
+    <spawn id="pf_nz_residential" maxcount="4" respawndelay="0.6" time="Night" entitygroup="ZombiesPineForestResidentialNight" tags="residential,gateway" notags="commercial,industrial,downtown"/>
+    <!-- ==================== Rural + Country Zones ==================== -->
+    <spawn id="pf_dz_rural" maxcount="3" respawndelay="1.2" time="Day" entitygroup="ZombiesPineForestRural" tags="rural,gateway,countryresidential,countrytown,oldwest" notags="commercial,industrial,downtown,residential"/>
+    <spawn id="pf_nz_rural" maxcount="4" respawndelay="0.8" time="Night" entitygroup="ZombiesPineForestRuralNight" tags="rural,gateway,countryresidential,countrytown,oldwest" notags="commercial,industrial,downtown,residential"/>
+    <!-- ==================== Wilderness and Animal Spawns ==================== -->
+    <spawn id="pf_dz_wild" maxcount="1" respawndelay="1.2" time="Day" entitygroup="ZombiesPineForestWild" tags="wilderness"/>
+    <spawn id="pf_nz_wild" maxcount="2" respawndelay="0.6" time="Night" entitygroup="ZombiesPineForestWild" tags="wilderness"/>
+    <spawn id="pf_dz_anim" maxcount="2" respawndelay="0.5" time="Day" entitygroup="WildGameForest" spawnDeadChance="0" notags="commercial,industrial,downtown,residential"/>
+    <spawn id="pf_nz_anim" maxcount="1" respawndelay="0.8" time="Night" entitygroup="WildGameForestNight" spawnDeadChance="0" notags="commercial,industrial,downtown,residential"/>
+    <spawn id="pf_nz_anim01" maxcount="1" respawndelay="0.7" time="Night" entitygroup="EnemyAnimalsForest" spawnDeadChance="0" notags="commercial,industrial,downtown,residential"/>
+  </append>
+  <!-- *** BURNT FOREST_SPAWNS -->
+  <append xpath="/spawning/biome[@name='burnt_forest']">
+    <!-- ==================== Downtown ==================== -->
+    <!-- +1 max by day/night, ~10–15% faster respawns -->
+    <spawn id="bf_dz_downtown" maxcount="9" respawndelay="0.6" time="Day" entitygroup="ZombiesBurntForestDowntown" tags="downtown"/>
+    <spawn id="bf_nz_downtown" maxcount="12" respawndelay="0.3" time="Night" entitygroup="ZombiesBurntForestDowntownNight" tags="downtown,gateway"/>
+    <!-- ==================== Commercial + Industrial ==================== -->
+    <!-- +1 max, ~12–15% faster respawns -->
+    <spawn id="bf_dz_commercial" maxcount="7" respawndelay="0.7" time="Day" entitygroup="ZombiesBurntForestCommercial" tags="commercial,industrial" notags="downtown"/>
+    <spawn id="bf_nz_commercial" maxcount="9" respawndelay="0.33" time="Night" entitygroup="ZombiesBurntForestCommercialNight" tags="commercial,industrial,gateway" notags="downtown"/>
+    <!-- ==================== Residential (Gateway-friendly) ==================== -->
+    <!-- Keep daytime cap gentle; night keeps 3 but respawns faster -->
+    <spawn id="bf_dz_residential" maxcount="3" respawndelay="0.8" time="Day" entitygroup="ZombiesBurntForestResidential" tags="residential,gateway" notags="commercial,industrial,downtown"/>
+    <spawn id="bf_nz_residential" maxcount="5" respawndelay="0.5" time="Night" entitygroup="ZombiesBurntForestResidentialNight" tags="residential,gateway" notags="commercial,industrial,downtown"/>
+    <!-- ==================== Rural + Country Zones ==================== -->
+    <!-- Same caps; faster ticks to add pressure outside town -->
+    <spawn id="bf_dz_rural" maxcount="3" respawndelay="1.0" time="Day" entitygroup="ZombiesBurntForestRural" tags="rural,gateway,countryresidential,countrytown,oldwest" notags="commercial,industrial,downtown,residential"/>
+    <spawn id="bf_nz_rural" maxcount="5" respawndelay="0.7" time="Night" entitygroup="ZombiesBurntForestRuralNight" tags="rural,gateway,countryresidential,countrytown,oldwest" notags="commercial,industrial,downtown,residential"/>
+    <!-- ==================== Wilderness and Animal Spawns ==================== -->
+    <!-- Wilderness zombies tick a hair faster; Burnt has thinner game, nastier nights -->
+    <spawn id="bf_dz_wild" maxcount="2" respawndelay="0.8" time="Day" entitygroup="ZombiesBurntForestWild" tags="wilderness"/>
+    <spawn id="bf_nz_wild" maxcount="4" respawndelay="0.4" time="Night" entitygroup="ZombiesBurntForestWildNight" tags="wilderness"/>
+    <!-- Wild game slightly less frequent than Pine; enemy animals a touch quicker at night -->
+    <spawn id="bf_dz_anim" maxcount="1" respawndelay="0.7" time="Day" entitygroup="WildGameForest" spawnDeadChance="0" notags="commercial,industrial,downtown,residential"/>
+    <spawn id="bf_nz_anim" maxcount="1" respawndelay="1.0" time="Night" entitygroup="WildGameForestNight" spawnDeadChance="0" notags="commercial,industrial,downtown,residential"/>
+    <spawn id="bf_dz_anim01" maxcount="1" respawndelay="1.2" time="Day" entitygroup="EnemyAnimalsBurntForestAny" spawnDeadChance="0" notags="commercial,industrial,downtown,residential"/>
+    <spawn id="bf_nz_anim01" maxcount="1" respawndelay="0.6" time="Night" entitygroup="EnemyAnimalsBurntForestNight" spawnDeadChance="0" notags="commercial,industrial,downtown,residential"/>
+  </append>
+  <!-- *** DESERT_SPAWNS -->
+  <append xpath="/spawning/biome[@name='desert']">
+    <!-- ==================== Downtown ==================== -->
+    <!-- +1 max vs Burnt, ~12–15% faster respawns from Pine baseline -->
+    <spawn id="ds_dz_downtown" maxcount="10" respawndelay="0.55" time="Day" entitygroup="ZombiesDesertDowntown" tags="downtown"/>
+    <spawn id="ds_nz_downtown" maxcount="12" respawndelay="0.28" time="Night" entitygroup="ZombiesDesertDowntownNight" tags="downtown,gateway"/>
+    <!-- ==================== Commercial + Industrial ==================== -->
+    <!-- +1 max vs Burnt, modestly faster night churn -->
+    <spawn id="ds_dz_commercial" maxcount="7" respawndelay="0.65" time="Day" entitygroup="ZombiesDesertCommercial" tags="commercial,industrial" notags="downtown"/>
+    <spawn id="ds_nz_commercial" maxcount="9" respawndelay="0.33" time="Night" entitygroup="ZombiesDesertCommercialNight" tags="commercial,industrial,gateway" notags="downtown"/>
+    <!-- ==================== Residential (Gateway-friendly) ==================== -->
+    <!-- Day stays gentle; Night bumps to 4 with quicker recycle -->
+    <spawn id="ds_dz_residential" maxcount="3" respawndelay="0.85" time="Day" entitygroup="ZombiesDesertResidential" tags="residential,gateway" notags="commercial,industrial,downtown"/>
+    <spawn id="ds_nz_residential" maxcount="5" respawndelay="0.55" time="Night" entitygroup="ZombiesDesertResidentialNight" tags="residential,gateway" notags="commercial,industrial,downtown"/>
+    <!-- ==================== Rural + Country Zones ==================== -->
+    <!-- Keep below Residential; shave delays to add background pressure -->
+    <spawn id="ds_dz_rural" maxcount="3" respawndelay="1.0" time="Day" entitygroup="ZombiesDesertRural" tags="rural,gateway,countryresidential,countrytown,oldwest" notags="commercial,industrial,downtown,residential"/>
+    <spawn id="ds_nz_rural" maxcount="5" respawndelay="0.70" time="Night" entitygroup="ZombiesDesertRuralNight" tags="rural,gateway,countryresidential,countrytown,oldwest" notags="commercial,industrial,downtown,residential"/>
+    <!-- ==================== Wilderness and Animal Spawns ==================== -->
+    <!-- Light bodies by day; quicker tick at night -->
+    <spawn id="ds_dz_wild" maxcount="2" respawndelay="0.80" time="Day" entitygroup="ZombiesDesertWild" tags="wilderness"/>
+    <spawn id="ds_nz_wild" maxcount="4" respawndelay="0.40" time="Night" entitygroup="ZombiesDesertWildNight" tags="wilderness"/>
+    <!-- Fauna: less game density than Pine/Burnt, nastier nights -->
+    <spawn id="ds_dz_anim" maxcount="1" respawndelay="1.0" time="Day" entitygroup="WildGameForest" spawnDeadChance="0" notags="commercial,industrial,downtown,residential"/>
+    <spawn id="ds_nz_anim" maxcount="1" respawndelay="1.2" time="Night" entitygroup="WildGameForestNight" spawnDeadChance="0" notags="commercial,industrial,downtown,residential"/>
+    <spawn id="ds_dz_anim01" maxcount="1" respawndelay="0.90" time="Day" entitygroup="EnemyAnimalsDesert" spawnDeadChance="0" notags="commercial,industrial,downtown,residential"/>
+    <spawn id="ds_nz_anim01" maxcount="1" respawndelay="0.60" time="Night" entitygroup="EnemyAnimalsDesertNight" spawnDeadChance="0" notags="commercial,industrial,downtown,residential"/>
+  </append>
+  <!-- *** SNOW_SPAWNS -->
+  <append xpath="/spawning/biome[@name='snow']">
+    <!-- ==================== Downtown ==================== -->
+    <!-- +1 max vs Desert, faster recycle -->
+    <spawn id="sn_dz_downtown" maxcount="11" respawndelay="0.50" time="Day" entitygroup="ZombiesSnowDowntown" tags="downtown"/>
+    <spawn id="sn_nz_downtown" maxcount="13" respawndelay="0.25" time="Night" entitygroup="ZombiesSnowDowntownNight" tags="downtown,gateway"/>
+    <!-- ==================== Commercial + Industrial ==================== -->
+    <!-- +1 max vs Desert; night faster than Desert -->
+    <spawn id="sn_dz_commercial" maxcount="8" respawndelay="0.60" time="Day" entitygroup="ZombiesSnowCommercial" tags="commercial,industrial" notags="downtown"/>
+    <spawn id="sn_nz_commercial" maxcount="10" respawndelay="0.30" time="Night" entitygroup="ZombiesSnowCommercialNight" tags="commercial,industrial,gateway" notags="downtown"/>
+    <!-- ==================== Residential (Gateway-friendly) ==================== -->
+    <!-- Keep day gentle; Night holds 4 but ticks faster -->
+    <spawn id="sn_dz_residential" maxcount="3" respawndelay="0.80" time="Day" entitygroup="ZombiesSnowResidential" tags="residential,gateway" notags="commercial,industrial,downtown"/>
+    <spawn id="sn_nz_residential" maxcount="5" respawndelay="0.50" time="Night" entitygroup="ZombiesSnowResidentialNight" tags="residential,gateway" notags="commercial,industrial,downtown"/>
+    <!-- ==================== Rural + Country Zones ==================== -->
+    <!-- Below Residential caps; trims delays to add ambient pressure -->
+    <spawn id="sn_dz_rural" maxcount="3" respawndelay="0.95" time="Day" entitygroup="ZombiesSnowRural" tags="rural,gateway,countryresidential,countrytown,oldwest" notags="commercial,industrial,downtown,residential"/>
+    <spawn id="sn_nz_rural" maxcount="5" respawndelay="0.65" time="Night" entitygroup="ZombiesSnowRuralNight" tags="rural,gateway,countryresidential,countrytown,oldwest" notags="commercial,industrial,downtown,residential"/>
+    <!-- ==================== Wilderness and Animal Spawns ==================== -->
+    <!-- Wilderness bodies stay light; nights churn quicker -->
+    <spawn id="sn_dz_wild" maxcount="2" respawndelay="0.75" time="Day" entitygroup="ZombiesSnowWild" tags="wilderness"/>
+    <spawn id="sn_nz_wild" maxcount="4" respawndelay="0.38" time="Night" entitygroup="ZombiesSnowWildNight" tags="wilderness"/>
+    <spawn id="sn_dz_anim" maxcount="1" respawndelay="1.20" time="Day" entitygroup="WildGameForest" spawnDeadChance="0" notags="commercial,industrial,downtown,residential"/>
+    <spawn id="sn_nz_anim" maxcount="1" respawndelay="1.40" time="Night" entitygroup="WildGameForestNight" spawnDeadChance="0" notags="commercial,industrial,downtown,residential"/>
+    <spawn id="sn_dz_anim01" maxcount="1" respawndelay="0.85" time="Day" entitygroup="EnemyAnimalsSnow" spawnDeadChance="0" notags="commercial,industrial,downtown,residential"/>
+    <spawn id="sn_nz_anim01" maxcount="1" respawndelay="0.55" time="Night" entitygroup="EnemyAnimalsSnowNight" spawnDeadChance="0" notags="commercial,industrial,downtown,residential"/>
+  </append>
+  <!-- *** WASTELAND_SPAWNS -->
+  <append xpath="/spawning/biome[@name='wasteland']">
+    <!-- ==================== Downtown ==================== -->
+    <!-- +1 over Snow; fastest recycle so far -->
+    <spawn id="wl_dz_downtown" maxcount="12" respawndelay="0.45" time="Day" entitygroup="ZombiesWastelandDowntown" tags="downtown"/>
+    <spawn id="wl_nz_downtown" maxcount="14" respawndelay="0.22" time="Night" entitygroup="ZombiesWastelandDowntownNight" tags="downtown,gateway"/>
+    <!-- ==================== Commercial + Industrial ==================== -->
+    <!-- Crowds get thick; fast night churn -->
+    <spawn id="wl_dz_commercial" maxcount="9" respawndelay="0.55" time="Day" entitygroup="ZombiesWastelandCommercial" tags="commercial,industrial" notags="downtown"/>
+    <spawn id="wl_nz_commercial" maxcount="11" respawndelay="0.28" time="Night" entitygroup="ZombiesWastelandCommercialNight" tags="commercial,industrial,gateway" notags="downtown"/>
+    <!-- ==================== Residential (Gateway-friendly, barely) ==================== -->
+    <!-- Day stays gentle; Night steps to 5 with quicker recycle -->
+    <spawn id="wl_dz_residential" maxcount="4" respawndelay="0.75" time="Day" entitygroup="ZombiesWastelandResidential" tags="residential,gateway" notags="commercial,industrial,downtown"/>
+    <spawn id="wl_nz_residential" maxcount="6" respawndelay="0.45" time="Night" entitygroup="ZombiesWastelandResidentialNight" tags="residential,gateway" notags="commercial,industrial,downtown"/>
+    <!-- ==================== Rural + Country Zones ==================== -->
+    <!-- Nights get spicier here to keep you moving -->
+    <spawn id="wl_dz_rural" maxcount="4" respawndelay="0.85" time="Day" entitygroup="ZombiesWastelandRural" tags="rural,gateway,countryresidential,countrytown,oldwest" notags="commercial,industrial,downtown,residential"/>
+    <spawn id="wl_nz_rural" maxcount="6" respawndelay="0.55" time="Night" entitygroup="ZombiesWastelandRuralNight" tags="rural,gateway,countryresidential,countrytown,oldwest" notags="commercial,industrial,downtown,residential"/>
+    <!-- ==================== Wilderness and Animal Spawns ==================== -->
+    <!-- Light headcount; very fast night recycle -->
+    <spawn id="wl_dz_wild" maxcount="3" respawndelay="0.60" time="Day" entitygroup="ZombiesWastelandWild" tags="wilderness"/>
+    <spawn id="wl_nz_wild" maxcount="5" respawndelay="0.30" time="Night" entitygroup="ZombiesWastelandWildNight" tags="wilderness"/>
+    <spawn id="wl_dz_anim" maxcount="1" respawndelay="1.60" time="Day" entitygroup="WildGameForest" spawnDeadChance="0" notags="commercial,industrial,downtown,residential"/>
+    <spawn id="wl_nz_anim" maxcount="1" respawndelay="2.00" time="Night" entitygroup="WildGameForestNight" spawnDeadChance="0" notags="commercial,industrial,downtown,residential"/>
+    <spawn id="wl_dz_anim01" maxcount="1" respawndelay="0.55" time="Day" entitygroup="EnemyAnimalsWasteland" spawnDeadChance="0" notags="commercial,industrial,downtown,residential"/>
+    <spawn id="wl_nz_anim01" maxcount="1" respawndelay="040" time="Night" entitygroup="EnemyAnimalsWastelandNight" spawnDeadChance="0" notags="commercial,industrial,downtown,residential"/>
+  </append>
+</configs>

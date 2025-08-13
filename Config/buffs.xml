@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+  Demonata Gaming Metadata Format ©2025
+  Licensed for use under terms in LICENSE.md.
+-->
+<!--
+  ==================================================
+  Buffs Modification - Debuff Persistence, Hazard Effect Removal, and Respawn Health Override
+  @version     1.0.1
+  @date        2025-08-11
+  @author      Demonata Gaming
+
+  @group       BuffSystemReworks
+  @description
+    Adjusts player debuff persistence rules to retain negative statuses after death,
+    removes intrusive screen tint effects tied to biome-specific hazard buffs,
+    and overrides vanilla respawn behavior to prevent automatic full-health restoration.
+
+  @notes
+    - Negative buffs like infection and broken limbs persist through death.
+    - Infection-related buffs now tagged and grouped for death retention logic.
+    - Visual screen effects from biome hazards are disabled for all major biomes.
+    - Disables vanilla `buffDeathFoodDrinkAdjust` health restore to allow custom respawn health values.
+    - No core buffs overwritten—XPath-only, fully compatible with other mods.
+  ==================================================
+-->
+<configs>
+  <!--
+  ===============================
+  SECTION: PLAYER BUFF STATUS CHANGES
+  ===============================
+  @group      PlayerBuffStatusChanges
+  @desc       Allows player injuries and infections to persist through death
+              and prevents vanilla from restoring full health on respawn.
+  @xref       gameevents.xml → SECTION: PLAYER RESPAWN CHANGES
+  -->
+  <!-- Disable vanilla "set Health to max" on respawn -->
+  <remove xpath="/buffs/buff[@name='buffDeathFoodDrinkAdjust']/effect_group/triggered_effect[@trigger='onSelfBuffUpdate' and @action='ModifyStats' and @stat='Health']"/>
+  <!-- Prevents the game's ability to remove negative effects after the players dies. -->
+  <remove xpath="/buffs/buff[@name='buffNearDeathRegen']/effect_group/triggered_effect[@trigger='onSelfBuffStart' and @action='RemoveAllNegativeBuffs']" />
+  <!-- Injuries Remain After Death -->
+  <insertAfter xpath="/buffs/buff[@name='buffDysentery01GetBetterDiarrhea']/display_value[@value='.dysenteryDisplayPerc']">
+    <tags value="deathpenalty_injured" />
+  </insertAfter>
+  <insertAfter xpath="/buffs/buff[@name='buffLegSprained']/display_value_format[@value='time']">
+    <tags value="deathpenalty_injured" />
+  </insertAfter>
+  <insertAfter xpath="/buffs/buff[@name='buffLegBroken']/display_value_format[@value='time']">
+    <tags value="deathpenalty_injured" />
+  </insertAfter>
+  <insertAfter xpath="/buffs/buff[@name='buffArmSprained']/display_value_format[@value='time']">
+    <tags value="deathpenalty_injured" />
+  </insertAfter>
+  <insertAfter xpath="/buffs/buff[@name='buffArmBroken']/display_value_format[@value='time']">
+    <tags value="deathpenalty_injured" />
+  </insertAfter>
+  <insertAfter xpath="/buffs/buff[@name='buffInfectionAddCure']/duration[@value='.1']">
+    <tags value="deathpenalty_injured" />
+  </insertAfter>
+  <!-- Forces infection to remain on player after respawn. -->
+  <append xpath="/buffs/buff[@name='buffInfection04']">
+    <effect_group>
+      <triggered_effect trigger="onSelfDied" action="RemoveBuff" buff="buffInfection01Main" />
+      <triggered_effect trigger="onSelfDied" action="RemoveBuff" buff="buffInfectionMain" />
+      <triggered_effect trigger="onSelfDied" action="RemoveBuff" buff="buffInfectionCatch" />
+      <triggered_effect trigger="onSelfDied" action="RemoveBuff" buff="buffInfection04" />
+    </effect_group>
+  </append>
+  <set xpath="/buffs/buff[@name='buffInfection04']/effect_group/triggered_effect[@trigger='onSelfDied' and @action='ModifyCVar' and @cvar='infectionCounter' and @operation='set']/@value">0</set>
+</configs>

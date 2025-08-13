@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+  Demonata Gaming Metadata Format ©2025
+  Licensed for use under terms in LICENSE.md.
+-->
+<!--
+  ==================================================
+  Recipes Modification - Adjust Recipe Costs and Quality Scaling
+  @version    1.0.0
+  @date       2025-07-14
+  @author     Demonata Gaming
+
+  @group      RecipeCostAdjustments
+  @description
+    Reduces recipe cost scaling with quality, adjusts ingredient counts
+    for specific recipes including thrown dynamite, raw meat, rotting flesh,
+    and planted crops.
+  @notes
+    - Decreases ingredient count scaling for guns, melee, and armor recipes.
+    - Changes thrown dynamite recipe count to 2.
+    - Standardizes raw meat and rotting flesh ingredient requirements.
+    - Adjusts planted crop ingredient count to 4 for all related recipes.
+  ==================================================
+-->
+<configs>
+  <!--
+  ===============================
+  SECTION: RECIPE QUALITY COST SCALING
+  ===============================
+  @desc
+    Reduces ingredient count increase as recipe quality improves for
+    guns, melee weapons, and armor.
+  -->
+  <set xpath="/recipes/recipe[not(contains(@name, 'Bot')) and (contains(@name, 'gun') or contains(@name, 'melee') or contains(@name, 'armor'))]/effect_group/passive_effect[@name='CraftingIngredientCount']/@level">
+    1,6</set>
+  <set xpath="/recipes/recipe[not(contains(@name, 'Bot')) and (contains(@name, 'gun') or contains(@name, 'melee') or contains(@name, 'armor'))]/effect_group/passive_effect[@name='CraftingIngredientCount']/@value">
+    0.75,0.75</set>
+  <!--
+  ===============================
+  SECTION: SPECIFIC RECIPE INGREDIENT COUNTS
+  ===============================
+  @desc
+    Adjusts specific recipe ingredient counts to balance crafting.
+  -->
+  <!-- Thrown dynamite requires 2 items instead of default -->
+  <set xpath="/recipes/recipe[@name='thrownDynamite']/@count">2</set>
+  <!-- Raw meat recipes now require 8 units -->
+  <set xpath="/recipes/recipe/ingredient[@name='foodRawMeat']/@count">8</set>
+  <!-- Rotten flesh recipes now require 10 units -->
+  <set xpath="/recipes/recipe/ingredient[@name='foodRottingFlesh']/@count">10</set>
+  <!-- All planted crop recipes require 4 units of ingredients -->
+  <set xpath="/recipes/recipe[contains(@name, 'planted')]/ingredient/@count">4</set>
+  <!--
+  ===============================
+	SECTION: NAILS IN RECIPES ===============================
+	@group    NailRecipeAdjusts
+	@desc
+    Adds nails to wood-based crafting recipes to improve realism and enable refund on harvest.
+	@xref   blocks.xml → SECTION: WOOD BLOCK ADJUSTMENTS
+	@xref   loot.xml → MAIN: Increase Nails Loot Chance
+  -->
+  <append xpath="/recipes/recipe[starts-with(@name, 'wood')or (contains(@name, 'whitePicketFenceSheet'))or (contains(@name, 'cntCabinetBottom'))or (contains(@name, 'cntCupboardCabinetRedTopClosed'))or (contains(@name, 'cntWoodDesk01Closed'))or (contains(@name, 'cntSecureStorageChest'))or (contains(@name, 'secureDoorWooden'))or (contains(@name, 'endTable'))or (contains(@name, 'ladderWood'))or (contains(@name, 'window03Wood'))or (contains(@name, 'cellarDoorDoubleWood'))and not(contains(@name, 'woodChair1'))and not(contains(@name, 'woodTable'))and not(contains(@name, 'woodFrame'))or (contains(@name, 'oldWoodDoor'))or (contains(@name, 'oldWoodDoorDouble'))or (contains(@name, 'cntWoodWritableCrate'))or (contains(@name, 'shuttersWoodBlockVariantHelper'))]">
+    <ingredient name="resourceNail" count="4" />
+  </append>
+  <!--
+  ===============================
+  SECTION: LOG BLOCK RECIPE CHANGES
+  ===============================
+  @group    NailRecipeAdjusts
+  @desc
+    Removes nails from the log block recipe.
+	@xref     blocks.xml → SECTION: LOG BLOCK ADJUSTMENTS
+  -->
+  <remove xpath="/recipes/recipe[@name='woodLogPillar100']/ingredient[@name='resourceNail']" />
+  <!--
+  ===============================
+  SECTION: FRAME SHAPES RECIPE CHANGES
+  ===============================
+  @group    FrameHelperBlockChanges
+  @desc
+    Adds nails to the ingredient list for wood frames.
+  @xref     blocks.xml → SECTION: WOOD BLOCKS ADJUSTMENTS
+  -->
+  <append xpath="/recipes/recipe[@name='frameShapes:VariantHelper']">
+    <ingredient name="resourceNail" count="8" />
+  </append>
+</configs>

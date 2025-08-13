@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+  Demonata Gaming Metadata Format ©2025
+  Licensed for use under terms in LICENSE.md.
+-->
+<!--
+  ==================================================
+  Loot Modification - Increase Nails Loot Chance
+  @version     1.0.0
+  @date        2025-07-14
+  @author      Demonata Gaming
+
+  @group       LootTweaks
+  @description
+    Increases the number of nails dropped.
+
+  @xref		blocks.xml → SECTION: WOOD BLOCK ADJUSTMENTS
+  @xref		recipes.xml → SECTION: NAILS IN RECIPES
+
+  ==================================================
+-->
+<configs>
+  <!--
+  ===============================
+  SECTION: NAILS LOOT ADJUSTMENT
+  ===============================
+  @group     LootTweaks
+  @desc      Increases minimum and maximum nail stack sizes in common crafting containers.
+  @notes     Helps support early construction needs due to nail-dependent block crafting.
+  @xref      recipes.xml → SECTION: NAILS IN RECIPES
+  @xref      blocks.xml → SECTION: WOOD BLOCK ADJUSTMENTS
+-->
+  <set xpath="/lootcontainers/lootgroup[@name='groupCraftingCommon']/item[@name='resourceNail']/@count">2,8</set>
+</configs>

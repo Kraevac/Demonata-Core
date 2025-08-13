@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+  Demonata Gaming Metadata Format ©2025
+  Licensed for use under terms in LICENSE.md.
+-->
+<!--
+  ==================================================
+  Game Events - Respawn at 50% (H/F/W)
+  @version     1.0.0
+  @date        2025-08-11
+  @author      Demonata Gaming
+  @group       DeathRespawnOverrides
+  @description
+    Overrides all death/respawn settings (none, default, injured)
+    so players always respawn with:
+      - Health: 50% of max
+      - Food: 50% of max
+      - Water: 50% of max
+    Removes vanilla stat setters to prevent conflicts and
+    appends unified 50% values to all respawn action sequences.
+  @notes
+    - Stamina remains vanilla (full) on respawn unless altered elsewhere.
+    - Uses XPath to apply changes to all variants without manual duplication.
+    - Compatible with vanilla UI options; menu choice no longer affects results.
+  ==================================================
+-->
+<configs>
+  <!--
+  ===============================
+  SECTION: PLAYER RESPAWN CHANGES
+  ===============================
+  @group       DeathRespawnOverrides
+  @description Forces Health, Food, Water to 50% on respawn
+               for ALL settings (none/default/injured).
+  @xref        buffs.xml → SECTION: PLAYER BUFF STATUS CHANGES
+  -->
+  <!-- Remove any existing H/F/W setters so we don’t double-apply -->
+  <remove xpath="/gameevents/action_sequence[@name='game_on_respawn_none' or @name='game_on_respawn_default' or @name='game_on_respawn_injured']/action[@class='ModifyEntityStat' and property[@name='stat' and (@value='Health' or @value='Food' or @value='Water')]]"/>
+  <!-- Add unified 50% setters to all respawn variants -->
+  <append xpath="/gameevents/action_sequence[@name='game_on_respawn_none' or @name='game_on_respawn_default' or @name='game_on_respawn_injured']">
+    <action class="ModifyEntityStat">
+      <property name="stat" value="Health"/>
+      <property name="value" value=".5"/>
+      <property name="is_percent" value="true"/>
+      <property name="operation" value="Set"/>
+    </action>
+    <action class="ModifyEntityStat">
+      <property name="stat" value="Food"/>
+      <property name="value" value=".5"/>
+      <property name="is_percent" value="true"/>
+      <property name="operation" value="Set"/>
+    </action>
+    <action class="ModifyEntityStat">
+      <property name="stat" value="Water"/>
+      <property name="value" value=".5"/>
+      <property name="is_percent" value="true"/>
+      <property name="operation" value="Set"/>
+    </action>
+  </append>
+  <!-- Excludes the death penalty tags so injuries remain on respawn -->
+  <append xpath="/gameevents/action_sequence[@name='game_on_death_none']/action[@class='RemoveDeathBuffs']">
+    <property name="exclude_tags" value="deathpenalty_injured"/>
+  </append>
+  <append xpath="/gameevents/action_sequence[@name='game_on_death_default']/action[@class='RemoveDeathBuffs']">
+    <property name="exclude_tags" value="deathpenalty_injured"/>
+  </append>
+</configs>

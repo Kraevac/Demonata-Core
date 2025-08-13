@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+  Demonata Gaming Metadata Format ©2025
+  Licensed for use under terms in LICENSE.md.
+-->
+<!--
+  ==================================================
+  Entity Classes Modification - Loot, AI Behavior, XP, and Headshot Mechanics
+  @version     1.0.1
+  @date        2025-08-01
+  @author      Demonata Gaming
+
+  @group       EntityClassesExtendedTuning
+  @description
+    Overhauls zombie AI behaviors, loot timing, XP gain sources, and ranged combat mechanics
+    to promote tactical gameplay, biome progression control, and survival-focused pacing.
+
+  @notes
+    - Loot containers persist for 45 minutes (up from 5 min).
+    - Zombies have improved loot drop chances; radiated types guaranteed to drop.
+    - Chickens now drop eggs when harvested.
+    - Zombies are restricted from ladder climbing.
+    - Headshot-only rules apply when using ranged and finesse weapons.
+    - Damage scaling for headshots increases with game difficulty.
+    - Persistent buff icon displays reminder for headshot-only playstyle.
+    - Player XP gain is limited to kills and quests only.
+    - All other XP sources are disabled to slow power progression.
+    - Entering the Wasteland increases GameStage by +75 to punish unprepared players.
+  ==================================================
+-->
+<configs>
+  <!--
+  ===============================
+  SECTION: LOOT CONTAINER LIFETIME
+  ===============================
+  @group      LootContainerTiming
+  @desc       Extends time Z-Packs remain in the world after zombie death to 45 minutes.
+  -->
+  <set xpath="/entity_classes/entity_class[@name='DroppedLootContainer']/property[@name='TimeStayAfterDeath']/@value">2700</set>
+  <set xpath="/entity_classes/entity_class[starts-with(@name, 'EntityLootContainer')]/property[@name='TimeStayAfterDeath']/@value">2700</set>
+  <!--
+  ===============================
+  SECTION: LOOT DROP PROBABILITIES
+  ===============================
+  @group      ZombieLootProbabilities
+  @desc       Adjusts loot drop chances for base, feral, and radiated zombies.
+  -->
+  <set xpath="/entity_classes/entity_class[starts-with(@name, 'zombieTemplate')]/property[@name='LootDropProb']/@value">0.05</set>
+  <set xpath="/entity_classes/entity_class[contains(@name, 'Feral')]/property[@name='LootDropProb']/@value">0.10</set>
+  <append xpath="/entity_classes/entity_class[contains(@name, 'Radiated')]">
+    <property name="LootDropProb" value="0.05" />
+  </append>
+  <!--
+  ===============================
+  SECTION: ANIMAL LOOT ADJUSTMENTS
+  ===============================
+  @group      AnimalHarvestTweaks
+  @desc       Adds egg drops to chicken harvest events.
+  -->
+  <append xpath="/entity_classes/entity_class[@name='animalChicken']">
+    <drop event="Harvest" name="foodEgg" tag="butcherHarvest" count="2" />
+  </append>
+  <!--
+  ===============================
+  SECTION: ZOMBIE BEHAVIOR MODIFICATION
+  ===============================
+  @group      ZombieAIRestrictions
+  @desc       Prevents zombies from climbing ladders to change pathing behavior.
+  -->
+  <append xpath="/entity_classes/entity_class[starts-with(@name, 'zombie')]">
+    <property name="CanClimbLadders" value="false" />
+  </append>
+  <!--
+  ===============================
+  SECTION: HEADSHOTS ONLY - RANGED COMBAT PERKS & DAMAGE MULTIPLIERS
+  ===============================
+  @desc
+    Applies precision-targeting rules and bonus damage to select ranged and finesse-based weapon perks.
+    Also adds a persistent buff icon and compensates headshot mechanics for all difficulty settings.
+  @notes
+    - Enables HeadShotOnly for weapons tagged with the following perks:
+        • Deep Cuts, Javelin Master, Gunslinger, Boomstick, Dead Eye, Machine Gunner, Archery, Turrets
+    - Displays 'buffHeadShotsOnly' icon whenever a qualifying weapon is held.
+    - Base headshot damage is set to 250% of normal (2.5x multiplier).
+    - Dismemberment multiplier for zombies reduced to 0.4 (to offset high headshot power).
+    - Additional headshot multipliers apply based on game difficulty:
+        • Scavenger: -50%
+        • Adventurer: ±0%
+        • Nomad: +100%
+        • Warrior: +200%
+        • Survivalist: +300%
+        • Insane: +400%
+  @xref   progression.xml → MAIN: Headshot Damage Modifier Rework
+  @xref   items.xml → SECTION: HEADSHOTS ONLY – AMMO TAGGING FOR FINESSE PERK DETECTION
+    -->
+  <append xpath="/entity_classes/entity_class[@name='playerMale']">
+    <effect_group>
+      <requirements compare_type="or">
+        <requirement name="HoldingItemHasTags" tags="perkDeepCuts" />
+        <requirement name="HoldingItemHasTags" tags="perkJavelinMaster" />
+        <requirement name="HoldingItemHasTags" tags="perkGunslinger" />
+        <requirement name="HoldingItemHasTags" tags="perkBoomstick" />
+        <requirement name="HoldingItemHasTags" tags="perkDeadEye" />
+        <requirement name="HoldingItemHasTags" tags="perkMachineGunner" />
+        <requirement name="HoldingItemHasTags" tags="perkArchery" />
+        <requirement name="HoldingItemHasTags" tags="perkTurrets" />
+      </requirements>
+      <passive_effect name="HeadShotOnly" operation="base_set" value="1">
+        <requirement name="EntityTagCompare" target="other" tags="zombie" />
+      </passive_effect>
+    </effect_group>
+  </append>
+  <!--<remove xpath="/entity_classes/entity_class[@name='playerMale']/effect_group/passive_effect[@name='DamageModifier' and @operation='perc_add' and @value='1' and @tags='head']"/> -->
+  <set xpath="/entity_classes/entity_class[@name='zombieTemplateMale']/property[@name='DismemberMultiplierHead']/@value">0.4</set>
+  <!-- Difficulty-based headshot damage multipliers -->
+  <append xpath="/entity_classes/entity_class[@name='playerMale']/effect_group">
+    <passive_effect name="DamageModifier" operation="perc_add" value="-0.5" tags="head">
+      <requirement name="CVarCompare" cvar="_difficulty" operation="Equals" value="0" />
+    </passive_effect>
+    <passive_effect name="DamageModifier" operation="perc_add" value="0" tags="head">
+      <requirement name="CVarCompare" cvar="_difficulty" operation="Equals" value="1" />
+    </passive_effect>
+    <passive_effect name="DamageModifier" operation="perc_add" value="1" tags="head">
+      <requirement name="CVarCompare" cvar="_difficulty" operation="Equals" value="2" />
+    </passive_effect>
+    <passive_effect name="DamageModifier" operation="perc_add" value="2" tags="head">
+      <requirement name="CVarCompare" cvar="_difficulty" operation="Equals" value="3" />
+    </passive_effect>
+    <passive_effect name="DamageModifier" operation="perc_add" value="3" tags="head">
+      <requirement name="CVarCompare" cvar="_difficulty" operation="Equals" value="4" />
+    </passive_effect>
+    <passive_effect name="DamageModifier" operation="perc_add" value="4" tags="head">
+      <requirement name="CVarCompare" cvar="_difficulty" operation="Equals" value="5" />
+    </passive_effect>
+  </append>
+  <!--
+  ===============================
+  SECTION: DIFFICULTY-BASED ZOMBIE HEALTH SCALING
+  ===============================
+  @desc
+    Dynamically increases zombie health based on difficulty level to balance the increased headshot damage multipliers.
+    This helps maintain challenge progression across game stages while keeping headshots impactful but not overpowered.
+  @notes
+    - Applies to all zombies using [starts-with(@name, 'zombie')] XPath selector.
+    - Scales total HealthMax as follows:
+        • Scavenger: -25%
+        • Adventurer: ±0%
+        • Nomad: +10%
+        • Warrior: +20%
+        • Survivalist: +30%
+        • Insane: +40%
+    - Preserves base random ±15% health variance from zombieTemplate.
+  @ref      entityclasses.xml → SECTION: HEADSHOTS ONLY - RANGED COMBAT PERKS & DAMAGE MULTIPLIERS
+  @xref     progression.xml → MAIN: Headshot Damage Modifier Rework
+  -->
+  <append xpath="/entity_classes/entity_class[starts-with(@name, 'zombie')]">
+    <passive_effect name="HealthMax" operation="perc_add" value="-0.25">
+      <requirement name="CVarCompare" cvar="_difficulty" operation="Equals" value="0" />
+    </passive_effect>
+    <passive_effect name="HealthMax" operation="perc_add" value="0">
+      <requirement name="CVarCompare" cvar="_difficulty" operation="Equals" value="1" />
+    </passive_effect>
+    <passive_effect name="HealthMax" operation="perc_add" value="0.1">
+      <requirement name="CVarCompare" cvar="_difficulty" operation="Equals" value="2" />
+    </passive_effect>
+    <passive_effect name="HealthMax" operation="perc_add" value="0.2">
+      <requirement name="CVarCompare" cvar="_difficulty" operation="Equals" value="3" />
+    </passive_effect>
+    <passive_effect name="HealthMax" operation="perc_add" value="0.3">
+      <requirement name="CVarCompare" cvar="_difficulty" operation="Equals" value="4" />
+    </passive_effect>
+    <passive_effect name="HealthMax" operation="perc_add" value="0.4">
+      <requirement name="CVarCompare" cvar="_difficulty" operation="Equals" value="5" />
+    </passive_effect>
+  </append>
+  <!--
+  ===============================
+  SECTION: PLAYER XP RESTRICTIONS & WASTELAND GAMESTAGE GATE
+  ===============================
+  @desc
+    Disables passive XP gain to slow progression and encourage combat/quest-focused advancement.
+    Increases GameStage by +75 when entering the Wasteland biome to punish underprepared players
+    and reinforce endgame gating through biome risk.
+  @notes
+    - Only Kill and Quest tags provide XP.
+    - Crafting, Looting, Repairing, Harvesting, Selling, Party, Other, and Upgrading all grant 0 XP.
+    - Wasteland gate increases GameStage for tougher zombies and higher-tier loot spawns.
+  -->
+  <set xpath="/entity_classes/entity_class[@name='playerMale']/effect_group/passive_effect[@name='PlayerExpGain'][@value='5']/@value">-1.0</set>
+  <!-- This sets EXP gain from block upgrades -->
+  <append xpath="/entity_classes/entity_class[@name='playerMale']">
+    <effect_group>
+      <passive_effect name="PlayerExpGain" operation="perc_add" value="-1.0" tags="Repairing" />
+      <passive_effect name="PlayerExpGain" operation="perc_add" value="0" tags="Kill" />
+      <passive_effect name="PlayerExpGain" operation="perc_add" value="0" tags="Quest" />
+      <passive_effect name="PlayerExpGain" operation="perc_add" value="-1.0" tags="Harvesting" />
+      <passive_effect name="PlayerExpGain" operation="perc_add" value="-1.0" tags="Crafting" />
+      <passive_effect name="PlayerExpGain" operation="perc_add" value="-1.0" tags="Selling" />
+      <passive_effect name="PlayerExpGain" operation="perc_add" value="-1.0" tags="Looting" />
+      <passive_effect name="PlayerExpGain" operation="perc_add" value="-1.0" tags="Party" />
+      <passive_effect name="PlayerExpGain" operation="perc_add" value="-1.0" tags="Other" />
+      <passive_effect name="GameStage" operation="base_add" value="100">
+        <requirement name="InBiome" biome="8" />
+      </passive_effect>
+    </effect_group>
+  </append>
+</configs>

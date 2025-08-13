@@ -1,0 +1,14 @@
+<xml>
+  <Name value="Demonata_Core_Multiplayer" />
+  <DisplayName value="Demonata Core Multiplayer" />
+  <Version value="1.0.0" />
+  <Description value="Restore vanilla-style storage security for MP: secure crates downgrade to insecure; no crate self-drops; optional removal of resource returns to prevent soft dupes." />
+  <Author value="DemonataGaming" />
+  <Website value="https://www.youtube.com/channel/UCm8o-2ZJERLqcowIEsTjJYA" />
+  <GameVersion value="2.0" />
+  <LoadAfter value="zzzz_DemonataCore" />
+  
+  <ModDependencies>
+    <Dependency value="zzzz_DemonataCore" />
+  </ModDependencies>
+</xml>
