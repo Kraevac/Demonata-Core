@@ -21,6 +21,10 @@ build/
 *.swo
 *~
 
+<<<<<<< HEAD
 # Ignore compiled output (just in case)
+=======
+# Accidentally committed binaries (just in case)
+>>>>>>> 237dfb01396e87885367bf846fd3a5ee7b6f9d89
 *.dll
 *.exe
