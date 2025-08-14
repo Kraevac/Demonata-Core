@@ -1,11 +1,26 @@
-# build artifacts
-*.zip
-build/
+# OS junk
+Thumbs.db
+ehthumbs.db
+.DS_Store
 
-# editors
+# Editor / IDE
 .vscode/
 *.code-workspace
 
-# OS junk
-.DS_Store
-Thumbs.db
+# Build / packaging artifacts
+build/
+*.zip
+*.7z
+*.rar
+
+# Logs & temp files
+*.log
+*.bak
+*.tmp
+*.swp
+*.swo
+*~
+
+# Accidentally committed binaries (just in case)
+*.dll
+*.exe
