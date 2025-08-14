@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Demonata Gaming Metadata Format ©2025
+  Licensed for use under terms in LICENSE.md.
+-->
+<!--
+  ==================================================
+  Server Patch - Storage Security (no box+loot on raid)
+  @version     1.0.0
+  @date        2025-08-11
+  @author      Demonata Gaming
+
+  @group       ServerStorageSecurity
+  @description
+    Restores vanilla-style behavior for secure writable crates on MP servers:
+    - Secure crates DO NOT drop themselves on Destroy/Harvest.
+    - Secure crates DOWNGRADE to their insecure variants when broken.
+    - Insecure variants DO NOT drop themselves.
+    - (Optional, enabled by default) Remove resource returns to prevent printing.
+  @notes
+    Place this modlet on the SERVER. It safely overrides Core SP QoL behavior so raiders
+    cannot walk away with both the box and the loot.
+  ==================================================
+-->
+<configs>
+  <!-- ===== Secure crates: remove any self-drops (covers Destroy/Harvest) ===== -->
+  <remove xpath="/blocks/block[@name='cntWoodWritableCrate']/drop[@name='cntWoodWritableCrate']"/>
+  <remove xpath="/blocks/block[@name='cntIronWritableCrate']/drop[@name='cntIronWritableCrate']"/>
+  <remove xpath="/blocks/block[@name='cntSteelWritableCrate']/drop[@name='cntSteelWritableCrate']"/>
+
+  <!-- ===== Optional anti-print: remove resource returns (enabled by default) ===== -->
+  <remove xpath="/blocks/block[@name='cntWoodWritableCrate']/drop[@name='resourceWood']"/>
+  <remove xpath="/blocks/block[@name='cntIronWritableCrate']/drop[@name='resourceScrapIron']"/>
+  <remove xpath="/blocks/block[@name='cntSteelWritableCrate']/drop[@name='resourceScrapIron']"/>
+
+  <!-- ===== Restore downgrade to insecure on break ===== -->
+  <remove xpath="/blocks/block[@name='cntWoodWritableCrate']/property[@name='DowngradeBlock']"/>
+  <append xpath="/blocks/block[@name='cntWoodWritableCrate']">
+    <property name="DowngradeBlock" value="cntWoodWritableCrateInsecure"/>
+  </append>
+
+  <remove xpath="/blocks/block[@name='cntIronWritableCrate']/property[@name='DowngradeBlock']"/>
+  <append xpath="/blocks/block[@name='cntIronWritableCrate']">
+    <property name="DowngradeBlock" value="cntIronWritableCrateInsecure"/>
+  </append>
+
+  <remove xpath="/blocks/block[@name='cntSteelWritableCrate']/property[@name='DowngradeBlock']"/>
+  <append xpath="/blocks/block[@name='cntSteelWritableCrate']">
+    <property name="DowngradeBlock" value="cntSteelWritableCrateInsecure"/>
+  </append>
+
+  <!-- ===== Insecure variants: do not drop themselves and cannot be picked up ===== -->
+  <remove xpath="/blocks/block[@name='cntWoodWritableCrateInsecure']/drop[@name='cntWoodWritableCrateInsecure']"/>
+  <remove xpath="/blocks/block[@name='cntIronWritableCrateInsecure']/drop[@name='cntIronWritableCrateInsecure']"/>
+  <remove xpath="/blocks/block[@name='cntSteelWritableCrateInsecure']/drop[@name='cntSteelWritableCrateInsecure']"/>
+</configs>

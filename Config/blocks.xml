@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+  Demonata Gaming Metadata Format ©2025
+  Licensed for use under terms in LICENSE.md.
+-->
+<!--
+  ==================================================
+  Blocks Modification – Reclaim Logic for Crates & Lanterns
+  @version     1.1.0
+  @date        2025-08-11
+  @author      Demonata Gaming
+
+  @group       BlockBehaviorAdjustments
+  @description
+    Reworks drop logic for writable storage crates and lanterns to prevent
+    resource farming and enable clean reclaim. Containers and lanterns now
+    return only their own placeable item on Destroy or Harvest events.
+    Secure crate downgrade paths are removed for consistent behavior.
+
+  @notes
+    - Writable storage crates (wood/iron/steel; secure & insecure) now return
+      only the exact crate item on Destroy/Harvest; all other drops removed.
+    - Secure crates no longer downgrade before destruction (DowngradeBlock removed).
+    - Lanterns now return only their placeable item on Destroy/Harvest; electric
+      parts/scrap returns removed.
+    - This is an XML-only reclaim pattern, not a true “press E to pick up.”
+    - Prevents resource loops from scrapping/harvesting placed objects.
+    - Fall debris behavior is unchanged unless explicitly modified elsewhere.
+  ==================================================
+-->
+<configs>
+  <!--
+  ===============================
+  SECTION: STORAGE CRATE DROP CLEANUP
+  ===============================
+  @group      StorageContainerFixes
+  @desc       Removes all non-container drops from writable crate variants.
+              Ensures only the crate block itself is returned on Destroy or Harvest.
+              Eliminates material/resource returns to prevent crafting loops.
+              Removes downgrade paths from secure crates for consistent reclaim behavior.
+  -->
+  <!-- WOOD: SECURE -->
+  <set xpath="/blocks/block[@name='cntWoodWritableCrate']/drop[@event='Destroy'][@name='resourceWood']/@count">0</set>
+  <remove xpath="/blocks/block[@name='cntWoodWritableCrate']/property[@name='DowngradeBlock' and @value='cntWoodWritableCrateInsecure']"/>
+  <append xpath="/blocks/block[@name='cntWoodWritableCrate']">
+    <drop event="Destroy" name="cntWoodWritableCrate" count="1"/>
+    <drop event="Harvest" name="cntWoodWritableCrate" count="1"/>
+  </append>
+  <!-- IRON: SECURE -->
+  <set xpath="/blocks/block[@name='cntIronWritableCrate']/drop[@event='Destroy'][@name='resourceScrapIron']/@count">0</set>
+  <remove xpath="/blocks/block[@name='cntIronWritableCrate']/property[@name='DowngradeBlock' and @value='cntIronWritableCrateInsecure']"/>
+  <append xpath="/blocks/block[@name='cntIronWritableCrate']">
+    <drop event="Destroy" name="cntIronWritableCrate" count="1"/>
+    <drop event="Harvest" name="cntIronWritableCrate" count="1"/>
+  </append>
+  <!-- STEEL: SECURE -->
+  <set xpath="/blocks/block[@name='cntSteelWritableCrate']/drop[@event='Destroy'][@name='resourceScrapIron']/@count">0</set>
+  <remove xpath="/blocks/block[@name='cntSteelWritableCrate']/property[@name='DowngradeBlock' and @value='cntSteelWritableCrateInsecure']"/>
+  <append xpath="/blocks/block[@name='cntSteelWritableCrate']">
+    <drop event="Destroy" name="cntSteelWritableCrate" count="1"/>
+    <drop event="Harvest" name="cntSteelWritableCrate" count="1"/>
+  </append>
+  <!--
+  ===============================
+  SECTION: LANTERN DROP CLEANUP
+  ===============================
+  @group      DecorLightFixes
+  @desc       Removes all non-item drops from lanterns.
+              Ensures only the placeable lantern item is returned on Destroy or Harvest.
+              Prevents electric parts / scrap returns to avoid resource loops.
+  -->
+  <!-- WHITE LANTERN -->
+  <!-- Strip every Destroy drop that isn't the player item -->
+  <remove xpath="/blocks/block[@name='lanternDecorLightWhite']/drop[@event='Destroy'][@name!='lanternDecorLightWhite_player']"/>
+  <!-- Strip every Harvest drop that isn't the player item -->
+  <remove xpath="/blocks/block[@name='lanternDecorLightWhite']/drop[@event='Harvest'][@name!='lanternDecorLightWhite_player']"/>
+  <!-- Guarantee self-return on both Destroy and Harvest -->
+  <append xpath="/blocks/block[@name='lanternDecorLightWhite']">
+    <drop event="Destroy" name="lanternDecorLightWhite_player" count="1"/>
+    <drop event="Harvest" name="lanternDecorLightWhite_player" count="1"/>
+  </append>
+  <!--
+  ===============================
+  SECTION: TRAP & MINE PICKUP ENABLE
+  ===============================
+  @group      TrapPickupPermissions
+  @desc       Allows players to pick up traps and utility mines once placed.
+  @xref       biomes.xml → SECTION: BIOME MINE AND GORE ADDITIONS
+  -->
+  <append xpath="/blocks/block[@name='trapSpikesWoodMaster']">
+    <property name="CanPickup" value="true"/>
+  </append>
+  <append xpath="/blocks/block[@name='trapSpikesScrapIronMaster']">
+    <property name="CanPickup" value="true"/>
+  </append>
+  <append xpath="/blocks/block[@name='barbedFence']">
+    <property name="CanPickup" value="true"/>
+  </append>
+  <append xpath="/blocks/block[@name='mineCandyTin']">
+    <property name="CanPickup" value="true"/>
+  </append>
+  <append xpath="/blocks/block[@name='mineAirFilter']">
+    <property name="CanPickup" value="true"/>
+  </append>
+  <append xpath="/blocks/block[@name='mineCookingPot']">
+    <property name="CanPickup" value="true"/>
+  </append>
+  <append xpath="/blocks/block[@name='mineHubcap']">
+    <property name="CanPickup" value="true"/>
+  </append>
+  <!--
+  ===============================
+  SECTION: GORE BLOCK INFECTION
+  ===============================
+  @group      GoreBlockInfectionChance
+  @desc
+    Configures gore block properties to apply a 50% infection chance when stepped on
+    by the player. These blocks are primarily biome-spawned but may also appear in prefabs.
+  @notes
+    - This section affects block-level behavior, not buff definitions directly.
+    - Infection behavior is triggered via block collision mechanics, not proximity or visual contact.
+    - Gore blocks referenced here are introduced as biome decorators in biomes.xml.
+  @xref      biomes.xml → SECTION: BIOME MINE AND GORE ADDITIONS
+-->
+  <append xpath="/blocks/block[contains(@name, 'gore')]">
+    <property name="BuffsWhenWalkedOn" value="buffInfectionMain" prob=".50"/>
+  </append>
+  <!--
+  ===============================
+  SECTION: WOOD BLOCK ADJUSTMENTS
+  ===============================
+  @group      WoodBlockResources
+  @desc       Causes some wood block types to give nails back to the player.
+	@xref		    recipes.xml → SECTION: NAILS IN RECIPES
+	@xref		    loot.xml → MAIN: Increase Nails Loot Chance
+  -->
+  <append xpath="/blocks/block[starts-with(@name, 'wood')or (contains(@name, 'whitePicketFenceSheet'))or (contains(@name, 'cntCabinetBottom'))or (contains(@name, 'cntCupboardCabinetRedTopClosed'))or (contains(@name, 'cntWoodDesk01Closed'))or (contains(@name, 'cntSecureStorageChest'))or (contains(@name, 'secureDoorWooden'))or (contains(@name, 'endTable'))or (contains(@name, 'ladderWood'))or (contains(@name, 'window03Wood'))or (contains(@name, 'cellarDoorDoubleWood'))and not(contains(@name, 'woodChair1'))and not(contains(@name, 'woodTable'))and not(contains(@name, 'woodFrame'))or (contains(@name, 'oldWoodDoor'))or (contains(@name, 'oldWoodDoorDouble'))or (contains(@name, 'shuttersWoodBlockVariantHelper'))]">
+    <drop event="Harvest" name="resourceNail" count="1,2" tag="allHarvest"/>
+    <drop event="Destroy" name="resourceNail" count="1,2"/>
+    <property name="resourceNail" value="2"/>
+  </append>
+  <!--
+  ===============================
+  SECTION: LOG BLOCK ADJUSTMENTS
+  ===============================
+  @group      LogBlockResourceRemoval
+  @desc       Removes nails from log blocks.
+	@xref		    recipes.xml → SECTION: LOG BLOCK RECIPE CHANGES
+  -->
+  <remove xpath="/blocks/block[@name='woodLogPillar100']/drop[@event='Harvest' and @name='resourceNail']"/>
+  <remove xpath="/blocks/block[@name='woodLogPillar100']/drop[@event='Destroy' and @name='resourceNail']"/>
+</configs>

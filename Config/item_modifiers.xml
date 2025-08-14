@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+  Demonata Gaming Metadata Format ©2025
+  Licensed for use under terms in LICENSE.md.
+-->
+<!--
+  ==================================================
+  Item Modifiers - Crosshair Suppression on Weapon Sights
+  @version     1.0.0
+  @date        2025-07-14
+  @author      Demonata Gaming
+
+  @group       ItemModifiersCrosshair
+  @description
+    Disables the 'CrosshairOnAim' property for laser sight and scope mods to
+    provide a cleaner, more immersive aiming experience by hiding default crosshairs.
+  @notes
+    - Applies to modGunLaserSight, modGunScopeSmall, modGunScopeMedium, modGunScopeLarge.
+    - Complements crosshair removal in items.xml and related files.
+    - Improves immersion when aiming down sights.
+  ==================================================
+-->
+<configs>
+  <!--
+  ===============================
+  SECTION: CROSSHAIR REMOVAL FOR SIGHT MODIFIERS
+  ===============================
+  @desc
+    Disables default crosshair on aiming for weapon mods related to sights.
+  @xref   items.xml → SECTION: DURABILITY AND CROSSHAIR TWEAKS
+  -->
+  <set xpath="/item_modifiers/item_modifier[@name='modGunLaserSight']/item_property_overrides[@name='*']/property[@name='CrosshairOnAim']/@value">false</set>
+  <set xpath="/item_modifiers/item_modifier[@name='modGunScopeSmall']/item_property_overrides[@name='*']/property[@name='CrosshairOnAim']/@value">false</set>
+  <set xpath="/item_modifiers/item_modifier[@name='modGunScopeMedium']/item_property_overrides[@name='*']/property[@name='CrosshairOnAim']/@value">false</set>
+  <set xpath="/item_modifiers/item_modifier[@name='modGunScopeLarge']/item_property_overrides[@name='*']/property[@name='CrosshairOnAim']/@value">false</set>
+</configs>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+  Demonata Gaming Metadata Format ©2025
+  Licensed for use under terms in LICENSE.md.
+-->
+<!--
+  ==================================================
+  Attribute Scaling & Leveling System Rebalance
+  @version    1.1.1
+  @date       2025-08-01
+  @author     Demonata Gaming
+
+  @group    AttributeScalingRework
+  @description
+    Rebalances core player progression by flattening attribute-based headshot bonuses,
+    refining level pacing, and raising perk costs to promote long-term build commitment.
+    Emphasizes deliberate progression and survival strategy over rapid power gain.
+
+  @notes
+    - Converts DamageModifier (headshot) effects from perc_add to base_add to eliminate exponential
+      stacking.
+    - Leveling curve begins at 6,500 XP and scales at 30% per level.
+    - XP scaling caps at level 40 to prevent runaway endgame grind.
+    - Perk and attribute upgrade costs increase by 25% per level, requiring strategic investment.
+    - Intended to complement crafting-centric, headshot-reliant gameplay with limited XP sources.
+  @xref   entityclasses.xml → SECTION: HEADSHOTS ONLY - RANGED COMBAT PERKS & DAMAGE MULTIPLIERS
+  ==================================================
+-->
+<configs>
+  <!--
+  ===============================
+  SECTION: HEADSHOT DAMAGE - ATTRIBUTE BONUSES
+  ===============================
+  @desc
+    Prevents stacking of multiple multiplicative effects by normalizing attributes to base_add.
+  -->
+  <!-- Perception -->
+  <set xpath="/progression/attributes/attribute[@name='attPerception']/effect_group/passive_effect[@name='DamageModifier' and @tags='head']/@operation">
+    base_add</set>
+  <!-- Strength -->
+  <set xpath="/progression/attributes/attribute[@name='attStrength']/effect_group/passive_effect[@name='DamageModifier' and @tags='head']/@operation">
+    base_add</set>
+  <!-- Fortitude -->
+  <set xpath="/progression/attributes/attribute[@name='attFortitude']/effect_group/passive_effect[@name='DamageModifier' and @tags='head']/@operation">
+    base_add</set>
+  <!-- Agility -->
+  <set xpath="/progression/attributes/attribute[@name='attAgility']/effect_group/passive_effect[@name='DamageModifier' and @tags='head']/@operation">
+    base_add</set>
+  <!-- Intellect -->
+  <set xpath="/progression/attributes/attribute[@name='attIntellect']/effect_group/passive_effect[@name='DamageModifier' and @tags='head']/@operation">
+    base_add</set>
+  <!--
+  ===============================
+  SECTION: PLAYER LEVELING AND PERK SCALING
+  ===============================
+  @desc
+    Adjusts player XP gain curve and perk costs to enforce pacing, increase difficulty,
+    and make skill point allocation more meaningful.
+  @group    PlayerProgression
+  @notes
+    - Base XP to level starts at 9,000 (vanilla: 10,000).
+    - XP per level increases by 4% (vanilla: 5%).
+    - XP cost per level clamps at level 50 (vanilla: 60).
+    - Skill points per level: 1 (unchanged).
+    - Attribute upgrade cost scales by 16% per rank (vanilla: 14%).
+    - Late-game per-level cost after the clamp is ~61,500 XP vs ~177,897 in vanilla (≈65% lower).
+    - The XP curve should feel faster: roughly ~47% faster to midgame vs vanilla; total XP to 300 is ~60–65% lower depending on playstyle.
+    - Rationale: These changes offset reduced XP income (kills + quests only) and support crafting-dependent survival without a late-game slog.
+  -->
+  <set xpath="/progression/level/@exp_to_level">9000</set>
+  <set xpath="/progression/level/@experience_multiplier">1.04</set>
+  <set xpath="/progression/level/@clamp_exp_cost_at_level">50</set>
+  <set xpath="/progression/level/@skill_points_per_level">1</set>
+  <set xpath="/progression/attributes/@cost_multiplier_per_level">1.16</set>
+</configs>

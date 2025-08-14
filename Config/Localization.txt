@@ -1,0 +1,52 @@
+Key,File,Type,Source,Context,English
+foodBaconAndEggsDesc,items,Food,,,"Food: 36\nHealth: 18\nMax Stamina Bonus: 10\n\nBacon and eggs will really fill you up and boost your Max Stamina. Cholesterol is the least of your worries now."
+foodBakedPotatoDesc,items,Food,,,"Food: 4\nHealth: 1\nMax Stamina Bonus: 10\n\nA nutritious baked potato full of carbohydrates. Great for couch potatoes too."
+foodBlueberryPieDesc,items,Food,,,"Food: 45\nHealth: 22\nMax Stamina Bonus: 20\n\nThis homemade blueberry pie is nutritious and raises your Max Stamina. Mmm...just like Grandma used to make."
+foodBoiledMeatDesc,items,Food,,,"Food: 10\nHealth: 15\nWater: 10\nMax Stamina Bonus: 10\n\nWhile not as yummy as grilled meat, boiling is an efficient way to prepare a meal."
+foodCanShamDesc,items,Food,,,"Food: 15\nHealth: 7\nDysentary: 12%\n\nA can of high quality Shamway ham the number 1 maker of meat-like products. The lunch of champions.\n\nCrafted in lots of 5."
+foodCharredMeatDesc,items,Food,,,Food: 10\nHealth: 5\nWater: -5\nMax Stamina Bonus: 10\n\nCharring meat isn't the best way to cook it but it's much better than eating it raw.
+foodChiliDogDesc,items,Food,,,Food: 53\nHealth: 30\nMax Stamina Bonus: 30\n\nTasty!
+foodCornBreadDesc,items,Food,,,Food: 4\nHealth: 2\nMax Stamina Bonus: 10\n\nA tasty piece of corn bread lifts your spirits with it's home-cooked charm.
+foodCornMealDesc,items,Food,,,Food: 2\nHealth: 1\nWater: -3\n\nCornmeal is used in several recipes at the campfire but you can just eat it.
+foodCornOnTheCobDesc,items,Food,,,Food: 5\nHealth: 2\nMax Stamina Bonus: 10\n\nA steamed ear of corn isn't the most filling or nutritious meal but it sure is satisfying.
+foodEggBoiledDesc,items,Food,,,Food: 10\nHealth: 5\nMax Stamina Bonus: 10\n\nA boiled egg offers up a tasty and enjoyable snack.
+foodFishTacosDesc,items,Food,,,Food: 46\nHealth: 40\nMax Stamina Bonus: 30\n\nWho wants to live off the land when it's taco Tuesday? Or is this Thursday?
+foodGrilledMeatDesc,items,Food,,"Food: 10\nHealth: 5\nMax Stamina Bonus: 10\n\nMeat! Meat on fire! Good! Meat fresh off the grill is nutritious, delicious, and filling."
+foodGumboStewDesc,items,Food,,,"Food: 112\nHealth: 56\nWater: 20\nMax Stamina Bonus: 40\n\nVomiting is for the peasants! Eat like an apocalyptic king with this super filling, delicious gumbo stew."
+foodHoboStewDesc,items,Food,,,"Food: 64\nHealth: 32\nWater: 20\nMax Stamina Bonus: 30\nDysentary: 12%\n\nNutritious and deli... it's edible, okay?"
+foodMeatStewDesc,items,Food,,,Food: 50\nHealth: 25\nWater: 20\nMax Stamina Bonus: 20\n\nA survivor isn't worth his salt if he can't make a meat stew.
+foodMoldyBreadDesc,items,Food,,,Food: 4\nHealth: -2\n\nEat at your own risk. Can be used to craft antibiotics at a chemistry station.
+foodPumpkinBreadDesc,items,Food,,,Food: 12\nHealth: 6\nMax Stamina Bonus: 20\n\nPumpkin bread is more filling than corn bread and tastes amazing.
+foodPumpkinCheesecakeDesc,items,,,Food,Food: 42\nHealth: 21\nMax Stamina Bonus: 20\nBartering Bonus: +5% (5 min)\n\nThis pumpkin cheesecake tastes delicious and grants you a 5% discount when bartering.
+foodPumpkinPieDesc,items,Food,,,"Food: 50\nHealth: 25\nMax Stamina Bonus: 20\n\nIf there is one thing to be thankful for in the apocalypse, it's pumpkin pie."
+foodShamChowderDesc,items,Food,,,Food: 53\nHealth: 80\nMax Stamina Bonus: 30\nFortitude +1 (10min)\nDysentary: 12%\n\nSham Chowder increases your Fortitude and grows chest hair!
+foodShepardsPieDesc,items,Food,,,Food: 104\nHealth: 52\nMax Stamina Bonus: 40\n\nShepards Pie sure is tasty and super filling.
+foodSpaghettiDesc,items,Food,,,"Food: 122\nHealth: 61\nMax Stamina Bonus: 40\n\nIt's not a classy Italian dish, but it is very filling and has a full no money back guarantee that you won't vomit."
+foodSteakAndPotatoDesc,items,Food,,,Food: 50\nHealth: 25\nMax Stamina Bonus: 20\n\nA filling meal fit for a king!
+foodTunaFishGravyToastDesc,items,Food,,,"Food: 90\nHealth: 45\nMax Stamina Bonus: 40\n\nSome call it shit on a shingle, but its actually pretty tasty and filling."
+foodVegetableStewDesc,items,Food,,,Food: 31\nHealth: 15\nWater: 20\nMax Stamina Bonus: 20\n\nYour mom always said eat your vegetables. Now's your chance to make her happy and guess what? They're good for you.
+drinkJarBeerDesc,items,Food,,,"Stamina Regen: +40%\nBrawling Damage: +300%\nStun Resist: +100%\nDuration: 45sec\n\nGain stamina, bravado and stun immunity all in one bottle of this tasty home brewed beer. Just like grandpa used to make."
+drinkJarBoiledWaterDesc,items,Food,,,Water: 20\nStamina Regen: 15%\n\nFresh bottled water. Well as fresh as you can get in the apocalypse.
+drinkJarBlackStrapCoffeeDesc,items,Food,,,Water: 24\nStamina Regen: 25%\nCold Resist: 10 (6min)\n\nBlackstrap Coffee. This 2 century old favorite coffee was a staple among miners in the 1800's. Otherwise known as 'Muckmen Blackstrap' this strong blended roast will give you long lasting energy and keep you warm for hours.
+drinkJarCoffeeDesc,items,Food,,,Water: 24\nStamina Regen: 20%\nCold Resist: 5 (3min)\n\nCoffee keeps your stamina up and helps you stay warm for a limited time.
+drinkJarGoldenRodTeaDesc,items,Food,,,Water: 24\nStamina Regen: 15%\nCure Dysentery: 20%\n\nGreatly speeds up recovering from dysentery.
+drinkJarGrandpasAwesomeSauceDesc,items,Food,,,Bartering: +20% (3min)\n\nTired of getting bent by those pesky traders?\nTake a shot of Grandpa's Awesome Sauce\nand get a better deal!
+drinkJarGrandpasLearningElixirDesc,items,Food,,,"XP Gain: +20% (4min)\n\nLearn twice as much, twice as fast, or sumthin like that."
+drinkJarGrandpasMoonshineDesc,items,Food,,,"Melee Damage: 400%\nStun Resist: 100%\nHealth: 600\nDamage Mitigation: 50%\nStamina Regen: 60%\nDuration: 45s\n\nNuthin' makes settling it the old way easier than a bottle of grandpa's moonshine. \nGives all melee damage a punch that will make 'em quake in their boots. Also Increases fortitude, damage resistance and a bunch of other stuff."
+drinkJarPureMineralWaterDesc,items,Food,,,Water: 60\nStamina Regen: 15%\nCure Dysentery: 20%\nEfficient Digestion: +15% (5min)\n\nPure mineral water is good for your digestion and hydrates you for days!\nExertion will not make you hungry and thirsty as quickly.
+drinkJarRedTeaDesc,items,Food,,,"Water: 24\nStamina Regen: 15%\nEfficient Digestion: 15% (4min)\n\nAn ancient Chinese secret, red tea is known for being an antioxidant, providing excellent rehydration and reducing max stamina drain so that exertion does not make you hungry and thirsty as quickly."
+drinkJarRiverWaterDesc,items,Food,,,Water: 10\nStamina Regen: 15%\nDysentery: 12%\n\nDisgusting murky water but it's the apocalypse. You can't be picky. Boil at a campfire to purify it.
+drinkJarYuccaJuiceDesc,items,Food,,,Water: 34\nStamina Regen: 15%\n\nYucca juice provides excellent hydration.
+drinkYuccaJuiceSmoothieDesc,items,Food,,,Food: 22\nHealth: 22\nWater: 78\nStamina Regen: 15%\nCold Resist: +30 (15min)\n\nThis smoothie helps you survive in severely cold environments.
+medicalAloeCreamDesc,items,Medical,,,"Health: 5\nAbrasion Healing Speed: 200%\n\nAloe cream can be used as a basic healing item, to increase abrasion healing speed or to craft first aid bandages.\nUse the secondary action to treat another player."
+medicalBandageDesc,items,Medical,,,Stop Bleeding: 100%\n\nA simple cloth wrap to dress wounds. Use it to stop bleeding damage.\nUse the secondary action to treat another player.
+medicalFirstAidBandageDesc,items,Medical,,,"Health: 30\nAbrasion Healing Speed: 300%\nStop Bleeding: 100%\n\nBandages coated in aloe stop bleeding, heal wounds and increase abrasion healing speed.\nUse the secondary action to treat another player."
+medicalFirstAidKitDesc,items,Medical,,,"Health: 180\nAbrasion Healing Speed: 400%\nStop Bleeding: 100%\nSuture Laceration: 100%\n\nFirst aid kits stop bleeding, heal wounds, increase abrasion healing speed and suture lacerations.\nUse the secondary action to treat another player."
+medicalPlasterCastDesc,items,Medical,,,Heals a broken arm or leg more quickly than a splint but does not protect against further injury.\n\nUse the secondary action to treat another player.
+medicalSplintDesc,items,Medical,,,Heals a broken arm or leg but does not protect against further injury.\n\nUse the secondary action to treat another player.
+drugAntibioticsDesc,items,Medical,,,Cure Infection: 25%\n\nAntibiotics can cure infections.\n\nCan be crafted in a beaker at a campfire.
+drugHerbalAntibioticsDesc,items,Medical,,,Cure Infection: 10%\n\nHerbal Antibiotics can cure infections.\n\nCan be crafted in a cooking pot at a campfire.
+drugRecogDesc,items,Medical,,,Ranged Damage: +50%\nWater: -30\nDuration: 5min\n\nRecog enhances ranged damage.
+drugSteroidsDesc,items,Medical,,,"Carrying Capacity: 50\nRun Speed: +10%\nWater: -30\nDuration: 10min\n\nSteroids decrease encumbrance, allowing you to carry more items, and allow you to run faster."
+drugFortBitesDesc,items,Medical,,,Damage Mitigation: +50%\nWater: -30\nDuration: 2min\n\nFort Bites greatly increase your damage resistance.
+

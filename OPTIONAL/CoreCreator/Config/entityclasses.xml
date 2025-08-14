@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Demonata Gaming Metadata Format ©2025
+  Licensed for use under terms in LICENSE.md.
+-->
+<!--
+  ==================================================
+  Creator XP Boost Modlet - XP Restoration & Gate Removal
+  @version     1.0.0
+  @date        2025-08-01
+  @author      Demonata Gaming
+
+  @group       CreatorXPBoost
+  @description
+    Fully restores XP gain across all activity tags and removes the
+    Wasteland biome GameStage entry restriction. Designed to override
+    DemonataCore’s survival-tuned XP gating system.
+
+  @xref        zzz_DemonataCore Config Entityclasses.xml SECTION: PLAYER XP RESTRICTIONS & WASTELAND GAMESTAGE GATE
+
+  @notes
+    - Must load *after* the DemonataCore modlet.
+    - For fast-paced progression in content creator playthroughs.
+  ==================================================
+-->
+<configs>
+  <!--
+  ===============================
+  SECTION: CREATOR-FRIENDLY XP SETTINGS
+  ===============================
+  Reverts XP gain modifiers back to full gains and removes biome-based GameStage lock.
+  -->
+  <set xpath="/entity_classes/entity_class[@name='playerMale']/effect_group/passive_effect[@name='PlayerExpGain'][@value='5']/@value">0</set>
+  <!-- This sets EXP gain from block upgrades -->
+  <replace xpath="/entity_classes/entity_class[@name='playerMale']/effect_group">
+    <effect_group>
+      <passive_effect name="PlayerExpGain" operation="perc_add" value="0" tags="Kill"/>
+      <passive_effect name="PlayerExpGain" operation="perc_add" value="0" tags="Quest"/>
+      <passive_effect name="PlayerExpGain" operation="perc_add" value="0" tags="Repairing"/>
+      <passive_effect name="PlayerExpGain" operation="perc_add" value="0" tags="Harvesting"/>
+      <passive_effect name="PlayerExpGain" operation="perc_add" value="0" tags="Crafting"/>
+      <passive_effect name="PlayerExpGain" operation="perc_add" value="0" tags="Selling"/>
+      <passive_effect name="PlayerExpGain" operation="perc_add" value="0" tags="Looting"/>
+      <passive_effect name="PlayerExpGain" operation="perc_add" value="0" tags="Party"/>
+      <passive_effect name="PlayerExpGain" operation="perc_add" value="0" tags="Other"/>
+      <passive_effect name="PlayerExpGain" operation="perc_add" value="0" tags="Upgrading"/>
+    </effect_group>
+  </replace>
+</configs>

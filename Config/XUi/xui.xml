@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+  Demonata Gaming Metadata Format ©2025
+  Licensed for use under terms in LICENSE.md.
+-->
+<!--
+  ==================================================
+  XUi Rule Override - Enable Custom Stat Bar Window
+  @version     1.0.0
+  @date        2025-07-14
+  @author      Demonata Gaming
+
+  @group       HUDTweaks
+  @description
+    Replaces the default stat bar window with the custom
+    DGHUDLeftStatBars defined in windows.xml.
+  @xref        Config/XUi/windows.xml → MAIN: HUD and UI Adjustments
+  ==================================================
+-->
+<configs>
+  <!-- Redirect stat bars from vanilla HUDLeftStatBars to DGHUDLeftStatBars -->
+  <set xpath="/xui/ruleset/window_group[@name='toolbelt']/window[@name='HUDLeftStatBars']/@name">DGHUDLeftStatBars</set>
+</configs>

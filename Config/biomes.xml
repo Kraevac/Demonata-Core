@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+  Demonata Gaming Metadata Format ©2025
+  Licensed for use under terms in LICENSE.md.
+-->
+<!--
+  ==================================================
+  Biomes Modification - Honey, Fog, Mines, and Decoration Overhaul
+  @version    1.0.0
+  @date       2025-07-14
+  @author     Demonata Gaming
+
+  @group      BiomeAdjustments
+  @description
+    Adjusts tree stump spawn rates for better honey availability, rebalances
+    fog density across all biomes for improved immersion, reduces decorative
+    clutter in the Wasteland, and adds mine/gore blocks
+    to reinforce biome theming and player tension.
+
+  @notes
+    - Honey probabilities increased slightly in snow, pine_forest, and burnt_forest.
+    - Fog settings adjusted per biome and weather type for thematic consistency.
+    - Wasteland clutter reduced by disabling noisy decoration spawns.
+    - Mines added to all biomes with thematic probability tuning.
+    - Gore blocks added to Wasteland for stronger atmospheric ambiance.
+    - All changes preserve game stability by only modifying attribute values.
+  ==================================================
+-->
+<configs>
+  <!--
+  ===============================
+  SECTION: BIOME HONEY PROBABILITY
+  ===============================
+  @desc    Increases/Decreases the amount of tree stumps across biomes.
+  -->
+  <!-- Default AVERAGE of spawn chances is 0.0004929 -->
+  <set xpath="/worldgeneration/biomes/biome[@name='pine_forest']/decorations/decoration[@type='block' and @blockname='treeStump']/@prob">0.000575</set>
+  <!-- Default AVERAGE of spawn chances is 0.0002 -->
+  <set xpath="/worldgeneration/biomes/biome[@name='burnt_forest']/decorations/decoration[@type='block' and @blockname='treeStump']/@prob">0.0001917</set>
+  <!-- Default AVERAGE of spawn chances is 0.0002 -->
+  <set xpath="/worldgeneration/biomes/biome[@name='snow']/decorations/decoration[@type='block' and @blockname='treeStump']/@prob">0.0001095</set>
+  <!--
+  ===============================
+  SECTION: BIOME WEATHER AND FOG TUNING
+  ===============================
+  @group    BiomeWeatherFog
+  @desc
+    Customizes weather fog ranges for each biome to enhance immersion
+    while preserving visibility during gameplay events such as Blood Moons.
+  @xref 		worldglobal.xml → World Lighting & Fog Rebalance
+  -->
+  <!-- Pine Forest -->
+  <set xpath="/worldgeneration/biomes/biome[@name='pine_forest']/weather[@name='default']/Fog/@range">0,2</set>
+  <set xpath="/worldgeneration/biomes/biome[@name='pine_forest']/weather[@name='fog']/Fog/@min">2</set>
+  <set xpath="/worldgeneration/biomes/biome[@name='pine_forest']/weather[@name='fog']/Fog/@max">4</set>
+  <set xpath="/worldgeneration/biomes/biome[@name='pine_forest']/weather[@name='rainlight']/Fog/@range">4,6</set>
+  <set xpath="/worldgeneration/biomes/biome[@name='pine_forest']/weather[@name='rainheavy']/Fog/@range">8,10</set>
+  <set xpath="/worldgeneration/biomes/biome[@name='pine_forest']/weather[@name='stormbuild']/Fog/@range">10,15</set>
+  <set xpath="/worldgeneration/biomes/biome[@name='pine_forest']/weather[@name='storm']/Fog/@range">12,18</set>
+  <set xpath="/worldgeneration/biomes/biome[@name='pine_forest']/weather[@name='bloodMoon']/Fog/@min">0</set>
+  <set xpath="/worldgeneration/biomes/biome[@name='pine_forest']/weather[@name='bloodMoon']/Fog/@max">4</set>
+  <!-- Burnt Forest -->
+  <set xpath="/worldgeneration/biomes/biome[@name='burnt_forest']/weather[@name='default']/Fog/@range">5,8</set>
+  <set xpath="/worldgeneration/biomes/biome[@name='burnt_forest']/weather[@name='rainlight']/Fog/@range">8,12</set>
+  <set xpath="/worldgeneration/biomes/biome[@name='burnt_forest']/weather[@name='rainheavy']/Fog/@range">10,15</set>
+  <set xpath="/worldgeneration/biomes/biome[@name='burnt_forest']/weather[@name='stormbuild']/Fog/@range">12,18</set>
+  <set xpath="/worldgeneration/biomes/biome[@name='burnt_forest']/weather[@name='storm']/Fog/@range">15,20</set>
+  <set xpath="/worldgeneration/biomes/biome[@name='burnt_forest']/weather[@name='bloodMoon']/Fog/@min">12</set>
+  <set xpath="/worldgeneration/biomes/biome[@name='burnt_forest']/weather[@name='bloodMoon']/Fog/@max">18</set>
+  <!-- Desert -->
+  <set xpath="/worldgeneration/biomes/biome[@name='desert']/weather[@name='default']/Fog/@range">2,4</set>
+  <set xpath="/worldgeneration/biomes/biome[@name='desert']/weather[@name='rainlight']/Fog/@range">5,8</set>
+  <set xpath="/worldgeneration/biomes/biome[@name='desert']/weather[@name='rainheavy']/Fog/@range">8,12</set>
+  <set xpath="/worldgeneration/biomes/biome[@name='desert']/weather[@name='stormbuild']/Fog/@range">12,18</set>
+  <set xpath="/worldgeneration/biomes/biome[@name='desert']/weather[@name='storm']/Fog/@range">15,20</set>
+  <set xpath="/worldgeneration/biomes/biome[@name='desert']/weather[@name='bloodMoon']/Fog/@min">8</set>
+  <set xpath="/worldgeneration/biomes/biome[@name='desert']/weather[@name='bloodMoon']/Fog/@max">12</set>
+  <!-- Snow Biome -->
+  <set xpath="/worldgeneration/biomes/biome[@name='snow']/weather[@name='default']/Fog/@range">5,8</set>
+  <set xpath="/worldgeneration/biomes/biome[@name='snow']/weather[@name='fog']/Fog/@range">8,12</set>
+  <set xpath="/worldgeneration/biomes/biome[@name='snow']/weather[@name='snowlight']/Fog/@range">6,10</set>
+  <set xpath="/worldgeneration/biomes/biome[@name='snow']/weather[@name='snowheavy']/Fog/@range">8,14</set>
+  <set xpath="/worldgeneration/biomes/biome[@name='snow']/weather[@name='stormbuild']/Fog/@range">10,16</set>
+  <set xpath="/worldgeneration/biomes/biome[@name='snow']/weather[@name='storm']/Fog/@range">12,18</set>
+  <set xpath="/worldgeneration/biomes/biome[@name='snow']/weather[@name='bloodMoon']/Fog/@min">10</set>
+  <set xpath="/worldgeneration/biomes/biome[@name='snow']/weather[@name='bloodMoon']/Fog/@max">15</set>
+  <!-- Wasteland -->
+  <set xpath="/worldgeneration/biomes/biome[@name='wasteland']/weather[@name='default']/Fog/@range">8,12</set>
+  <set xpath="/worldgeneration/biomes/biome[@name='wasteland']/weather[@name='rainlight']/Fog/@range">10,14</set>
+  <set xpath="/worldgeneration/biomes/biome[@name='wasteland']/weather[@name='rainheavy']/Fog/@range">12,18</set>
+  <set xpath="/worldgeneration/biomes/biome[@name='wasteland']/weather[@name='stormbuild']/Fog/@range">14,20</set>
+  <set xpath="/worldgeneration/biomes/biome[@name='wasteland']/weather[@name='storm']/Fog/@range">16,22</set>
+  <set xpath="/worldgeneration/biomes/biome[@name='wasteland']/weather[@name='bloodMoon']/Fog/@min">14</set>
+  <set xpath="/worldgeneration/biomes/biome[@name='wasteland']/weather[@name='bloodMoon']/Fog/@max">20</set>
+  <!--
+  ===============================
+  SECTION: BIOME MINE AND GORE ADDITIONS
+  ===============================
+  @group      BiomeMineGoreExpansion
+  @desc
+    Adds explosive mine decorations to all biomes and increases the
+    number of gore blocks in the Wasteland biome. While mines serve as direct hazards,
+    gore blocks function both as visual storytelling and potential infection threats.
+  @notes
+    - Gore blocks used in this section are configured with infection chances via blocks.xml.
+    - Mines are decorative but functional hazards — spawning only, not modified here.
+  @xref     blocks.xml → SECTION: GORE BLOCK INFECTION
+  -->
+  <!-- Add Mines to Wastelands -->
+  <set xpath="/worldgeneration/biomes/biome[@name='wasteland']/decorations/decoration[starts-with(@blockname, 'mine')]/@prob">0.005</set>
+  <!-- All other biomes mine probability -->
+  <append xpath="/worldgeneration/biomes/biome[not(contains(@name, 'wasteland'))]/decorations">
+    <decoration type="block" blockname="mineCandyTin" prob="0.003" />
+    <decoration type="block" blockname="mineHubcap" prob="0.002" />
+    <decoration type="block" blockname="hubcapNoMine" prob="0.005" />
+    <decoration type="block" blockname="mineCookingPot" prob="0.003" />
+    <decoration type="block" blockname="mineAirFilter" prob="0.002" />
+  </append>
+  <!-- Add gore decorations -->
+  <append xpath="/worldgeneration/biomes/biome[@name='wasteland']/decorations">
+    <decoration type="block" blockname="goreBlockAnimal" prob=".001" rotatemax="7" />
+    <decoration type="block" blockname="goreBlockHumanCorpse" prob=".001" rotatemax="7" />
+    <decoration type="block" blockname="goreBlockHumanCorpse1" prob=".002" rotatemax="7" />
+    <decoration type="block" blockname="goreBlockHumanCorpse2" prob=".003" rotatemax="7" />
+    <decoration type="block" blockname="goreBlockHumanCorpse2Offset" prob=".001" rotatemax="3" />
+    <decoration type="block" blockname="goreBlockHumanCorpse3" prob=".001" rotatemax="7" />
+    <decoration type="block" blockname="goreBlockHumanBones" prob=".001" rotatemax="7" />
+    <decoration type="block" blockname="goreHumanSkull" prob=".001" rotatemax="7" />
+  </append>
+</configs>

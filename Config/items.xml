@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+  Demonata Gaming Metadata Format ©2025
+  Licensed for use under terms in LICENSE.md.
+-->
+<!--
+  ==================================================
+  Items Modification - Gameplay Adjustments and Immersion
+  @version     1.1.0
+  @date        2025-08-01
+  @author      Demonata Gaming
+
+  @group       ItemGameplayTweaks
+  @description
+    Broad gameplay and immersion updates to item behavior, weapon handling,
+    food risk mechanics, ammo tagging, and repair requirements. Reduces clutter HUD, increases realism,
+    and ensures better part consistency across item classes. Zombie reach logic has been fully reworked
+    to differentiate player and AI melee behaviors using inheritance-based targeting.
+  @notes
+    - Tools and weapons break at zero durability.
+    - Crosshairs removed from weapons for HUD clarity.
+    - Bullet spread reduced (exempting shotguns).
+    - Zombie melee reach reduced via new player-hand item split.
+    - Elite zombies retain slightly longer reach for threat preservation.
+    - Base reach for non-player entities lowered to prevent overextension.
+    - Stack sizes increased across multiple consumable/resource types.
+    - Canned food nutrition improved.
+    - Added dysentery chance to foods containing rotten meat.
+    - All craftable items requiring parts now also require those parts for repair.
+    - Parts can now repair themselves to prevent repair errors.
+    - Tags added to flaming and explosive arrow/bolt ammo to ensure they are caught by headshot-only perk filters.
+  ==================================================
+-->
+<configs>
+  <!--
+  ===============================
+  SECTION: DURABILITY AND CROSSHAIR TWEAKS
+  ===============================
+  @group    ItemBreakAndHUD
+  @desc
+    Enables break-on-zero durability for tools/weapons and removes crosshairs from most ranged weapons to improve immersion.
+  @xref   item_modifiers.xml → SECTION: CROSSHAIR REMOVAL FOR SIGHT MODIFIERS
+  -->
+  <set xpath="/items/item/property[@name='DegradationBreaksAfter' and @value='false']/@value">true</set>
+  <set xpath="/items/item[not(@name='gunBowT0PrimitiveBow') and not(@name='gunBowT1WoodenBow')]/property[@name='CrosshairOnAim']/@value">false</set>
+  <set xpath="/items/item/property[@class='Action0']/property[@name='UseMeleeCrosshair']/@value">false</set>
+  <!--
+  ===============================
+  SECTION: BULLET SPREAD ADJUSTMENTS
+  ===============================
+  @group    WeaponAccuracyTweaks
+  @desc
+    Reduces bullet spread for non-shotgun firearms to tighten weapon behavior and improve mid-range combat balance.
+  -->
+  <set xpath="/items/item/effect_group/passive_effect[@name='SpreadMultiplierAiming']/@value">0</set>
+  <set xpath="/items/item[not(@name='gunShotgunT0PipeShotgun') and not(@name='gunShotgunT1DoubleBarrel') and not(@name='gunShotgunT2PumpShotgun') and not(@name='gunShotgunT3AutoShotgun')]/effect_group/passive_effect[@name='IncrementalSpreadMultiplier']/@value">1</set>
+  <!--
+  ===============================
+  SECTION: STACK SIZE INCREASES
+  ===============================
+  @group    ItemStackTweaks
+  @desc
+    Increases stack sizes for medical supplies, food, drinks, and basic resources to reduce inventory friction and micromanagement.
+  -->
+  <set xpath="/items/item[starts-with(@name, 'resource') and not(contains(@name, 'Bundle'))]/property[@name='Stacknumber']/@value">12000</set>
+  <set xpath="/items/item[starts-with(@name, 'food') and not(contains(@name, 'Bundle'))]/property[@name='Stacknumber']/@value">20</set>
+  <set xpath="/items/item[starts-with(@name, 'medical') and not(contains(@name, 'Bundle'))]/property[@name='Stacknumber']/@value">15</set>
+  <set xpath="/items/item[starts-with(@name, 'drug') and not(contains(@name, 'Bundle'))]/property[@name='Stacknumber']/@value">20</set>
+  <set xpath="/items/item[starts-with(@name, 'drink') and not(contains(@name, 'Bundle'))]/property[@name='Stacknumber']/@value">20</set>
+  <set xpath="/items/item[starts-with(@name, 'schematic') and not(contains(@name, 'Bundle'))]/property[@name='Stacknumber']/@value">10</set>
+  <!--
+  ===============================
+  SECTION: FOOD VALUE AND DISEASE RISK
+  ===============================
+  @group  FoodRebalanceAndHazards
+  @desc
+    Improves nutritional value of canned food and introduces dysentery risk for foods containing rotten meat.
+  @xref   ui_display.xml → MAIN: Add Dysentery Risk to Consumables
+  -->
+  <set xpath="/items/item[starts-with(@name, 'foodCan')]/effect_group/triggered_effect[@cvar='$foodAmountAdd']/@value">20</set>
+  <set xpath="/items/item[@name='foodCanTuna']/effect_group/triggered_effect[@cvar='$foodAmountAdd']/@value">30</set>
+  <set xpath="/items/item[@name='foodCanBeef']/effect_group/triggered_effect[@cvar='$foodAmountAdd']/@value">30</set>
+  <set xpath="/items/item[@name='foodCanChicken']/effect_group/triggered_effect[@cvar='$foodAmountAdd']/@value">35</set>
+  <set xpath="/items/item[@name='foodHoboStew']/property[@name='DisplayType']/@value">foodWaterDysentery</set>
+  <append xpath="/items/item[@name='foodHoboStew']/effect_group">
+    <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar=".DiseaseRoll" operation="set" value="12" />
+    <display_value name="dDysenteryRisk" value=".12" />
+    <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar=".DiseaseRoll" operation="add" value="@$MetabolismResist" />
+    <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffDysenteryCatchFood">
+      <requirement name="RandomRoll" seed_type="Random" min_max="1,100" operation="LTE" value="@.DiseaseRoll" />
+    </triggered_effect>
+  </append>
+  <set xpath="/items/item[@name='foodShamChowder']/property[@name='DisplayType']/@value">foodShamChowderDysentery</set>
+  <append xpath="/items/item[@name='foodShamChowder']/effect_group">
+    <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar=".DiseaseRoll" operation="set" value="12" />
+    <display_value name="dDysenteryRisk" value=".12" />
+    <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar=".DiseaseRoll" operation="add" value="@$MetabolismResist" />
+    <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffDysenteryCatchFood">
+      <requirement name="RandomRoll" seed_type="Random" min_max="1,100" operation="LTE" value="@.DiseaseRoll" />
+    </triggered_effect>
+  </append>
+  <append xpath="/items/item[@name='foodCanSham']/effect_group">
+    <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar=".DiseaseRoll" operation="set" value="12" />
+    <display_value name="dDysenteryRisk" value=".12" />
+    <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar=".DiseaseRoll" operation="add" value="@$MetabolismResist" />
+    <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffDysenteryCatchFood">
+      <requirement name="RandomRoll" seed_type="Random" min_max="1,100" operation="LTE" value="@.DiseaseRoll" />
+    </triggered_effect>
+  </append>
+  <!--
+  ===============================
+  SECTION: REPAIR TOOLS AND PARTS
+  ===============================
+  @group    ItemRepairSystem
+  @desc
+    Ensures that items requiring specific parts also use those parts for repair, and makes those parts repairable to avoid dependency errors.
+  -->
+  <!-- Tools -->
+  <set xpath="/items/item[contains(@name, 'Steel') and contains(@name, 'meleeTool')]/property[@name='RepairTools']/@value">meleeToolAllSteelParts</set>
+  <set xpath="/items/item[contains(@name, 'T3') and contains(@name, 'meleeTool')]/property[@name='RepairTools']/@value">meleeToolAxeT3ChainsawParts</set>
+  <append xpath="/items/item[@name='meleeToolAxeT2SteelAxe']">
+    <property name="RepairTools" value="meleeToolAllSteelParts" />
+  </append>
+  <append xpath="/items/item[@name='meleeToolSalvageT2Ratchet']">
+    <property name="RepairTools" value="meleeToolAllSteelParts" />
+  </append>
+  <!-- Melee Weapons -->
+  <set xpath="/items/item[@name='meleeWpnClubT3SteelClub']/property[@name='RepairTools']/@value">meleeWpnClubT3SteelClubParts</set>
+  <append xpath="/items/item[@name='meleeWpnSpearT3SteelSpear']">
+    <property name="RepairTools" value="meleeWpnSpearT3SteelSpearParts" />
+  </append>
+  <set xpath="/items/item[@name='meleeWpnBladeT3Machete']/property[@name='RepairTools']/@value">meleeWpnBladeT3MacheteParts</set>
+  <append xpath="/items/item[@name='meleeWpnKnucklesT3SteelKnuckles']">
+    <property name="RepairTools" value="meleeWpnKnucklesT3SteelKnucklesParts" />
+  </append>
+  <set xpath="/items/item[@name='meleeWpnSledgeT3SteelSledgehammer']/property[@name='RepairTools']/@value">meleeWpnSledgeT3SteelSledgehammerParts</set>
+  <set xpath="/items/item[@name='meleeWpnBatonT2StunBaton']/property[@name='RepairTools']/@value">meleeWpnBatonT2StunBatonParts</set>
+  <!-- Ranged Weapons -->
+  <set xpath="/items/item[contains(@name, 'Bow') and not(contains(@name, 'Primitive'))]/property[@name='RepairTools']/@value">gunBowT1WoodenBowParts</set>
+  <set xpath="/items/item[contains(@name, 'Crossbow')]/property[@name='RepairTools']/@value">gunBowT1WoodenBowParts</set>
+  <set xpath="/items/item[contains(@name, 'Handgun')]/property[@name='RepairTools']/@value">gunHandgunT1PistolParts</set>
+  <set xpath="/items/item[contains(@name, 'Shotgun') and not(contains(@name, 'Blunderbuss'))]/property[@name='RepairTools']/@value">gunShotgunT1DoubleBarrelParts</set>
+  <set xpath="/items/item[contains(@name, 'Rifle')]/property[@name='RepairTools']/@value">gunRifleT1HuntingRifleParts</set>
+  <set xpath="/items/item[contains(@name, 'gunMG')]/property[@name='RepairTools']/@value">gunMGT1AK47Parts</set>
+  <set xpath="/items/item[contains(@name, 'RocketLauncher')]/property[@name='RepairTools']/@value">gunExplosivesT3RocketLauncherParts</set>
+  <!-- Armor -->
+  <set xpath="/items/item[@name='armorLightMaster']/property[@name='RepairTools']/@value">armorParts</set>
+  <set xpath="/items/item[@name='armorMediumMaster']/property[@name='RepairTools']/@value">armorParts</set>
+  <set xpath="/items/item[@name='armorHeavyMaster']/property[@name='RepairTools']/@value">armorParts</set>
+  <set xpath="/items/item[@name='armorDLCMaster']/property[@name='RepairTools']/@value">armorParts</set>
+  <!-- Makes parts repair themselves instead of causing errors -->
+  <append xpath="/items/item[contains(@name, 'Parts') and not(contains(@name, 'resource')) and not(contains(@name, 'Bot'))]">
+    <property name="RepairAmount" value="32000" />
+    <property name="RepairTime" value="10" />
+  </append>
+  <!--
+  ===============================
+  SECTION: HEADSHOTS ONLY – AMMO TAGGING FOR FINESSE PERK DETECTION
+  ===============================
+  @group    HeadshotAmmoTagging
+  @desc
+    Tags flaming and explosive arrows and bolts with proper perk identifiers so they inherit HeadShotOnly rules from player weapon tag detection.
+  @xref   entityclasses.xml → SECTION: HEADSHOTS ONLY - RANGED COMBAT PERKS & DAMAGE MULTIPLIERS
+  -->
+  <insertBefore xpath="/items/item[@name='ammoArrowFlaming']/property[@name='DisplayType']">
+    <property name="Tags" value="ammo,ranged,attAgility,perkArchery,perkPenetrator,perkDemolitionsExpert" />
+  </insertBefore>
+  <insertBefore xpath="/items/item[@name='ammoArrowExploding']/property[@name='DisplayType']">
+    <property name="Tags" value="ammo,ranged,attAgility,perkArchery,perkPenetrator,perkDemolitionsExpert" />
+  </insertBefore>
+  <insertBefore xpath="/items/item[@name='ammoCrossbowBoltFlaming']/property[@name='DisplayType']">
+    <property name="Tags" value="ammo,ranged,attAgility,perkArchery,perkPenetrator,perkDemolitionsExpert" />
+  </insertBefore>
+  <insertBefore xpath="/items/item[@name='ammoCrossbowBoltExploding']/property[@name='DisplayType']">
+    <property name="Tags" value="ammo,ranged,attAgility,perkArchery,perkPenetrator,perkDemolitionsExpert" />
+  </insertBefore>
+  <!--
+  ===============================
+  SECTION: PLAYER MELEE RANGE PATCH
+  ===============================
+  @group    CombatBalance_ZombieReach
+  @desc
+    Inserts a player-specific copy of meleeHandMaster with increased reach,
+    and points player to use this version.
+  -->
+  <insertAfter xpath="/items/item[@name='meleeHandMaster']">
+    <item name="meleeHandMasterDGPlayer">
+      <property name="Tags" value="blunt,melee,light,perkFlurryOfBlows" />
+      <property name="CreativeMode" value="None" />
+      <property name="HoldType" value="9" />
+      <property name="Material" value="Morganic" />
+      <property name="Canhold" value="false" />
+      <property name="Stacknumber" value="1" />
+      <property name="Candrop" value="false" />
+      <property name="CustomIcon" value="missingIcon" />
+      <property class="Action0">
+        <property name="Class" value="Melee" />
+        <property name="Delay" value=".8" />
+        <property name="Range" value="1.65" />
+        <property name="Sphere" value=".1" />
+        <property name="Block_range" value="2.5" />
+        <property name="DamageEntity" value="10" />
+        <property name="DamageBlock" value="16" />
+        <property name="Sound_start" value="swoosh" />
+      </property>
+      <effect_group name="meleeHandMasterPlayer" tiered="false">
+        <passive_effect name="DamageFalloffRange" operation="base_set" value="1.65" />
+      </effect_group>
+    </item>
+  </insertAfter>
+  <set xpath="/items/item[@name='meleeHandPlayer']/property[@name='Extends']/@value">meleeHandMasterDGPlayer</set>
+  <!--
+  ===============================
+  SECTION: GLOBAL ZOMBIE REACH REDUCTION
+  ===============================
+  @group    CombatBalance_ZombieReach
+  @desc
+    Applies reduced melee range to all zombie hand weapons via broad XPath.
+  -->
+  <set xpath="/items/item[starts-with(@name, 'meleeHandZombie')]/property[@class='Action0']/property[@name='Range']/@value">1.315</set>
+  <set xpath="/items/item[starts-with(@name, 'meleeHandZombie')]/effect_group/passive_effect[@name='DamageFalloffRange']/@value">1.315</set>
+  <!--
+  ===============================
+  SECTION: ELITE ZOMBIE RANGE ADJUSTMENT
+  ===============================
+  @group    CombatBalance_ZombieReach
+  @desc
+    Targets Cop and Mutated tier zombies for slightly longer reach to retain threat level.
+  -->
+  <set xpath="/items/item[contains(@name, 'Cop') or contains(@name, 'Mutated') or contains(@name, 'Frostclaw') or contains(@name, 'PlagueSpitter')]/property[@class='Action0']/property[@name='Range']/@value">1.65</set>
+  <set xpath="/items/item[contains(@name, 'Cop') or contains(@name, 'Mutated') or contains(@name, 'Frostclaw') or contains(@name, 'PlagueSpitter')]/effect_group/passive_effect[@name='DamageFalloffRange']/@value">1.65</set>
+  <!--
+  ===============================
+  SECTION: BASE MELEE MASTER RANGE ADJUSTMENT
+  ===============================
+  @group    CombatBalance_ZombieReach
+  @desc
+    Shortens the inherited base for non-player melee hand logic.
+  -->
+  <set xpath="/items/item[@name='meleeHandMaster']/property[@class='Action0']/property[@name='Range']/@value">1.00</set>
+  <set xpath="/items/item[@name='meleeHandMaster']/effect_group[@name='meleeHandMaster']/passive_effect[@name='DamageFalloffRange']/@value">1.00</set>
+  <!--
+  ===============================
+  SECTION: REDUCED HONEY INFECTION CURE
+  ===============================
+  @desc
+    Reduces by curative properties of honey by 50%.
+  -->
+  <set xpath="/items/item[@name='foodHoney']/effect_group/display_value[@name='dCureInfection']/@value">.025</set>
+  <set xpath="/items/item[@name='foodHoney']/effect_group/triggered_effect[@cvar='$buffInfectionAddCurePerc']/@value">2.5</set>
+</configs>
