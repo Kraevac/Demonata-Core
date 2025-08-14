@@ -1,3 +1,6 @@
+### ⬇️ Download the Latest Beta
+**[Get Demonata Core Beta (.zip)](https://github.com/Kraevac/Demonata-Core/releases/download/beta/DemonataCore_Beta.zip)**
+
 # Demonata Core
 
 A progression-first overhaul that restores sandbox agency, tightens balance, and dials up biome identity for 7 Days to Die.
