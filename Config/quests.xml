@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+  Demonata Gaming Metadata Format ©2025
+  SPDX-License-Identifier: LicenseRef-DemonataGaming-Metadata-1.0
+  See LICENSE.md for terms.
+-->
+<!--
+  ==================================================
+  Quest Rewards Patch — Challenge Turn-In XP Grants
+  @version     1.0.0
+  @date        2025-08-14
+  @author      Demonata Gaming
+
+  @group       QuestRewardAdjustments
+  @applies_to  Config/quests.xml
+  @description
+    Restores experience payouts for challenge chains by explicitly
+    setting Exp rewards on the final trader turn-in quests. Under
+    Demonata Core’s XP rework these chains don’t award XP unless
+    specified here, so this keeps progression sane.
+  @notes
+    - Fires on completiontype=TurnIn at the trader.
+    - Only edits reward[@type='Exp']/@value for listed quest IDs.
+    - Keep aligned with progression.xml level/attribute curve.
+  ==================================================
+-->
+<configs>
+    <!-- Challenge reward chains -->
+    <set xpath="/quests/quest[@id='quest_whiteRiverCitizen1']/reward[@type='Exp']/@value">1500</set>
+    <set xpath="/quests/quest[@id='challengegroup_reward_homesteading']/reward[@type='Exp']/@value">2000</set>
+    <set xpath="/quests/quest[@id='challengegroup_reward_advanced_survival']/reward[@type='Exp']/@value">6000</set>
+    <set xpath="/quests/quest[@id='challengegroup_reward_crafting']/reward[@type='Exp']/@value">24500</set>
+    <set xpath="/quests/quest[@id='challengegroup_reward_trader_quests']/reward[@type='Exp']/@value">22000</set>
+    <set xpath="/quests/quest[@id='challengegroup_reward_harvesting']/reward[@type='Exp']/@value">16000</set>
+    <set xpath="/quests/quest[@id='challengegroup_reward_gatherer']/reward[@type='Exp']/@value">20000</set>
+    <set xpath="/quests/quest[@id='challengegroup_reward_farmer']/reward[@type='Exp']/@value">21000</set>
+    <set xpath="/quests/quest[@id='challengegroup_reward_healer']/reward[@type='Exp']/@value">40000</set>
+    <set xpath="/quests/quest[@id='challengegroup_reward_survivor']/reward[@type='Exp']/@value">46000</set>
+    <set xpath="/quests/quest[@id='challengegroup_reward_burnt']/reward[@type='Exp']/@value">26000</set>
+    <set xpath="/quests/quest[@id='challengegroup_reward_desert']/reward[@type='Exp']/@value">41000</set>
+    <set xpath="/quests/quest[@id='challengegroup_reward_snow']/reward[@type='Exp']/@value">66000</set>
+    <set xpath="/quests/quest[@id='challengegroup_reward_wasteland']/reward[@type='Exp']/@value">116000</set>
+</configs>
