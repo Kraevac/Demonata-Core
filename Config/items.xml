@@ -43,12 +43,6 @@
   @xref   item_modifiers.xml → SECTION: CROSSHAIR REMOVAL FOR SIGHT MODIFIERS
   -->
   <set xpath="/items/item/property[@name='DegradationBreaksAfter' and @value='false']/@value">true</set>
-  <append xpath="/items/item[@name='meleeToolAxeT3Chainsaw'][not(property[@name='DegradationBreaksAfter'])]">
-    <property name="DegradationBreaksAfter" value="true"/>
-  </append>
-  <append xpath="/items/item[@name='meleeToolPickT3Auger'][not(property[@name='DegradationBreaksAfter'])]">
-    <property name="DegradationBreaksAfter" value="true"/>
-  </append>
   <append xpath="/items/item[@name='meleeWpnBladeT0BoneKnife'][not(property[@name='DegradationBreaksAfter'])]">
     <property name="DegradationBreaksAfter" value="true"/>
   </append>
@@ -65,18 +59,6 @@
     <property name="DegradationBreaksAfter" value="true"/>
   </append>
   <append xpath="/items/item[@name='meleeWpnBatonT0PipeBaton'][not(property[@name='DegradationBreaksAfter'])]">
-    <property name="DegradationBreaksAfter" value="true"/>
-  </append>
-  <append xpath="/items/item[@name='armorPrimitiveHelmet'][not(property[@name='DegradationBreaksAfter'])]">
-    <property name="DegradationBreaksAfter" value="true"/>
-  </append>
-  <append xpath="/items/item[@name='armorPrimitiveOutfit'][not(property[@name='DegradationBreaksAfter'])]">
-    <property name="DegradationBreaksAfter" value="true"/>
-  </append>
-  <append xpath="/items/item[@name='armorPrimitiveGloves'][not(property[@name='DegradationBreaksAfter'])]">
-    <property name="DegradationBreaksAfter" value="true"/>
-  </append>
-  <append xpath="/items/item[@name='armorPrimitiveBoots'][not(property[@name='DegradationBreaksAfter'])]">
     <property name="DegradationBreaksAfter" value="true"/>
   </append>
   <set xpath="/items/item[not(@name='gunBowT0PrimitiveBow') and not(@name='gunBowT1WoodenBow')]/property[@name='CrosshairOnAim']/@value">false</set>
