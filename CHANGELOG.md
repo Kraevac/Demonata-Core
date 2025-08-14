@@ -1,5 +1,40 @@
 # Changelog
 
+## [v1.0.0-beta.2] - 2025-08-14
+
+### Added
+
+- **Degradation** added to the following items:
+  - Bone Knife
+  - Wooden Club
+  - Baseball Bat
+  - Candy Club
+  - Steel Club
+  - Pipe Baton
+
+### Changed
+
+- **Challenges XP restored:** The following Challenge Groups now reward **lump-sum XP** at the trader:
+  - White River Citizen (Basic Survival Challenge)
+  - Homesteading
+  - Advanced Survival
+  - Crafting
+  - Trader Quests
+  - Harvesting
+  - Gatherer
+  - Farmer
+  - Healer
+  - Survivor
+  - Burnt Biome
+  - Desert Biome
+  - Snow Biome
+  - Wasteland Biome
+- All other challenges continue to work correctly as they do in **vanilla**.
+
+### Fixed
+
+- None listed for this build.
+
 ## [v1.0.0-beta.1] - 2025-08-13
 
 ### Added
