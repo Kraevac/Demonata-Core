@@ -1,19 +1,42 @@
 # Changelog
 
-## [Unreleased]
-### Added
-- 
-### Changed
-- 
-### Fixed
-- 
-
 ## [v1.0.0-beta.1] - 2025-08-13
-### Added
-- Initial public beta of Demonata Core.
-### Notes
-- Expect balance churn; report issues via GitHub.
 
-## [v0.0.0] - 2025-08-01
 ### Added
-- Internal scaffolding, metadata headers, and baseline biome configs.
+
+- **Headshots-only** rule for ranged, knives, and spears (shotguns exempt).
+- **Mines** seeded across all biomes.
+- **Gore hazard:** gore blocks can **infect** on contact (50% chance).
+- **Custom entity groups** for biome/tile-aware spawns; **wandering horde** variants.
+- **Pickup-by-harvest** for **lanterns, mines, spikes, barbed wire,** and **writable storage** (no material refunds).
+- **Chickens** can yield **eggs** on harvest.
+- **Optional “XP Tuning” module** for creators/streamers.
+
+### Changed
+
+- **Difficulty-aware combat:**
+  - Headshot damage scales by difficulty; **zombie HP** scales to keep TTK sane.
+  - **Zombies no longer climb ladders.**
+  - **Bullet spread reduced**; **crosshairs removed** (shotguns/laser/scopes excluded where noted).
+  - **Zombie reach** recalibrated; special types keep longer reach.
+- **Blood Moon** now lasts **all night**; final wave **loops** until dawn.
+- **Z-Paks** last **45 minutes**; drop rate slightly increased.
+- **Compass cleanup:** removed **red zombie dots**.
+- **Repairs require parts:** armor uses **Armor Parts**; tools/weapons use their respective parts.
+- **Nails economy:** more nail drops; some wood items (incl. **Frame Shapes helper**) **require nails**.
+- **Recipes:** Rotten Meat **10**, Raw Meat **8**, planted crops **4**; **Dynamite crafts 2**.
+- **Stack sizes:** resources **→ 12,000**; food/drinks **→ 20**; medical **→ 15**; **Rotting Meat 125 → 20**.
+- **Canned food values:** Tuna/Beef **30**, Chicken **35**, others **20**.
+- **Dysentery realism:** Hobo Stew, Sham Chowder, Canned Sham **12%** chance.
+- **Progression/XP:** only **kills & quests** grant XP; base **9,000 XP/level**, **+4%** per level, **clamp 50**; **attributes +16%/lvl**.
+- **Traders:** staggered **12-hour** schedules (Joel 06–18, Jen 09–21, Bob 00–12, Hugh 03–15, Rekt 06–18).
+- **World/UX:** lighting & fog passes; **HUD** tweaks (food/water left; toolbelt lowered).
+- **Persistence:** injuries/debuffs **persist through death**.
+
+### Fixed
+
+- None listed for this build.
+
+### Notes
+
+- Initial public beta of **Demonata Core**. Expect balance churn; report issues on GitHub.
