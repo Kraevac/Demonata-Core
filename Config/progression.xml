@@ -65,8 +65,8 @@
     - Skill points per level: 1 (unchanged).
     - Attribute upgrade cost scales by 16% per rank (vanilla: 14%).
     - Late-game per-level cost after the clamp is ~61,500 XP vs ~177,897 in vanilla (≈65% lower).
-    - The XP curve should feel faster: roughly ~47% faster to midgame vs vanilla; total XP to 300 is ~60–65% lower depending on playstyle.
-    - Rationale: These changes offset reduced XP income (kills + quests only) and support crafting-dependent survival without a late-game slog.
+    - Requires ~34% less XP to reach level 50 and ~64% less XP to reach level 300 compared to vanilla progression.
+    - Rationale: These changes offset reduced XP income (kills + quests only).
   -->
   <set xpath="/progression/level/@exp_to_level">9000</set>
   <set xpath="/progression/level/@experience_multiplier">1.04</set>
