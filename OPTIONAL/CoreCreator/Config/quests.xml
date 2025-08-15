@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Demonata Gaming Metadata Format ©2025
+  SPDX-License-Identifier: LicenseRef-DemonataGaming-Metadata-1.0
+  See LICENSE.md for terms.
+-->
+<!--
+  ==================================================
+  Quest Rewards - Creator Overrides (XP Normalization)
+  @version     1.0.0
+  @date        2025-08-14
+  @author      Demonata Gaming
+  @group       QuestRewards_XPNormalization
+  @description
+    Removes Exp reward nodes from tutorial and challenge reward chains so
+    Creator Mod does not double-dip XP when used alongside Core.
+  @notes
+    - Load Creator after Core so these removals apply last.
+    - We delete reward nodes instead of guessing vanilla values.
+    - Does not touch per-kill XP or non-reward-based chains.
+  ==================================================
+-->
+<configs>
+  <!--
+  ===============================
+  SECTION: CHALLENGE REWARD XP REMOVAL (CREATOR MOD)
+  ===============================
+  @group     QuestRewards_XPNormalization
+  @desc      Delete Exp reward nodes for tutorial and trader turn-in challenge chains to prevent stacking
+             with Core's lump-sum XP.
+  @notes     Safe with other mods unless they re-add Exp rewards later in load order.
+  -->
+  <!-- Tutorial chain -->
+  <remove xpath="/quests/quest[@id='quest_whiteRiverCitizen1']/reward[@type='Exp']"/>
+  <!-- Challenge reward chains (turn-in at trader) -->
+  <remove xpath="/quests/quest[@id='challengegroup_reward_homesteading']/reward[@type='Exp']"/>
+  <remove xpath="/quests/quest[@id='challengegroup_reward_advanced_survival']/reward[@type='Exp']"/>
+  <remove xpath="/quests/quest[@id='challengegroup_reward_crafting']/reward[@type='Exp']"/>
+  <remove xpath="/quests/quest[@id='challengegroup_reward_trader_quests']/reward[@type='Exp']"/>
+  <remove xpath="/quests/quest[@id='challengegroup_reward_harvesting']/reward[@type='Exp']"/>
+  <remove xpath="/quests/quest[@id='challengegroup_reward_gatherer']/reward[@type='Exp']"/>
+  <remove xpath="/quests/quest[@id='challengegroup_reward_farmer']/reward[@type='Exp']"/>
+  <remove xpath="/quests/quest[@id='challengegroup_reward_healer']/reward[@type='Exp']"/>
+  <remove xpath="/quests/quest[@id='challengegroup_reward_survivor']/reward[@type='Exp']"/>
+  <remove xpath="/quests/quest[@id='challengegroup_reward_burnt']/reward[@type='Exp']"/>
+  <remove xpath="/quests/quest[@id='challengegroup_reward_desert']/reward[@type='Exp']"/>
+  <remove xpath="/quests/quest[@id='challengegroup_reward_snow']/reward[@type='Exp']"/>
+  <remove xpath="/quests/quest[@id='challengegroup_reward_wasteland']/reward[@type='Exp']"/>
+</configs>
