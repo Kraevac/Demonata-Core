@@ -41,8 +41,8 @@
     - These entitygroups are later referenced in spawning.xml for biome-specific population control.
   @xref   spawning.xml → SECTION: PINE FOREST - ZONE-BASED SPAWN MAPPING
   -->
+  <!-- ==================== SECTION: ZOMBIESPINEFORESTDOWNTOWN ==================== -->
   <append xpath="/entitygroups">
-    <!-- ==================== SECTION: ZOMBIESPINEFORESTDOWNTOWN ==================== -->
     <entitygroup name="ZombiesPineForestDowntown">
       zombieBoe
       zombieJoe
@@ -70,7 +70,9 @@
       zombieJanitor, 0.2
       zombieSteveCrawler
     </entitygroup>
-    <!-- ==================== SECTION: ZOMBIESPINEFORESTCOMMERCIAL ==================== -->
+  </append>
+  <!-- ==================== SECTION: ZOMBIESPINEFORESTCOMMERCIAL ==================== -->
+  <append xpath="/entitygroups">
     <entitygroup name="ZombiesPineForestCommercial">
       zombieBusinessMan
       zombieJanitor
@@ -88,7 +90,9 @@
       zombieBowlerFeral, 0.2
       zombieFatHawaiianFeral, 0.2
     </entitygroup>
-    <!-- ==================== SECTION: ZOMBIESPINEFORESTRESIDENTIAL ==================== -->
+  </append>
+  <!-- ==================== SECTION: ZOMBIESPINEFORESTRESIDENTIAL ==================== -->
+  <append xpath="/entitygroups">
     <entitygroup name="ZombiesPineForestResidential">
       animalZombieDog, 0.1
       zombieSteve
@@ -109,43 +113,45 @@
       zombieDarleneFeral, 0.2
       zombieSteveCrawler
     </entitygroup>
-    <!-- ==================== SECTION: ZOMBIESPINEFORESTRURAL ==================== -->
+  </append>
+  <!-- ==================== SECTION: ZOMBIESPINEFORESTRURAL ==================== -->
+  <append xpath="/entitygroups">
     <entitygroup name="ZombiesPineForestRural">
-      animalZombieDog, 0.3
-      zombieTomClark
-      zombieSteve
-      zombieArlene
-      zombieDarlene
-      zombieNurse, 0.2
-      zombieLumberjack, 0.3
-      zombieSteveCrawler, 0.4
-      zombieBusinessMan, 0.1
+        animalZombieDog, 0.3
+        zombieTomClark
+        zombieSteve
+        zombieArlene
+        zombieDarlene
+        zombieNurse, 0.2
+        zombieLumberjack, 0.3
+        zombieSteveCrawler, 0.4
+        zombieBusinessMan, 0.1
     </entitygroup>
     <entitygroup name="ZombiesPineForestRuralNight">
-      animalZombieDog, 0.5
-      zombieSteveCrawler
-      zombieDarleneFeral, 0.25
-      zombieTomClarkFeral, 0.2
-      zombieLumberjackFeral, 0.3
-      zombieArleneFeral, 0.2
-      zombieFatHawaiian, 0.1
+        animalZombieDog, 0.5
+        zombieSteveCrawler
+        zombieDarleneFeral, 0.25
+        zombieTomClarkFeral, 0.2
+        zombieLumberjackFeral, 0.3
+        zombieArleneFeral, 0.2
+        zombieFatHawaiian, 0.1
     </entitygroup>
   </append>
   <!-- ==================== SECTION: ZOMBIESPINEFORESTWILDERNESS ==================== -->
   <append xpath="/entitygroups">
     <entitygroup name="ZombiesPineForestWild">
-      zombieArlene
-      zombieDarlene
-      zombieMarlene
-      zombieJoe
-      zombieSteve
-      zombieTomClark
-      zombieBoe
-      zombieMoe
-      zombieYo
-      zombieUtilityWorker, 0.20
-      zombieJanitor, 0.20
-      zombieSteveCrawler, 0.25
+        zombieArlene
+        zombieDarlene
+        zombieMarlene
+        zombieJoe
+        zombieSteve
+        zombieTomClark
+        zombieBoe
+        zombieMoe
+        zombieYo
+        zombieUtilityWorker, 0.20
+        zombieJanitor, 0.20
+        zombieSteveCrawler, 0.25
     </entitygroup>
   </append>
   <!--
@@ -163,8 +169,8 @@
     - These entitygroups are later referenced in spawning.xml for biome-specific population control.
   @xref   spawning.xml → SECTION: BURNT FOREST - ZONE-BASED SPAWN MAPPING
   -->
+  <!-- ==================== SECTION: ZOMBIESBURNTFORESTDOWNTOWN ==================== -->
   <append xpath="/entitygroups">
-    <!-- ==================== SECTION: ZOMBIESBURNTFORESTDOWNTOWN ==================== -->
     <entitygroup name="ZombiesBurntForestDowntown">
       zombieBoe
       zombieJoe
@@ -199,152 +205,144 @@
       zombieSteveCrawler
       zombieBurntInfernal, 0.02
     </entitygroup>
-    <append xpath="/entitygroups">
-      <entitygroup name="ZombiesPineForestWildNight">
-      zombieSpider
-      zombieArleneFeral, 0.20
-      zombieDarleneFeral, 0.20
-      zombieMarleneFeral, 0.20
-      zombieJoeFeral, 0.22
-      zombieSteveFeral, 0.22
-      zombieTomClarkFeral, 0.22
-      zombieUtilityWorker, 0.20
-      zombieJanitor, 0.20
-      zombieSteveCrawler, 0.25
-      </entitygroup>
-    </append>
-    <!-- ==================== SECTION: ZOMBIESBURNTFORESTCOMMERCIAL ==================== -->
+  </append>
+  <!-- ==================== SECTION: ZOMBIESBURNTFORESTCOMMERCIAL ==================== -->
+  <append xpath="/entitygroups">
     <entitygroup name="ZombiesBurntForestCommercial">
-      zombieBusinessMan
-      zombieJanitor
-      zombieUtilityWorker
-      zombieBoe
-      zombieJoe
-      zombieSteve
-      zombieTomClark
-      zombiePartyGirl
-      zombieBowler
-      zombieBurnt
-      zombieBiker, 0.20
-      zombieFatHawaiian, 0.20
-      zombieUtilityWorker, 0.26
-      zombieJanitor, 0.26
-      zombieMaleHazmat, 0.20
-      zombieSteveCrawler, 0.20
+        zombieBusinessMan
+        zombieJanitor
+        zombieUtilityWorker
+        zombieBoe
+        zombieJoe
+        zombieSteve
+        zombieTomClark
+        zombiePartyGirl
+        zombieBowler
+        zombieBurnt
+        zombieBiker, 0.20
+        zombieFatHawaiian, 0.20
+        zombieUtilityWorker, 0.26
+        zombieJanitor, 0.26
+        zombieMaleHazmat, 0.20
+        zombieSteveCrawler, 0.20
     </entitygroup>
     <entitygroup name="ZombiesBurntForestCommercialNight">
-      zombieSpider
-      zombieBusinessManFeral, 0.20
-      zombieBoeFeral, 0.20
-      zombieJoeFeral, 0.20
-      zombieSteveFeral, 0.20
-      zombieTomClarkFeral, 0.20
-      zombiePartyGirlFeral, 0.20
-      zombieBowlerFeral, 0.20
-      zombieBikerFeral, 0.20
-      zombieBurntFeral, 0.20
-      zombieJanitor, 0.20
-      zombieMaleHazmat, 0.20
-      zombieSteveCrawler
-      zombieBurntInfernal, 0.02
+        zombieSpider
+        zombieBusinessManFeral, 0.20
+        zombieBoeFeral, 0.20
+        zombieJoeFeral, 0.20
+        zombieSteveFeral, 0.20
+        zombieTomClarkFeral, 0.20
+        zombiePartyGirlFeral, 0.20
+        zombieBowlerFeral, 0.20
+        zombieBikerFeral, 0.20
+        zombieBurntFeral, 0.20
+        zombieJanitor, 0.20
+        zombieMaleHazmat, 0.20
+        zombieSteveCrawler
+        zombieBurntInfernal, 0.02
     </entitygroup>
-    <!-- ==================== SECTION: ZOMBIESBURNTFORESTRESIDENTIAL ==================== -->
+  </append>
+  <!-- ==================== SECTION: ZOMBIESBURNTFORESTRESIDENTIAL ==================== -->
+  <append xpath="/entitygroups">
     <entitygroup name="ZombiesBurntForestResidential">
-      zombieArlene
-      zombieDarlene
-      zombieMarlene
-      zombieJoe
-      zombieSteve
-      zombieTomClark
-      zombiePartyGirl
-      zombieBowler
-      zombieBurnt
-      zombieUtilityWorker, 0.15
-      zombieJanitor, 0.15
-      zombieMaleHazmat, 0.15
-      zombieFatHawaiian, 0.15
-      zombieBiker, 0.15
-      zombieSteveCrawler, 0.15
+        zombieArlene
+        zombieDarlene
+        zombieMarlene
+        zombieJoe
+        zombieSteve
+        zombieTomClark
+        zombiePartyGirl
+        zombieBowler
+        zombieBurnt
+        zombieUtilityWorker, 0.15
+        zombieJanitor, 0.15
+        zombieMaleHazmat, 0.15
+        zombieFatHawaiian, 0.15
+        zombieBiker, 0.15
+        zombieSteveCrawler, 0.15
     </entitygroup>
     <entitygroup name="ZombiesBurntForestResidentialNight">
-      zombieSpider
-      zombieBoeFeral, 0.16
-      zombieJoeFeral, 0.16
-      zombieSteveFeral, 0.16
-      zombieTomClarkFeral, 0.16
-      zombiePartyGirlFeral, 0.15
-      zombieBowlerFeral, 0.15
-      zombieBurntFeral, 0.15
-      zombieJanitor, 0.15
-      zombieUtilityWorker, 0.15
-      zombieMaleHazmat, 0.15
-      zombieSteveCrawler
-      zombieBurntInfernal, 0.01
+        zombieSpider
+        zombieBoeFeral, 0.16
+        zombieJoeFeral, 0.16
+        zombieSteveFeral, 0.16
+        zombieTomClarkFeral, 0.16
+        zombiePartyGirlFeral, 0.15
+        zombieBowlerFeral, 0.15
+        zombieBurntFeral, 0.15
+        zombieJanitor, 0.15
+        zombieUtilityWorker, 0.15
+        zombieMaleHazmat, 0.15
+        zombieSteveCrawler
+        zombieBurntInfernal, 0.01
     </entitygroup>
-    <!-- ==================== SECTION: ZOMBIESBURNTFORESTRURAL ==================== -->
+  </append>
+  <!-- ==================== SECTION: ZOMBIESBURNTFORESTRURAL ==================== -->
+  <append xpath="/entitygroups">
     <entitygroup name="ZombiesBurntForestRural">
-      zombieArlene
-      zombieDarlene
-      zombieMarlene
-      zombieJoe
-      zombieSteve
-      zombieTomClark
-      zombieBurnt
-      zombieNurse
-      zombieUtilityWorker, 0.08
-      zombieJanitor, 0.08
-      zombieMaleHazmat, 0.08
-      zombieBiker, 0.08
-      zombieFatHawaiian, 0.08
-      zombieSteveCrawler, 0.08
+        zombieArlene
+        zombieDarlene
+        zombieMarlene
+        zombieJoe
+        zombieSteve
+        zombieTomClark
+        zombieBurnt
+        zombieNurse
+        zombieUtilityWorker, 0.08
+        zombieJanitor, 0.08
+        zombieMaleHazmat, 0.08
+        zombieBiker, 0.08
+        zombieFatHawaiian, 0.08
+        zombieSteveCrawler, 0.08
     </entitygroup>
     <entitygroup name="ZombiesBurntForestRuralNight">
-      zombieSpider
-      zombieJoeFeral, 0.08
-      zombieSteveFeral, 0.08
-      zombieTomClarkFeral, 0.08
-      zombieArleneFeral, 0.08
-      zombieDarleneFeral, 0.08
-      zombieMarleneFeral, 0.08
-      zombieBurntFeral, 0.08
-      zombieUtilityWorker, 0.08
-      zombieJanitor, 0.08
-      zombieMaleHazmat, 0.08
-      zombieSteveCrawler
-      zombieBurntInfernal, 0.01
+        zombieSpider
+        zombieJoeFeral, 0.08
+        zombieSteveFeral, 0.08
+        zombieTomClarkFeral, 0.08
+        zombieArleneFeral, 0.08
+        zombieDarleneFeral, 0.08
+        zombieMarleneFeral, 0.08
+        zombieBurntFeral, 0.08
+        zombieUtilityWorker, 0.08
+        zombieJanitor, 0.08
+        zombieMaleHazmat, 0.08
+        zombieSteveCrawler
+        zombieBurntInfernal, 0.01
     </entitygroup>
   </append>
   <!-- ==================== SECTION: ZOMBIESBURNTFORESTWILDERNESS ==================== -->
   <append xpath="/entitygroups">
     <entitygroup name="ZombiesBurntForestWild">
-      zombieArlene
-      zombieDarlene
-      zombieMarlene
-      zombieSteve
-      zombieTomClark
-      zombieBoe
-      zombieBurnt
-      zombieUtilityWorker, 0.25
-      zombieJanitor, 0.25
-      zombieMaleHazmat, 0.12
-      zombieBiker, 0.10
-      zombieSteveCrawler, 0.30
+        zombieArlene
+        zombieDarlene
+        zombieMarlene
+        zombieSteve
+        zombieTomClark
+        zombieBoe
+        zombieBurnt
+        zombieUtilityWorker, 0.25
+        zombieJanitor, 0.25
+        zombieMaleHazmat, 0.12
+        zombieBiker, 0.10
+        zombieSteveCrawler, 0.30
     </entitygroup>
   </append>
   <append xpath="/entitygroups">
     <entitygroup name="ZombiesBurntForestWildNight">
-      zombieSpider
-      zombieSteveFeral, 0.24
-      zombieTomClarkFeral, 0.24
-      zombieArleneFeral, 0.22
-      zombieDarleneFeral, 0.22
-      zombieMarleneFeral, 0.22
-      zombieBurntFeral, 0.18
-      zombieUtilityWorker, 0.20
-      zombieJanitor, 0.20
-      zombieMaleHazmat, 0.10
-      zombieSteveCrawler, 0.30
-      zombieBurntInfernal, 0.01
+        zombieSpider
+        zombieSteveFeral, 0.24
+        zombieTomClarkFeral, 0.24
+        zombieArleneFeral, 0.22
+        zombieDarleneFeral, 0.22
+        zombieMarleneFeral, 0.22
+        zombieBurntFeral, 0.18
+        zombieUtilityWorker, 0.20
+        zombieJanitor, 0.20
+        zombieMaleHazmat, 0.10
+        zombieSteveCrawler, 0.30
+        zombieBurntInfernal, 0.01
     </entitygroup>
   </append>
   <!--
@@ -362,178 +360,182 @@
     - These entitygroups are later referenced in spawning.xml for biome-specific population control.
   @xref   spawning.xml → SECTION: DESERT - ZONE-BASED SPAWN MAPPING
   -->
+  <!-- ==================== SECTION: ZOMBIESDESERTDOWNTOWN ==================== -->
   <append xpath="/entitygroups">
-    <!-- ==================== SECTION: ZOMBIESDESERTDOWNTOWN ==================== -->
     <entitygroup name="ZombiesDesertDowntown">
-      zombieBoe
-      zombieJoe
-      zombieSteve
-      zombieTomClark
-      zombieMoe
-      zombieYo
-      zombieBusinessMan
-      zombiePartyGirl
-      zombieBowler
-      zombieFatHawaiian, 0.30
-      zombieUtilityWorker, 0.35
-      zombieJanitor, 0.30
-      zombieMaleHazmat, 0.18
-      zombieBiker, 0.18
-      zombieInmate, 0.15
-      zombieFatCop, 0.10
-      zombiePlagueSpitter, 0.10
-      zombieSteveCrawler, 0.25
+        zombieBoe
+        zombieJoe
+        zombieSteve
+        zombieTomClark
+        zombieMoe
+        zombieYo
+        zombieBusinessMan
+        zombiePartyGirl
+        zombieBowler
+        zombieFatHawaiian, 0.30
+        zombieUtilityWorker, 0.35
+        zombieJanitor, 0.30
+        zombieMaleHazmat, 0.18
+        zombieBiker, 0.18
+        zombieInmate, 0.15
+        zombieFatCop, 0.10
+        zombiePlagueSpitter, 0.10
+        zombieSteveCrawler, 0.25
     </entitygroup>
     <entitygroup name="ZombiesDesertDowntownNight">
-      zombieSpider
-      zombieBoeFeral, 0.28
-      zombieJoeFeral, 0.28
-      zombieSteveFeral, 0.28
-      zombieTomClarkFeral, 0.28
-      zombiePartyGirlFeral, 0.22
-      zombieBowlerFeral, 0.22
-      zombieBikerFeral, 0.14
-      zombieInmateFeral, 0.12
-      zombieFatHawaiianFeral, 0.30
-      zombiePlagueSpitterFeral, 0.15
-      zombieJoeRadiated, 0.02
-      zombieSteveCharged, 0.02
-      zombieJanitor, 0.20
-      zombieMaleHazmat, 0.12
-      zombieSteveCrawler
+        zombieSpider
+        zombieBoeFeral, 0.28
+        zombieJoeFeral, 0.28
+        zombieSteveFeral, 0.28
+        zombieTomClarkFeral, 0.28
+        zombiePartyGirlFeral, 0.22
+        zombieBowlerFeral, 0.22
+        zombieBikerFeral, 0.14
+        zombieInmateFeral, 0.12
+        zombieFatHawaiianFeral, 0.30
+        zombiePlagueSpitterFeral, 0.15
+        zombieJoeRadiated, 0.02
+        zombieSteveCharged, 0.02
+        zombieJanitor, 0.20
+        zombieMaleHazmat, 0.12
+        zombieSteveCrawler
     </entitygroup>
-    <!-- ==================== SECTION: ZOMBIESDESERTCOMMERCIAL ==================== -->
+  </append>
+  <!-- ==================== SECTION: ZOMBIESDESERTCOMMERCIAL ==================== -->
+  <append xpath="/entitygroups">
     <entitygroup name="ZombiesDesertCommercial">
-      zombieBusinessMan
-      zombieJanitor
-      zombieUtilityWorker
-      zombieBoe
-      zombieJoe
-      zombieSteve
-      zombieTomClark
-      zombiePartyGirl
-      zombieBowler
-      zombieFatHawaiian, 0.23
-      zombieUtilityWorker, 0.26
-      zombieJanitor, 0.23
-      zombieMaleHazmat, 0.20
-      zombieBiker, 0.20
-      zombieInmate, 0.20
-      zombieFatCop, 0.20
-      zombiePlagueSpitter, 0.20
-      zombieSteveCrawler, 0.20
+        zombieBusinessMan
+        zombieJanitor
+        zombieUtilityWorker
+        zombieBoe
+        zombieJoe
+        zombieSteve
+        zombieTomClark
+        zombiePartyGirl
+        zombieBowler
+        zombieFatHawaiian, 0.23
+        zombieUtilityWorker, 0.26
+        zombieJanitor, 0.23
+        zombieMaleHazmat, 0.20
+        zombieBiker, 0.20
+        zombieInmate, 0.20
+        zombieFatCop, 0.20
+        zombiePlagueSpitter, 0.20
+        zombieSteveCrawler, 0.20
     </entitygroup>
     <entitygroup name="ZombiesDesertCommercialNight">
-      zombieSpider
-      zombieBusinessManFeral, 0.20
-      zombieBoeFeral, 0.20
-      zombieJoeFeral, 0.20
-      zombieSteveFeral, 0.20
-      zombieTomClarkFeral, 0.20
-      zombiePartyGirlFeral, 0.20
-      zombieBowlerFeral, 0.20
-      zombieBikerFeral, 0.20
-      zombieInmateFeral, 0.20
-      zombieFatHawaiianFeral, 0.23
-      zombiePlagueSpitterFeral, 0.20
-      zombieMaleHazmat, 0.20
-      zombieSteveCrawler
-      zombieJoeRadiated, 0.01
-      zombieSteveCharged, 0.01
+        zombieSpider
+        zombieBusinessManFeral, 0.20
+        zombieBoeFeral, 0.20
+        zombieJoeFeral, 0.20
+        zombieSteveFeral, 0.20
+        zombieTomClarkFeral, 0.20
+        zombiePartyGirlFeral, 0.20
+        zombieBowlerFeral, 0.20
+        zombieBikerFeral, 0.20
+        zombieInmateFeral, 0.20
+        zombieFatHawaiianFeral, 0.23
+        zombiePlagueSpitterFeral, 0.20
+        zombieMaleHazmat, 0.20
+        zombieSteveCrawler
+        zombieJoeRadiated, 0.01
+        zombieSteveCharged, 0.01
     </entitygroup>
-    <!-- ==================== SECTION: ZOMBIESDESERTRESIDENTIAL ==================== -->
+  </append>
+  <!-- ==================== SECTION: ZOMBIESDESERTRESIDENTIAL ==================== -->
+  <append xpath="/entitygroups">
     <entitygroup name="ZombiesDesertResidential">
-      zombieArlene
-      zombieDarlene
-      zombieMarlene
-      zombieJoe
-      zombieSteve
-      zombieTomClark
-      zombiePartyGirl
-      zombieBowler
-      zombieFatHawaiian, 0.18
-      zombieUtilityWorker, 0.21
-      zombieJanitor, 0.18
-      zombieMaleHazmat, 0.15
-      zombieBiker, 0.15
-      zombieInmate, 0.15
-      zombieFatCop, 0.15
-      zombiePlagueSpitter, 0.15
-      zombieSteveCrawler, 0.15
+        zombieArlene
+        zombieDarlene
+        zombieMarlene
+        zombieJoe
+        zombieSteve
+        zombieTomClark
+        zombiePartyGirl
+        zombieBowler
+        zombieFatHawaiian, 0.18
+        zombieUtilityWorker, 0.21
+        zombieJanitor, 0.18
+        zombieMaleHazmat, 0.15
+        zombieBiker, 0.15
+        zombieInmate, 0.15
+        zombieFatCop, 0.15
+        zombiePlagueSpitter, 0.15
+        zombieSteveCrawler, 0.15
     </entitygroup>
     <entitygroup name="ZombiesDesertResidentialNight">
-      zombieSpider
-      zombieBoeFeral, 0.17
-      zombieJoeFeral, 0.17
-      zombieSteveFeral, 0.17
-      zombieTomClarkFeral, 0.17
-      zombiePartyGirlFeral, 0.16
-      zombieBowlerFeral, 0.16
-      zombieBikerFeral, 0.16
-      zombieInmateFeral, 0.15
-      zombieFatHawaiianFeral, 0.18
-      zombiePlagueSpitterFeral, 0.15
-      zombieJanitor, 0.15
-      zombieMaleHazmat, 0.15
-      zombieSteveCrawler
-      zombieJoeRadiated, 0.01
-      zombieSteveCharged, 0.01
+        zombieSpider
+        zombieBoeFeral, 0.17
+        zombieJoeFeral, 0.17
+        zombieSteveFeral, 0.17
+        zombieTomClarkFeral, 0.17
+        zombiePartyGirlFeral, 0.16
+        zombieBowlerFeral, 0.16
+        zombieBikerFeral, 0.16
+        zombieInmateFeral, 0.15
+        zombieFatHawaiianFeral, 0.18
+        zombiePlagueSpitterFeral, 0.15
+        zombieJanitor, 0.15
+        zombieMaleHazmat, 0.15
+        zombieSteveCrawler
+        zombieJoeRadiated, 0.01
+        zombieSteveCharged, 0.01
     </entitygroup>
-    <!-- ==================== SECTION: ZOMBIESDESERTRURAL ==================== -->
+  </append>
+  <!-- ==================== SECTION: ZOMBIESDESERTRURAL ==================== -->
+  <append xpath="/entitygroups">
     <entitygroup name="ZombiesDesertRural">
-      zombieArlene
-      zombieDarlene
-      zombieMarlene
-      zombieJoe
-      zombieSteve
-      zombieTomClark
-      zombieNurse
-      zombieFatHawaiian, 0.08
-      zombieUtilityWorker, 0.08
-      zombieJanitor, 0.08
-      zombieMaleHazmat, 0.08
-      zombieBiker, 0.08
-      zombieInmate, 0.08
-      zombieFatCop, 0.08
-      zombiePlagueSpitter, 0.08
-      zombieSteveCrawler, 0.08
+        zombieArlene
+        zombieDarlene
+        zombieMarlene
+        zombieJoe
+        zombieSteve
+        zombieTomClark
+        zombieNurse
+        zombieFatHawaiian, 0.08
+        zombieUtilityWorker, 0.08
+        zombieJanitor, 0.08
+        zombieMaleHazmat, 0.08
+        zombieBiker, 0.08
+        zombieInmate, 0.08
+        zombieFatCop, 0.08
+        zombiePlagueSpitter, 0.08
+        zombieSteveCrawler, 0.08
     </entitygroup>
     <entitygroup name="ZombiesDesertRuralNight">
-      zombieSpider
-      zombieJoeFeral, 0.10
-      zombieSteveFeral, 0.10
-      zombieTomClarkFeral, 0.10
-      zombieArleneFeral, 0.09
-      zombieDarleneFeral, 0.09
-      zombieMarleneFeral, 0.09
-      zombieBikerFeral, 0.10
-      zombieInmateFeral, 0.09
-      zombieFatHawaiianFeral, 0.12
-      zombiePlagueSpitterFeral, 0.10
-      zombieJanitor, 0.08
-      zombieMaleHazmat, 0.08
-      zombieSteveCrawler
+        zombieSpider
+        zombieJoeFeral, 0.10
+        zombieSteveFeral, 0.10
+        zombieTomClarkFeral, 0.10
+        zombieArleneFeral, 0.09
+        zombieDarleneFeral, 0.09
+        zombieMarleneFeral, 0.09
+        zombieBikerFeral, 0.10
+        zombieInmateFeral, 0.09
+        zombieFatHawaiianFeral, 0.12
+        zombiePlagueSpitterFeral, 0.10
+        zombieJanitor, 0.08
+        zombieMaleHazmat, 0.08
+        zombieSteveCrawler
     </entitygroup>
   </append>
   <!-- ==================== SECTION: ZOMBIESDESERTWILDERNESS ==================== -->
   <append xpath="/entitygroups">
     <entitygroup name="ZombiesDesertWild">
-    zombieArlene
-    zombieDarlene
-    zombieMarlene
-    zombieJoe
-    zombieSteve
-    zombieTomClark
-    zombieUtilityWorker, 0.25
-    zombieJanitor, 0.20
-    zombieMaleHazmat, 0.15
-    zombieBiker, 0.15
-    zombieInmate, 0.12
-    zombiePlagueSpitter, 0.12
-    zombieSteveCrawler, 0.25
+      zombieArlene
+      zombieDarlene
+      zombieMarlene
+      zombieJoe
+      zombieSteve
+      zombieTomClark
+      zombieUtilityWorker, 0.25
+      zombieJanitor, 0.20
+      zombieMaleHazmat, 0.15
+      zombieBiker, 0.15
+      zombieInmate, 0.12
+      zombiePlagueSpitter, 0.12
+      zombieSteveCrawler, 0.25
     </entitygroup>
-  </append>
-  <append xpath="/entitygroups">
     <entitygroup name="ZombiesDesertWildNight">
       zombieSpider
       zombieJoeFeral, 0.24
@@ -567,8 +569,8 @@
     - These entitygroups are later referenced in spawning.xml for biome-specific population control.
   @xref   spawning.xml → SECTION: SNOW - ZONE-BASED SPAWN MAPPING
   -->
+  <!-- ==================== SECTION: ZOMBIESSNOWDOWNTOWN ==================== -->
   <append xpath="/entitygroups">
-    <!-- ==================== SECTION: ZOMBIESSNOWDOWNTOWN ==================== -->
     <entitygroup name="ZombiesSnowDowntown">
       zombieBoe
       zombieJoe
@@ -611,7 +613,9 @@
       zombieWightFeral, 0.010
       zombieSteveCrawler
     </entitygroup>
-    <!-- ==================== SECTION: ZOMBIESSNOWCOMMERCIAL ==================== -->
+  </append>
+  <!-- ==================== SECTION: ZOMBIESSNOWCOMMERCIAL ==================== -->
+  <append xpath="/entitygroups">
     <entitygroup name="ZombiesSnowCommercial">
       zombieBusinessMan
       zombieJanitor
@@ -655,7 +659,9 @@
       zombieJoeRadiated, 0.005
       zombieSteveCrawler
     </entitygroup>
-    <!-- ==================== SECTION: ZOMBIESSNOWRESIDENTIAL ==================== -->
+  </append>
+  <!-- ==================== SECTION: ZOMBIESSNOWRESIDENTIAL ==================== -->
+  <append xpath="/entitygroups">
     <entitygroup name="ZombiesSnowResidential">
       zombieArlene
       zombieDarlene
@@ -696,7 +702,9 @@
       zombieJoeRadiated, 0.005
       zombieSteveCrawler
     </entitygroup>
-    <!-- ==================== SECTION: ZOMBIESSNOWRURAL ==================== -->
+  </append>
+  <!-- ==================== SECTION: ZOMBIESSNOWRURAL ==================== -->
+  <append xpath="/entitygroups">
     <entitygroup name="ZombiesSnowRural">
       zombieArlene
       zombieDarlene
@@ -789,8 +797,8 @@
     - These entitygroups are later referenced in spawning.xml for biome-specific population control.
   @xref   spawning.xml → SECTION: WASTELAND - ZONE-BASED SPAWN MAPPING
   -->
+  <!-- ==================== SECTION: ZOMBIESWASTELANDDOWNTOWN ==================== -->
   <append xpath="/entitygroups">
-    <!-- ==================== SECTION: ZOMBIESWASTELANDDOWNTOWN ==================== -->
     <entitygroup name="ZombiesWastelandDowntown">
       zombieBoe
       zombieJoe
@@ -834,7 +842,9 @@
       zombieDemolition, 0.050
       zombieSteveCrawler
     </entitygroup>
-    <!-- ==================== SECTION: ZOMBIESWASTELANDCOMMERCIAL ==================== -->
+  </append>
+  <!-- ==================== SECTION: ZOMBIESWASTELANDCOMMERCIAL ==================== -->
+  <append xpath="/entitygroups">
     <entitygroup name="ZombiesWastelandCommercial">
       zombieBusinessMan
       zombieJanitor, 0.20
@@ -877,7 +887,9 @@
       zombieDemolition, 0.050
       zombieSteveCrawler
     </entitygroup>
-    <!-- ==================== SECTION: ZOMBIESWASTELANDRESIDENTIAL ==================== -->
+  </append>
+  <!-- ==================== SECTION: ZOMBIESWASTELANDRESIDENTIAL ==================== -->
+  <append xpath="/entitygroups">
     <entitygroup name="ZombiesWastelandResidential">
       zombieArlene
       zombieDarlene
@@ -920,7 +932,9 @@
       zombieDemolition, 0.040
       zombieSteveCrawler
     </entitygroup>
-    <!-- ==================== SECTION: ZOMBIESWASTELANDRURAL ==================== -->
+  </append>
+  <!-- ==================== SECTION: ZOMBIESWASTELANDRURAL ==================== -->
+  <append xpath="/entitygroups">
     <entitygroup name="ZombiesWastelandRural">
       zombieArlene
       zombieDarlene
