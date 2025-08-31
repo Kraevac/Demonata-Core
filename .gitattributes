@@ -1,0 +1,29 @@
+# OS junk
+Thumbs.db              export-ignore
+ehthumbs.db            export-ignore
+.DS_Store              export-ignore
+
+# Editor / IDE
+.vscode/               export-ignore
+*.code-workspace       export-ignore
+
+# Build / packaging artifacts
+build/                 export-ignore
+*.zip                  export-ignore
+*.7z                   export-ignore
+*.rar                  export-ignore
+
+# Logs & temp files
+*.log                  export-ignore
+*.bak                  export-ignore
+*.tmp                  export-ignore
+*.swp                  export-ignore
+*.swo                  export-ignore
+*~                     export-ignore
+
+# Binaries
+*.dll                  export-ignore
+*.exe                  export-ignore
+
+# Internal docs/templates (you may include manually in Releases)
+docs/                  export-ignore
