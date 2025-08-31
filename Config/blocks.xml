@@ -13,20 +13,13 @@
 
   @group       BlockBehaviorAdjustments
   @description
-    Reworks drop logic for writable storage crates and lanterns to prevent
-    resource farming and enable clean reclaim. Containers and lanterns now
-    return only their own placeable item on Destroy or Harvest events.
-    Secure crate downgrade paths are removed for consistent behavior.
+    Reworks drop/reclaim logic for storage crates and lanterns,
+    enables pickup for traps and mines, adds infection behavior to gore blocks,
+    and adjusts nail drops for wood/log blocks.
 
   @notes
-    - Writable storage crates (wood/iron/steel; secure & insecure) now return
-      only the exact crate item on Destroy/Harvest; all other drops removed.
-    - Secure crates no longer downgrade before destruction (DowngradeBlock removed).
-    - Lanterns now return only their placeable item on Destroy/Harvest; electric
-      parts/scrap returns removed.
-    - This is an XML-only reclaim pattern, not a true “press E to pick up.”
-    - Prevents resource loops from scrapping/harvesting placed objects.
-    - Fall debris behavior is unchanged unless explicitly modified elsewhere.
+  - This file consolidates block-level behavior tweaks across storage, lighting,
+    traps/mines, gore, and wood/log resources.
   ==================================================
 -->
 <configs>
@@ -122,7 +115,7 @@
     - Infection behavior is triggered via block collision mechanics, not proximity or visual contact.
     - Gore blocks referenced here are introduced as biome decorators in biomes.xml.
   @xref      biomes.xml → SECTION: BIOME MINE AND GORE ADDITIONS
--->
+  -->
   <append xpath="/blocks/block[contains(@name, 'gore')]">
     <property name="BuffsWhenWalkedOn" value="buffInfectionMain" prob=".50"/>
   </append>
