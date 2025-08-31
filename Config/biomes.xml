@@ -21,7 +21,6 @@
   @notes
     - Honey probabilities increased slightly in snow, pine_forest, and burnt_forest.
     - Fog settings adjusted per biome and weather type for thematic consistency.
-    - Wasteland clutter reduced by disabling noisy decoration spawns.
     - Mines added to all biomes with thematic probability tuning.
     - Gore blocks added to Wasteland for stronger atmospheric ambiance.
     - All changes preserve game stability by only modifying attribute values.
@@ -32,7 +31,9 @@
   ===============================
   SECTION: BIOME HONEY PROBABILITY
   ===============================
-  @desc    Increases/Decreases the amount of tree stumps across biomes.
+  @group    BiomeHoneyAdjustments
+  @desc     Adjusts tree stump spawn probabilities in forest/snow/biomes
+            to improve honey availability.
   -->
   <!-- Default AVERAGE of spawn chances is 0.0004929 -->
   <set xpath="/worldgeneration/biomes/biome[@name='pine_forest']/decorations/decoration[@type='block' and @blockname='treeStump']/@prob">0.000575</set>
