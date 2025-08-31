@@ -27,3 +27,7 @@ build/                 export-ignore
 
 # Internal docs/templates (you may include manually in Releases)
 docs/                  export-ignore
+
+# Git files and documents
+.gitignore    export-ignore
+.gitattributes export-ignore
