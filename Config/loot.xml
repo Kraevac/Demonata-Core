@@ -13,7 +13,11 @@
 
   @group       LootTweaks
   @description
-    Increases the number of nails dropped.
+    Increases nail stack sizes in crafting loot groups to better
+    support early-game construction.
+  @notes
+  - Applies only to crafting-related loot containers (groupCraftingCommon).
+  - Synergizes with block reclaim and recipe tweaks for balanced nail availability.
 
   @xref		blocks.xml → SECTION: WOOD BLOCK ADJUSTMENTS
   @xref		recipes.xml → SECTION: NAILS IN RECIPES
