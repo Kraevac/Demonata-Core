@@ -24,7 +24,6 @@
     - XP scaling caps at level 40 to prevent runaway endgame grind.
     - Perk and attribute upgrade costs increase by 25% per level, requiring strategic investment.
     - Intended to complement crafting-centric, headshot-reliant gameplay with limited XP sources.
-  @xref   entityclasses.xml → SECTION: HEADSHOTS ONLY - RANGED COMBAT PERKS & DAMAGE MULTIPLIERS
   ==================================================
 -->
 <configs>
@@ -32,8 +31,10 @@
   ===============================
   SECTION: HEADSHOT DAMAGE - ATTRIBUTE BONUSES
   ===============================
+  @group    HeadshotDamageNormalization
   @desc
     Prevents stacking of multiple multiplicative effects by normalizing attributes to base_add.
+  @xref     entityclasses.xml → SECTION: HEADSHOTS ONLY - RANGED COMBAT PERKS & DAMAGE MULTIPLIERS
   -->
   <!-- Perception -->
   <set xpath="/progression/attributes/attribute[@name='attPerception']/effect_group/passive_effect[@name='DamageModifier' and @tags='head']/@operation">
@@ -67,6 +68,8 @@
     - Late-game per-level cost after the clamp is ~61,500 XP vs ~177,897 in vanilla (≈65% lower).
     - Requires ~34% less XP to reach level 50 and ~64% less XP to reach level 300 compared to vanilla progression.
     - Rationale: These changes offset reduced XP income (kills + quests only).
+  @xref     quests.xml → MAIN: Quest Rewards Patch — Challenge Turn-In XP Grants
+  @xref     entityclasses.xml → SECTION: PLAYER XP RESTRICTIONS & WASTELAND GAMESTAGE GATE
   -->
   <set xpath="/progression/level/@exp_to_level">9000</set>
   <set xpath="/progression/level/@experience_multiplier">1.04</set>
