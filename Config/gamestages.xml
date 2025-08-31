@@ -16,25 +16,10 @@
     Increases the spawn count and persistence of Blood Moon and Wandering Hordes
     to maintain pressure and pacing across early to mid-game stages.
   @notes
-    - Blood Moon spawn count increased to 128; max alive set to 16.
-    - Massive fallback group 'ZombiesAll' appended to Blood Moon stages.
     - Wandering Horde spawn count increased to 30 from GS 1 through 50.
   ==================================================
 -->
 <configs>
-  <!--
-  ===============================
-  SECTION: BLOODMOON HORDE TWEAKS
-  ===============================
-  @group      BloodMoonHordeScaling
-  @desc       Extends final Blood Moon wave until dawn across all gamestages.
-  @version    1.0.0-rc
-  @notes
-    - Uses XPath patching to set num=99999 and remove duration from final wave.
-    - Clean and safe, affects no early-game logic or gamestage behavior.
-  -->
-  <set xpath="/gamestages/spawner[@name='BloodMoonHorde']/gamestage/spawn[last()]/@num">99999</set>
-  <removeattribute xpath="/gamestages/spawner[@name='BloodMoonHorde']/gamestage/spawn[last()]/@duration" />
   <!--
   ===============================
   SECTION: WANDERING HORDE SPAWN INCREASES
