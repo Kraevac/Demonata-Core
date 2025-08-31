@@ -25,11 +25,11 @@
 -->
 <configs>
   <!-- ***Remove original Biome spawns -->
-  <remove xpath="/spawning/biome[@name='pine_forest']/spawn" />
-  <remove xpath="/spawning/biome[@name='burnt_forest']/spawn" />
-  <remove xpath="/spawning/biome[@name='desert']/spawn" />
-  <remove xpath="/spawning/biome[@name='snow']/spawn" />
-  <remove xpath="/spawning/biome[@name='wasteland']/spawn" />
+  <!--<remove xpath="/spawning/biome[@name='pine_forest']/spawn"/>
+  <remove xpath="/spawning/biome[@name='burnt_forest']/spawn"/>
+  <remove xpath="/spawning/biome[@name='desert']/spawn"/>
+  <remove xpath="/spawning/biome[@name='snow']/spawn"/>
+  <remove xpath="/spawning/biome[@name='wasteland']/spawn"/> -->
   <!-- *** PINE FOREST_SPAWNS -->
   <append xpath="/spawning/biome[@name='pine_forest']">
     <!-- ==================== Downtown ==================== -->
