@@ -262,8 +262,9 @@
   ===============================
   SECTION: REDUCED HONEY INFECTION CURE
   ===============================
+  @group    FoodCureAdjustments
   @desc
-    Reduces by curative properties of honey by 50%.
+    Reduces curative strength of honey by 50% to limit early-game infection trivialization.
   -->
   <set xpath="/items/item[@name='foodHoney']/effect_group/display_value[@name='dCureInfection']/@value">.025</set>
   <set xpath="/items/item[@name='foodHoney']/effect_group/triggered_effect[@cvar='$buffInfectionAddCurePerc']/@value">2.5</set>
