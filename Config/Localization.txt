@@ -49,4 +49,3 @@ drugHerbalAntibioticsDesc,items,Medical,,,Cure Infection: 10%\n\nHerbal Antibiot
 drugRecogDesc,items,Medical,,,Ranged Damage: +50%\nWater: -30\nDuration: 5min\n\nRecog enhances ranged damage.
 drugSteroidsDesc,items,Medical,,,"Carrying Capacity: 50\nRun Speed: +10%\nWater: -30\nDuration: 10min\n\nSteroids decrease encumbrance, allowing you to carry more items, and allow you to run faster."
 drugFortBitesDesc,items,Medical,,,Damage Mitigation: +50%\nWater: -30\nDuration: 2min\n\nFort Bites greatly increase your damage resistance.
-
