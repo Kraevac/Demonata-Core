@@ -14,8 +14,8 @@
   @group      RecipeCostAdjustments
   @description
     Reduces recipe cost scaling with quality, adjusts ingredient counts
-    for specific recipes including thrown dynamite, raw meat, rotting flesh,
-    and planted crops.
+    for dynamite, raw meat, rotting flesh, and crops, and reworks wood-based
+    recipes to include nails for realism and consistency.
   @notes
     - Decreases ingredient count scaling for guns, melee, and armor recipes.
     - Changes thrown dynamite recipe count to 2.
@@ -28,10 +28,11 @@
   ===============================
   SECTION: RECIPE QUALITY COST SCALING
   ===============================
+  @group    RecipeQualityScaling
   @desc
     Reduces ingredient count increase as recipe quality improves for
     guns, melee weapons, and armor.
-  -->
+-->
   <set xpath="/recipes/recipe[not(contains(@name, 'Bot')) and (contains(@name, 'gun') or contains(@name, 'melee') or contains(@name, 'armor'))]/effect_group/passive_effect[@name='CraftingIngredientCount']/@level">
     1,6</set>
   <set xpath="/recipes/recipe[not(contains(@name, 'Bot')) and (contains(@name, 'gun') or contains(@name, 'melee') or contains(@name, 'armor'))]/effect_group/passive_effect[@name='CraftingIngredientCount']/@value">
@@ -40,9 +41,10 @@
   ===============================
   SECTION: SPECIFIC RECIPE INGREDIENT COUNTS
   ===============================
+  @group    RecipeIngredientAdjustments
   @desc
     Adjusts specific recipe ingredient counts to balance crafting.
-  -->
+-->
   <!-- Thrown dynamite requires 2 items instead of default -->
   <set xpath="/recipes/recipe[@name='thrownDynamite']/@count">2</set>
   <!-- Raw meat recipes now require 8 units -->
@@ -80,7 +82,7 @@
   @group    FrameHelperBlockChanges
   @desc
     Adds nails to the ingredient list for wood frames.
-  @xref     blocks.xml → SECTION: WOOD BLOCKS ADJUSTMENTS
+  @xref     blocks.xml → SECTION: WOOD BLOCK ADJUSTMENTS
   -->
   <append xpath="/recipes/recipe[@name='frameShapes:VariantHelper']">
     <ingredient name="resourceNail" count="8" />
