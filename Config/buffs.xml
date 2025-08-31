@@ -28,11 +28,12 @@
 <configs>
   <!--
   ===============================
-  SECTION: PLAYER BUFF STATUS CHANGES
+  SECTION: PLAYER BUFF STATUS CHANGES (GAMEEVENTS DEPENDENT)
   ===============================
   @group      PlayerBuffStatusChanges
-  @desc       Allows player injuries and infections to persist through death
-              and prevents vanilla from restoring full health on respawn.
+  @desc       Retains injuries and infections after death, disables respawn health restore,
+              and requires gameevents overrides to function correctly.
+  @notes      Some edits in this section depend on corresponding changes in gameevents.xml.
   @xref       gameevents.xml → SECTION: PLAYER RESPAWN CHANGES
   -->
   <!-- Disable vanilla "set Health to max" on respawn -->
