@@ -15,6 +15,10 @@
   @description
     Adjusts environmental fog and ambient lighting to improve
     immersion, reduce harsh contrast, and balance day/night visuals.
+  @notes
+  - fogPower scaled from 0.9 (day) to 0.75 (night)
+  - Ambient values zeroed for consistency across conditions
+  - Indoor lighting tuned for smoother transitions
   @xref     biomes.xml → SECTION: BIOME WEATHER AND FOG TUNING
   ==================================================
 -->
