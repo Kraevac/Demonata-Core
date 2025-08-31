@@ -31,8 +31,9 @@
   SECTION: PLAYER RESPAWN CHANGES
   ===============================
   @group       DeathRespawnOverrides
-  @description Forces Health, Food, Water to 50% on respawn
-               for ALL settings (none/default/injured).
+  @desc        Forces Health, Food, and Water to 50% on respawn across all settings,
+               and excludes injury tags from being cleared to preserve buff persistence.
+  @notes       Syncs with buffs.xml; exclude_tags must match buff deathpenalty_injured tags.
   @xref        buffs.xml → SECTION: PLAYER BUFF STATUS CHANGES
   -->
   <!-- Remove any existing H/F/W setters so we don’t double-apply -->
