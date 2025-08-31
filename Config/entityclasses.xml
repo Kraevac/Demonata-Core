@@ -17,7 +17,6 @@
     to promote tactical gameplay, biome progression control, and survival-focused pacing.
 
   @notes
-    - Loot containers persist for 45 minutes (up from 5 min).
     - Zombies have improved loot drop chances; radiated types guaranteed to drop.
     - Chickens now drop eggs when harvested.
     - Zombies are restricted from ladder climbing.
@@ -30,15 +29,6 @@
   ==================================================
 -->
 <configs>
-  <!--
-  ===============================
-  SECTION: LOOT CONTAINER LIFETIME
-  ===============================
-  @group      LootContainerTiming
-  @desc       Extends time Z-Packs remain in the world after zombie death to 45 minutes.
-  -->
-  <set xpath="/entity_classes/entity_class[@name='DroppedLootContainer']/property[@name='TimeStayAfterDeath']/@value">2700</set>
-  <set xpath="/entity_classes/entity_class[starts-with(@name, 'EntityLootContainer')]/property[@name='TimeStayAfterDeath']/@value">2700</set>
   <!--
   ===============================
   SECTION: LOOT DROP PROBABILITIES
@@ -75,9 +65,8 @@
   ===============================
   SECTION: HEADSHOTS ONLY - RANGED COMBAT PERKS & DAMAGE MULTIPLIERS
   ===============================
-  @desc
-    Applies precision-targeting rules and bonus damage to select ranged and finesse-based weapon perks.
-    Also adds a persistent buff icon and compensates headshot mechanics for all difficulty settings.
+  @group     HeadshotsOnlyRangedCombat
+  @desc      Enforces headshot-only mechanics with damage scaling and perk-based triggers.
   @notes
     - Enables HeadShotOnly for weapons tagged with the following perks:
         • Deep Cuts, Javelin Master, Gunslinger, Boomstick, Dead Eye, Machine Gunner, Archery, Turrets
@@ -91,7 +80,7 @@
         • Warrior: +200%
         • Survivalist: +300%
         • Insane: +400%
-  @xref   progression.xml → MAIN: Headshot Damage Modifier Rework
+  @xref   progression.xml → SECTION: HEADSHOT DAMAGE - ATTRIBUTE BONUSES
   @xref   items.xml → SECTION: HEADSHOTS ONLY – AMMO TAGGING FOR FINESSE PERK DETECTION
     -->
   <append xpath="/entity_classes/entity_class[@name='playerMale']">
@@ -151,8 +140,6 @@
         • Survivalist: +30%
         • Insane: +40%
     - Preserves base random ±15% health variance from zombieTemplate.
-  @ref      entityclasses.xml → SECTION: HEADSHOTS ONLY - RANGED COMBAT PERKS & DAMAGE MULTIPLIERS
-  @xref     progression.xml → MAIN: Headshot Damage Modifier Rework
   -->
   <append xpath="/entity_classes/entity_class[starts-with(@name, 'zombie')]">
     <passive_effect name="HealthMax" operation="perc_add" value="-0.25">
@@ -186,6 +173,7 @@
     - Only Kill and Quest tags provide XP.
     - Crafting, Looting, Repairing, Harvesting, Selling, Party, Other, and Upgrading all grant 0 XP.
     - Wasteland gate increases GameStage for tougher zombies and higher-tier loot spawns.
+  @xref     quest.xml → MAIN: Quest Rewards Patch — Challenge Turn-In XP Grants
   -->
   <set xpath="/entity_classes/entity_class[@name='playerMale']/effect_group/passive_effect[@name='PlayerExpGain'][@value='5']/@value">-1.0</set>
   <!-- This sets EXP gain from block upgrades -->
