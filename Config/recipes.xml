@@ -103,31 +103,31 @@
   @xref     progression.xml → SECTION: HONEY CRAFTING UNLOCK
   -->
   <!-- Remove Empty Jars from the crafting system. -->
-  <remove xpath="recipes/recipe[@name='drinkJarEmpty']"> </remove>
+  <remove xpath="recipes/recipe[@name='drinkJarEmpty']"></remove>
   <!-- Create a Honey recipe for each flower group. -->
-	<append xpath="/recipes">
+  <append xpath="/recipes">
     <recipe name="foodHoney" count="1" craft_area="apiary" craft_time="7200" tags="foodHoney,learnable">
-        <ingredient name="drinkJarEmpty" count="1"/>
-        <ingredient name="resourceCropChrysanthemumPlant" count="10"/>
+      <ingredient name="drinkJarEmpty" count="1"/>
+      <ingredient name="resourceCropChrysanthemumPlant" count="10"/>
     </recipe>
     <recipe name="foodHoney" count="1" craft_area="apiary" craft_time="7200" tags="foodHoney,learnable">
-        <ingredient name="drinkJarEmpty" count="1"/>
-        <ingredient name="resourceCropGoldenrodPlant" count="10"/>
+      <ingredient name="drinkJarEmpty" count="1"/>
+      <ingredient name="resourceCropGoldenrodPlant" count="10"/>
     </recipe>
     <recipe name="foodHoney" count="1" craft_area="apiary" craft_time="7200" tags="foodHoney,learnable">
-        <ingredient name="drinkJarEmpty" count="1"/>
-        <ingredient name="resourceCropCottonPlant" count="10"/>
+      <ingredient name="drinkJarEmpty" count="1"/>
+      <ingredient name="resourceCropCottonPlant" count="10"/>
     </recipe>
   </append>
   <!-- Create Water Recipes, one for murky water and one for clean water. -->
   <append xpath="/recipes">
-      <recipe name="drinkJarRiverWater" count="2" craft_area="dew_collector" craft_time="28800">
-          <ingredient name="drinkJarEmpty" count="2"/>
-      </recipe>
-      <recipe name="drinkJarBoiledWater" count="2" craft_area="dew_collector" craft_time="28800" craft_tool="toolDewFilter">
-          <ingredient name="drinkJarEmpty" count="2"/>
-      </recipe>
+    <recipe name="drinkJarRiverWater" count="2" craft_area="dew_collector" craft_time="28800">
+      <ingredient name="drinkJarEmpty" count="2"/>
+    </recipe>
+    <recipe name="drinkJarBoiledWater" count="2" craft_area="dew_collector" craft_time="28800" craft_tool="toolDewFilter">
+      <ingredient name="drinkJarEmpty" count="2"/>
+    </recipe>
   </append>
   <!-- Remove Apiary Smoker from recipes -->
-  <remove xpath="/recipes/recipe[@name='toolApiarySmoker']" ></remove>
+  <remove xpath="/recipes/recipe[@name='toolApiarySmoker']"></remove>
 </configs>
