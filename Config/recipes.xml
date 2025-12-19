@@ -7,20 +7,23 @@
 <!--
   ==================================================
   Recipes Modification - Adjust Recipe Costs and Quality Scaling
-  @version    1.0.0
-  @date       2025-07-14
+  @version    1.2.0
+  @date       2025-12-17
   @author     Demonata Gaming
 
-  @group      RecipeCostAdjustments
+  @group      RecipeAdjustments
   @description
     Reduces recipe cost scaling with quality, adjusts ingredient counts
     for dynamite, raw meat, rotting flesh, and crops, and reworks wood-based
-    recipes to include nails for realism and consistency.
+    recipes to include nails for realism and consistency. Creates new honey and
+    water recipes, removed the apiary smoker and empty jars.
   @notes
     - Decreases ingredient count scaling for guns, melee, and armor recipes.
     - Changes thrown dynamite recipe count to 2.
     - Standardizes raw meat and rotting flesh ingredient requirements.
     - Adjusts planted crop ingredient count to 4 for all related recipes.
+    - Creates a empty jar attrition system by removing them from crafting
+      and creating new recipes that require empty jars.
   ==================================================
 -->
 <configs>
@@ -55,7 +58,8 @@
   <set xpath="/recipes/recipe[contains(@name, 'planted')]/ingredient/@count">4</set>
   <!--
   ===============================
-	SECTION: NAILS IN RECIPES ===============================
+	SECTION: NAILS IN RECIPES
+  ===============================
 	@group    NailRecipeAdjusts
 	@desc
     Adds nails to wood-based crafting recipes to improve realism and enable refund on harvest.
@@ -87,4 +91,43 @@
   <append xpath="/recipes/recipe[@name='frameShapes:VariantHelper']">
     <ingredient name="resourceNail" count="8" />
   </append>
+  <!--
+  ===============================
+  SECTION: EMPTY JARS HONEY AND WATER CHANGES
+  ===============================
+  @group    Collectors
+  @desc
+    Remove empty jars from crafting to enable Jar Input/Attrition Loop.
+    Create Honey and Water recipes for Apiary and Dew Collector Conversions.
+  @xref     blocks.xml → SECTION: APIARY AND DEW COLLECTORS
+  @xref     progression.xml → SECTION: HONEY CRAFTING UNLOCK
+  -->
+  <!-- Remove Empty Jars from the crafting system. -->
+  <remove xpath="recipes/recipe[@name='drinkJarEmpty']"> </remove>
+  <!-- Create a Honey recipe for each flower group. -->
+	<append xpath="/recipes">
+    <recipe name="foodHoney" count="1" craft_area="apiary" craft_time="7200" tags="foodHoney,learnable">
+        <ingredient name="drinkJarEmpty" count="1"/>
+        <ingredient name="resourceCropChrysanthemumPlant" count="10"/>
+    </recipe>
+    <recipe name="foodHoney" count="1" craft_area="apiary" craft_time="7200" tags="foodHoney,learnable">
+        <ingredient name="drinkJarEmpty" count="1"/>
+        <ingredient name="resourceCropGoldenrodPlant" count="10"/>
+    </recipe>
+    <recipe name="foodHoney" count="1" craft_area="apiary" craft_time="7200" tags="foodHoney,learnable">
+        <ingredient name="drinkJarEmpty" count="1"/>
+        <ingredient name="resourceCropCottonPlant" count="10"/>
+    </recipe>
+  </append>
+  <!-- Create Water Recipes, one for murky water and one for clean water. -->
+  <append xpath="/recipes">
+      <recipe name="drinkJarRiverWater" count="2" craft_area="dew_collector" craft_time="28800">
+          <ingredient name="drinkJarEmpty" count="2"/>
+      </recipe>
+      <recipe name="drinkJarBoiledWater" count="2" craft_area="dew_collector" craft_time="28800" craft_tool="toolDewFilter">
+          <ingredient name="drinkJarEmpty" count="2"/>
+      </recipe>
+  </append>
+  <!-- Remove Apiary Smoker from recipes -->
+  <remove xpath="/recipes/recipe[@name='toolApiarySmoker']" ></remove>
 </configs>
