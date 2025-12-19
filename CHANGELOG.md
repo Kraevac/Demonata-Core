@@ -5,63 +5,74 @@
 **Summary:** This update addresses compatibility issues with 7 Days to Die Patch 2.5 and introduces a major overhaul to the Jar Economy and Workstations (Apiary/Dew Collector). These changes establish a resource "attrition" loop and standardize workstation mechanics.
 
 ### 2.5 Compatibility Fixes
+
 * **HUD Transparency:** Fixed transparency issues introduced in game patch 2.5.
 * **Particle Effects:** Fixed black particle smoke appearing when the player coughs (patch 2.5 bug).
 
 ### Workstation Overhaul (Apiary & Dew Collector)
+
 * **Forge-Style Mechanics:** The **Apiary** and **Dew Collector** now function like a **Forge**.
-    * You must learn them via **Forge Ahead Magazines**.
+  * You must learn them via **Forge Ahead Magazines**.
     * They now use an **input system** (requiring **Empty Jars** as an ingredient) rather than passive generation.
 <<<<<<< HEAD
     * **Crafting Time:** Items take **2 hours real-time** to craft honey and **8 hours real-time** to craft water. These times keep the base game values intact. Changing the in-game 24-hour cycle speed **does not** speed this up.
 =======
     * **Crafting Time:** Items take **2 hours real-time** to craft honey and **8 hours real-time** to craft water.
       These times keep the base game values intact. Changing the in-game 24-hour cycle speed **does not** speed this up.
+
 >>>>>>> e035708f4d7751be8d32667b7293ce7bc14a295d
+
 * **Apiary Changes:**
-    * **Honey:** Now craftable via the Apiary using Empty Jars. There are **3 recipes**, one for each flower type.
-    * **Tool Updates:**
-        * **Brood Box:** Now reduces ingredient costs (flowers) by **50%**.
-        * **Extractor:** Now reduces crafting time by **50%**.
-    * **Smoker:** The Apiary Smoker is no longer required or functional (Bee Swarms no longer spawn from the Apiary).
+  * **Honey:** Now craftable via the Apiary using Empty Jars. There are **3 recipes**, one for each flower type.
+  * **Tool Updates:**
+    * **Brood Box:** Now reduces ingredient costs (flowers) by **50%**.
+    * **Extractor:** Now reduces crafting time by **50%**.
+  * **Smoker:** The Apiary Smoker is no longer required or functional (Bee Swarms no longer spawn from the Apiary).
 * **Dew Collector Changes:**
-    * Functions identically to the new Apiary logic (requires jars, 8 hours real-time) Additionally, you get 2 waters for 2 jars per crafting cycle.
-    * All existing Dew Collector tools function as they did before, adapted to the new system.
+  * Functions identically to the new Apiary logic (requires jars, 8 hours real-time) Additionally, you get 2 waters for 2 jars per crafting cycle.
+  * All existing Dew Collector tools function as they did before, adapted to the new system.
 
 ### The Jar Economy & Attrition
+
 * **Crafting Removal:** **Empty Jars** have been removed from the crafting system.
-    * **Intent:** This introduces an "attrition system." Jars are a finite resource supplied only through looting.
-    * **Settings Recommendation:** It is highly recommended to set **Jar Refund** (Advanced Tab) to **100%**.
-        * *For Roleplay/Sim:* Set to **80–90%** to simulate occasional breakage.
-        * *For Struggle:* Set to **40–60%**.
+  * **Intent:** This introduces an "attrition system." Jars are a finite resource supplied only through looting.
+  * **Settings Recommendation:** It is highly recommended to set **Jar Refund** (Advanced Tab) to **100%**.
+    * *For Roleplay/Sim:* Set to **80–90%** to simulate occasional breakage.
+    * *For Struggle:* Set to **40–60%**.
 * **Food & Jar Returns:**
-    * **Gumbo Stew:** Now returns an Empty Jar when eaten.
-    * **Chili Dogs:** No longer return an Empty Jar.
+  * **Gumbo Stew:** Now returns an Empty Jar when eaten.
+  * **Chili Dogs:** No longer return an Empty Jar.
 
 ### Consumables & Drops
+
 * **Bees Wax:** Increased drop chance from tree stumps (now equals Honey probability).
-    * Reading **Wasteland Treasures Vol 1** increases this further (book description updated).
+  * Reading **Wasteland Treasures Vol 1** increases this further (book description updated).
 * **Dysentery Risks:**
-    * **Honey Glazed Sham** and **Fort Bites** now carry **Dysentery** risk. This aligns them with other rotten-flesh based foods.
+  * **Honey Glazed Sham** and **Fort Bites** now carry **Dysentery** risk. This aligns them with other rotten-flesh based foods.
 * **Honey Nerfs (Infection):**
 <<<<<<< HEAD
-    * Infection cure reduced from **5% → 2.5%** for **Honey Glazed Sham**, **Honey Brisket**, and **Honey Tea**. This aligns them with previous nerfs to raw Honey.
+  * Infection cure reduced from **5% → 2.5%** for **Honey Glazed Sham**, **Honey Brisket**, and **Honey Tea**. This aligns them with previous nerfs to raw Honey.
 =======
-    * Infection cure reduced from **5% → 2.5%** for **Honey Glazed Sham**, **Honey Brisket**, and **Honey Tea**.
-      This aligns them with previous nerfs to raw Honey.
+  * Infection cure reduced from **5% → 2.5%** for **Honey Glazed Sham**, **Honey Brisket**, and **Honey Tea**.
+    This aligns them with previous nerfs to raw Honey.
+
 >>>>>>> e035708f4d7751be8d32667b7293ce7bc14a295d
 
 ### Skills & Perks
+
 * **Fortitude Tree:** **Well Insulated** has been added back to the Fortitude skill tree.
-    * *UI Note:* The Fortitude tree is now **2 pages** long. Remember to flip the page to see all skills.
-    
-    ### Known issues
+  * *UI Note:* The Fortitude tree is now **2 pages** long. Remember to flip the page to see all skills.
+
+### Known issues
+
 * Localizations have not been updated to include any of these new changes. This is still a WIP and will come in a later update.
 
 ---
 
 <<<<<<< HEAD
+
 ## Demonata Core — Player Patch Notes (v1.0.0)
+
 =======
 v1.0.0 Changelog
 >>>>>>> e035708f4d7751be8d32667b7293ce7bc14a295d
