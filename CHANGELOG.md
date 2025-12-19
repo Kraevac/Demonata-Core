@@ -12,7 +12,12 @@
 * **Forge-Style Mechanics:** The **Apiary** and **Dew Collector** now function like a **Forge**.
     * You must learn them via **Forge Ahead Magazines**.
     * They now use an **input system** (requiring **Empty Jars** as an ingredient) rather than passive generation.
+<<<<<<< HEAD
     * **Crafting Time:** Items take **2 hours real-time** to craft honey and **8 hours real-time** to craft water. These times keep the base game values intact. Changing the in-game 24-hour cycle speed **does not** speed this up.
+=======
+    * **Crafting Time:** Items take **2 hours real-time** to craft honey and **8 hours real-time** to craft water.
+      These times keep the base game values intact. Changing the in-game 24-hour cycle speed **does not** speed this up.
+>>>>>>> e035708f4d7751be8d32667b7293ce7bc14a295d
 * **Apiary Changes:**
     * **Honey:** Now craftable via the Apiary using Empty Jars. There are **3 recipes**, one for each flower type.
     * **Tool Updates:**
@@ -39,7 +44,12 @@
 * **Dysentery Risks:**
     * **Honey Glazed Sham** and **Fort Bites** now carry **Dysentery** risk. This aligns them with other rotten-flesh based foods.
 * **Honey Nerfs (Infection):**
+<<<<<<< HEAD
     * Infection cure reduced from **5% → 2.5%** for **Honey Glazed Sham**, **Honey Brisket**, and **Honey Tea**. This aligns them with previous nerfs to raw Honey.
+=======
+    * Infection cure reduced from **5% → 2.5%** for **Honey Glazed Sham**, **Honey Brisket**, and **Honey Tea**.
+      This aligns them with previous nerfs to raw Honey.
+>>>>>>> e035708f4d7751be8d32667b7293ce7bc14a295d
 
 ### Skills & Perks
 * **Fortitude Tree:** **Well Insulated** has been added back to the Fortitude skill tree.
@@ -50,7 +60,11 @@
 
 ---
 
+<<<<<<< HEAD
 ## Demonata Core — Player Patch Notes (v1.0.0)
+=======
+v1.0.0 Changelog
+>>>>>>> e035708f4d7751be8d32667b7293ce7bc14a295d
 
 **Summary:** Demonata Core restores the sandbox, puts real weight behind progression, and rewards skillful play. Expect headshot-centric combat, smarter spawns, tougher choices, and quality-of-life fixes that cut grind without gutting survival.
 
