@@ -1,7 +1,5 @@
 # Demonata Core — Player Patch Notes
 
----
-
 ## Update v1.2.0 (Compatible with 7 Days to Die Patch 2.5 **ONLY**)
 
 **Summary:** This update addresses compatibility issues with 7 Days to Die Patch 2.5 and introduces a major overhaul to the Jar Economy and Workstations (Apiary/Dew Collector). These changes establish a resource "attrition" loop and standardize workstation mechanics.
