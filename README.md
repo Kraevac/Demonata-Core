@@ -17,7 +17,7 @@ A progression-first overhaul that restores sandbox agency, tightens balance, and
 
 ## Compatibility
 
-- Built for v2.0 and up.
+- Built for v2.5 and up.
 - Conflicts: any overhaul that replaces `spawning.xml`, `entitygroups.xml`, etc.
 
 ## Support
