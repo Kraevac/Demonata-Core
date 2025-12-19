@@ -100,6 +100,7 @@
   <set xpath="/items/item[@name='foodCanTuna']/effect_group/triggered_effect[@cvar='$foodAmountAdd']/@value">30</set>
   <set xpath="/items/item[@name='foodCanBeef']/effect_group/triggered_effect[@cvar='$foodAmountAdd']/@value">30</set>
   <set xpath="/items/item[@name='foodCanChicken']/effect_group/triggered_effect[@cvar='$foodAmountAdd']/@value">35</set>
+  <!--Creates Dysentery Risks for the foods listed below. -->
   <set xpath="/items/item[@name='foodHoboStew']/property[@name='DisplayType']/@value">foodWaterDysentery</set>
   <append xpath="/items/item[@name='foodHoboStew']/effect_group">
     <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar=".DiseaseRoll" operation="set" value="12" />
@@ -119,6 +120,23 @@
     </triggered_effect>
   </append>
   <append xpath="/items/item[@name='foodCanSham']/effect_group">
+    <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar=".DiseaseRoll" operation="set" value="12" />
+    <display_value name="dDysenteryRisk" value=".12" />
+    <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar=".DiseaseRoll" operation="add" value="@$MetabolismResist" />
+    <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffDysenteryCatchFood">
+      <requirement name="RandomRoll" seed_type="Random" min_max="1,100" operation="LTE" value="@.DiseaseRoll" />
+    </triggered_effect>
+  </append>
+  <set xpath="/items/item[@name='foodHoneyGlazedSham']/property[@name='DisplayType']/@value">foodWithHoneyDysentery</set>
+  <append xpath="/items/item[@name='foodHoneyGlazedSham']/effect_group">
+    <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar=".DiseaseRoll" operation="set" value="12" />
+    <display_value name="dDysenteryRisk" value=".12" />
+    <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar=".DiseaseRoll" operation="add" value="@$MetabolismResist" />
+    <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffDysenteryCatchFood">
+      <requirement name="RandomRoll" seed_type="Random" min_max="1,100" operation="LTE" value="@.DiseaseRoll" />
+    </triggered_effect>
+  </append>
+  <append xpath="/items/item[@name='drugFortBites']/effect_group">
     <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar=".DiseaseRoll" operation="set" value="12" />
     <display_value name="dDysenteryRisk" value=".12" />
     <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar=".DiseaseRoll" operation="add" value="@$MetabolismResist" />
@@ -268,4 +286,53 @@
   -->
   <set xpath="/items/item[@name='foodHoney']/effect_group/display_value[@name='dCureInfection']/@value">.025</set>
   <set xpath="/items/item[@name='foodHoney']/effect_group/triggered_effect[@cvar='$buffInfectionAddCurePerc']/@value">2.5</set>
+  <set xpath="/items/item[@name='foodHoneyGlazedSham']/effect_group/display_value[@name='dCureInfection']/@value">.025</set>
+  <set xpath="/items/item[@name='foodHoneyGlazedSham']/effect_group/triggered_effect[@cvar='$buffInfectionAddCurePerc']/@value">2.5</set>
+  <set xpath="/items/item[@name='foodHoneyBrisket']/effect_group/display_value[@name='dCureInfection']/@value">.025</set>
+  <set xpath="/items/item[@name='foodHoneyBrisket']/effect_group/triggered_effect[@cvar='$buffInfectionAddCurePerc']/@value">2.5</set>
+  <set xpath="/items/item[@name='drinkJarHoneyTea']/effect_group/display_value[@name='dCureInfection']/@value">.025</set>
+  <set xpath="/items/item[@name='drinkJarHoneyTea']/effect_group/triggered_effect[@cvar='$buffInfectionAddCurePerc']/@value">2.5</set>
+  <!--
+  ===============================
+  SECTION: EFFECTS CHANGES AND REMOVALS
+  ===============================
+  @group    Collectors
+  @desc       Removes the Apiary Smoker.
+                      Changes the passive effects to bring Apiary and Dew
+                        Collectors tools inline with the conversion of those
+                        blocks.
+  @xref       blocks.xml → SECTION: APIARY AND DEW COLLECTORS
+  -->
+  <!-- TEST Adding effects to the Dew Collector and Apiary tools and removing the Apiary Smoker  -->
+  <!-- TEST Apiary Tools -->
+  <!--Remove Apiary Smoker  no longer used in Apiary Conversion -->
+  <remove xpath="/items/item[@name='toolApiarySmoker']" />
+  <!-- Adjusts Apiary Tools passive effects -->
+  <append xpath="/items/item[@name='toolApiaryExtractor']">
+    <effect_group tiered="false">
+      <passive_effect name="CraftingTime" operation="perc_add" value="-.5"/>
+    </effect_group>
+  </append>
+  <append xpath="/items/item[@name='toolApiaryBroodBox']">
+    <effect_group tiered="false">
+      <passive_effect name="CraftingIngredientCount" operation="perc_add" value="-.5" tags="resourceCropChrysanthemumPlant,resourceCropGoldenrodPlant,resourceCropCottonPlant"/>
+    </effect_group>
+  </append>
+  <!-- TEST Dew Collector Tools -->
+  <append xpath="/items/item[@name='toolDewGatherer']">
+    <effect_group tiered="false">
+      <passive_effect name="CraftingTime" operation="perc_add" value="-.35"/>
+    </effect_group>
+  </append>
+  <append xpath="/items/item[@name='toolDewTarp']">
+    <effect_group tiered="false">
+      <passive_effect name="CraftingTime" operation="perc_add" value="-.15"/>
+    </effect_group>
+  </append>
+
+  <!-- TEST Add/Removed Jar Returns from certain food items in game -->
+  <remove xpath="/items/item[@name='foodChiliDog']/property[@class='Action0']/property[@name='Create_item']"></remove>
+  <append xpath="/items/item[@name='foodGumboStew']">
+    <property name="Create_Item" value="drinkJarEmpty"/>
+  </append>
 </configs>

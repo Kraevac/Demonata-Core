@@ -7,22 +7,33 @@
 <!--
   ==================================================
   UI Display Mod - Add Dysentery Risk to Consumables
-  @version     1.0.0
-  @date        2025-07-14
+  @version     1.0.1
+  @date        2025-12-17
   @author      Demonata Gaming
-
   @group       UIDisplayEnhancements
   @description
     Adds dysentery risk display for consumables like Sham Chowder
-    and Hobo Stew. Uses Darkness Falls UI adjustments as base.
+    and Hobo Stew.
   @xref        items.xml → SECTION: FOOD VALUE AND DISEASE RISK
   ==================================================
 -->
 <configs>
-  <!-- Adds Dysentery Risk UI for food items like Hobo Stew and Sham Chowder This code provided by Khaine of the Darkness Falls Mod-->
+  <!-- Adds Dysentery Risk UI for food items like Hobo Stew and Sham Chowder.
+        Portions of this code provided by Khaine of the Darkness Falls Mod-->
   <append xpath="/ui_display_info">
     <item_display>
       <item_display_info display_type="foodWaterDysentery" display_group="groupConsumables">
+        <display_entry name="$foodAmountAdd" title_key="statFoodAmount" />
+        <display_entry name="foodHealthAmount" title_key="statHealthAmount" />
+        <display_entry name="$waterAmountAdd" title_key="statWaterAmount" />
+        <display_entry name=".foodStaminaBonusAdd" title_key="statFoodStaminaBonus" />
+        <display_entry name="dDysenteryRisk" title_key="statDysenteryRisk" display_type="Percent" negative_preferred="true" />
+      </item_display_info>
+    </item_display>
+  </append>
+  <append xpath="/ui_display_info">
+    <item_display>
+      <item_display_info display_type="foodWithHoneyDysentery" display_group="groupConsumables">
         <display_entry name="$foodAmountAdd" title_key="statFoodAmount" />
         <display_entry name="foodHealthAmount" title_key="statHealthAmount" />
         <display_entry name="$waterAmountAdd" title_key="statWaterAmount" />
@@ -43,6 +54,19 @@
         <display_entry name=".foodStaminaBonusAdd" title_key="statFoodStaminaBonus" />
         <display_entry name="dFortitude" title_key="statShowFortitude" display_leading_plus="true" />
         <display_entry name="dDuration" title_key="statDuration" display_type="Time" />
+        <display_entry name="dDysenteryRisk" title_key="statDysenteryRisk" display_type="Percent" negative_preferred="true" />
+      </item_display_info>
+    </item_display>
+  </append>
+  <!-- Remove original Fort Bites entry to override with new layout -->
+  <remove xpath="/ui_display_info/item_display/item_display_info[@display_type='drugFortBites' and @display_group='groupConsumables']" />
+  <!-- Reintroduce Fort Bites UI with dysentery tracking -->
+  <append xpath="/ui_display_info">
+    <item_display>
+      <item_display_info display_type="drugFortBites" display_group="groupConsumables">
+        <display_entry name="dHealthLoss" title_key="statHealthLoss" display_type="Percent" display_leading_plus="true"/>
+        <display_entry name="$waterAmountAdd" title_key="statWaterAmount"/>
+        <display_entry name="dDuration" title_key="statDuration" display_type="Time"/>
         <display_entry name="dDysenteryRisk" title_key="statDysenteryRisk" display_type="Percent" negative_preferred="true" />
       </item_display_info>
     </item_display>
