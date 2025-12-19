@@ -17,7 +17,7 @@
     recenters compass with marker, lowers toolbelt, and repositions
     health/food/water/stamina bars for a more minimal, immersive layout.
     Creates UI elements for the Apiary and Dew Collector conversion.
-	@xref       Config/XUi/xui.xml → MIAN: XUi Rule Override
+	@xref       Config/XUi/xui.xml → MAIN: XUi Rule Override
                       blocks.xml → SECTION: APIARY AND DEW COLLECTORS
   ==================================================
 -->
@@ -104,103 +104,101 @@
       </rect>
     </window>
   </append>
-  
+
   <!-- TEST Custom Apiary and Dew Collector Windows -->
-  <append  xpath="windows">
-   <window name="windowApiaryInput" width="228" height="204" panel="Right" cursor_area="true" >
-			<panel style="header.panel">
-				<sprite style="header.icon" sprite="ui_game_symbol_water"/>
-				<label style="header.name.shrink" text="INPUT" />
-			</panel>
+  <append xpath="windows">
+    <window name="windowApiaryInput" width="228" height="204" panel="Right" cursor_area="true">
+      <panel style="header.panel">
+        <sprite style="header.icon" sprite="ui_game_symbol_water"/>
+        <label style="header.name.shrink" text="INPUT" />
+      </panel>
 
-			<sprite depth="2" name="backgroundMain" sprite="menu_empty3px" pos="0,-46" height="153" color="[black]" type="sliced" fillcenter="false" />
-			<rect name="content" depth="1" pos="0,-46" height="153">
-				<!-- 6 slots (3x2) for ingredients. Pos adjusted to standard margin. -->
-				<grid name="inventory" depth="7" rows="2" cols="3" pos="3,-3" cell_width="75" cell_height="75" controller="WorkstationInputGrid" repeat_content="true">
-					<item_stack name="0"/>
-				</grid>
-			</rect>
-			<rect name="content2" depth="0" pos="78, -49" width="147" height="148">
-				<sprite depth="1" color="[mediumGrey]" type="sliced"/>
-			</rect>
-		</window>
-		
-		<!-- Custom Apiary Tools Window -->
-		<window name="windowToolsApiary" width="228" height="121" panel="Right" cursor_area="true" >
-			<panel style="header.panel">
-				<sprite style="header.icon" sprite="ui_game_symbol_wrench"/>
-				<label style="header.name.shrink" text="TOOLS" text_key="xuiTools" />
-			</panel>
+      <sprite depth="2" name="backgroundMain" sprite="menu_empty3px" pos="0,-46" height="153" color="[black]" type="sliced" fillcenter="false" />
+      <rect name="content" depth="1" pos="0,-46" height="153">
+        <!-- 6 slots (3x2) for ingredients. Pos adjusted to standard margin. -->
+        <grid name="inventory" depth="7" rows="2" cols="3" pos="3,-3" cell_width="75" cell_height="75" controller="WorkstationInputGrid" repeat_content="true">
+          <item_stack name="0"/>
+        </grid>
+      </rect>
+      <rect name="content2" depth="0" pos="78, -49" width="147" height="148">
+        <sprite depth="1" color="[mediumGrey]" type="sliced"/>
+      </rect>
+    </window>
 
-			<rect name="content" depth="0" pos="0,-46" height="75" disablefallthrough="true">
-				<grid name="inventory" rows="1" cols="3" pos="3,-3" cell_width="75" cell_height="75" controller="WorkstationToolGrid" repeat_content="true"
-				required_tools="toolApiaryExtractor,toolApiaryBroodBox" required_tools_only="true">
-					<item_stack controller="RequiredItemStack" name="0"/>
-				</grid>
-			</rect>
-		</window>
+    <!-- Custom Apiary Tools Window -->
+    <window name="windowToolsApiary" width="228" height="121" panel="Right" cursor_area="true">
+      <panel style="header.panel">
+        <sprite style="header.icon" sprite="ui_game_symbol_wrench"/>
+        <label style="header.name.shrink" text="TOOLS" text_key="xuiTools" />
+      </panel>
 
-		<!-- Custom Apiary Output Window -->
-		<window name="windowApiaryOutput" width="228" height="198" panel="Right" cursor_area="true" >
-			<panel style="header.panel">
-				<sprite style="header.icon" sprite="ui_game_symbol_loot_sack"/>
-				<label style="header.name.shrink" text="OUTPUT" text_key="xuiOutput" />
-			</panel>
-			<rect name="content" depth="0" pos="0,-46" height="153">
-				<sprite depth="2" name="backgroundMain" sprite="menu_empty3px" height="153" color="[black]" type="sliced" fillcenter="false" />
-				<!-- 6 slots (3x2) for output. Pos adjusted to standard margin. -->
-				<grid name="inventory" depth="10" rows="2" cols="3" pos="3,-3" cell_width="75" cell_height="75" controller="WorkstationOutputGrid" repeat_content="true">
-					<item_stack name="0"/>
-				</grid>
-			</rect>
-		</window>
+      <rect name="content" depth="0" pos="0,-46" height="75" disablefallthrough="true">
+        <grid name="inventory" rows="1" cols="3" pos="3,-3" cell_width="75" cell_height="75" controller="WorkstationToolGrid" repeat_content="true" required_tools="toolApiaryExtractor,toolApiaryBroodBox" required_tools_only="true">
+          <item_stack controller="RequiredItemStack" name="0"/>
+        </grid>
+      </rect>
+    </window>
+
+    <!-- Custom Apiary Output Window -->
+    <window name="windowApiaryOutput" width="228" height="198" panel="Right" cursor_area="true">
+      <panel style="header.panel">
+        <sprite style="header.icon" sprite="ui_game_symbol_loot_sack"/>
+        <label style="header.name.shrink" text="OUTPUT" text_key="xuiOutput" />
+      </panel>
+      <rect name="content" depth="0" pos="0,-46" height="153">
+        <sprite depth="2" name="backgroundMain" sprite="menu_empty3px" height="153" color="[black]" type="sliced" fillcenter="false" />
+        <!-- 6 slots (3x2) for output. Pos adjusted to standard margin. -->
+        <grid name="inventory" depth="10" rows="2" cols="3" pos="3,-3" cell_width="75" cell_height="75" controller="WorkstationOutputGrid" repeat_content="true">
+          <item_stack name="0"/>
+        </grid>
+      </rect>
+    </window>
     <!--Custom Dew Collector Input Window-->
-    <window name="windowDewInput" width="228" height="204" panel="Right" cursor_area="true" >
-			<panel style="header.panel">
-				<sprite style="header.icon" sprite="ui_game_symbol_water"/>
-				<label style="header.name.shrink" text="INPUT" />
-			</panel>
+    <window name="windowDewInput" width="228" height="204" panel="Right" cursor_area="true">
+      <panel style="header.panel">
+        <sprite style="header.icon" sprite="ui_game_symbol_water"/>
+        <label style="header.name.shrink" text="INPUT" />
+      </panel>
 
-			<sprite depth="2" name="backgroundMain" sprite="menu_empty3px" pos="0,-46" height="153" color="[black]" type="sliced" fillcenter="false" />
-			<rect name="content" depth="1" pos="0,-46" height="153">
-				<!-- 6 slots (3x2) for ingredients. Pos adjusted to standard margin. -->
-				<grid name="inventory" depth="7" rows="2" cols="3" pos="3,-3" cell_width="75" cell_height="75" controller="WorkstationInputGrid" repeat_content="true">
-					<item_stack name="0"/>
-				</grid>
-			</rect>
-			<rect name="content2" depth="0" pos="78, -49" width="147" height="148">
-				<sprite depth="1" color="[mediumGrey]" type="sliced"/>
-			</rect>
-		</window>
-		
-		<!-- Custom Dew Collector Tools Window -->
-		<window name="windowToolsDew" width="228" height="121" panel="Right" cursor_area="true" >
-			<panel style="header.panel">
-				<sprite style="header.icon" sprite="ui_game_symbol_wrench"/>
-				<label style="header.name.shrink" text="TOOLS" text_key="xuiTools" />
-			</panel>
+      <sprite depth="2" name="backgroundMain" sprite="menu_empty3px" pos="0,-46" height="153" color="[black]" type="sliced" fillcenter="false" />
+      <rect name="content" depth="1" pos="0,-46" height="153">
+        <!-- 6 slots (3x2) for ingredients. Pos adjusted to standard margin. -->
+        <grid name="inventory" depth="7" rows="2" cols="3" pos="3,-3" cell_width="75" cell_height="75" controller="WorkstationInputGrid" repeat_content="true">
+          <item_stack name="0"/>
+        </grid>
+      </rect>
+      <rect name="content2" depth="0" pos="78, -49" width="147" height="148">
+        <sprite depth="1" color="[mediumGrey]" type="sliced"/>
+      </rect>
+    </window>
 
-			<rect name="content" depth="0" pos="0,-46" height="75" disablefallthrough="true">
-				<grid name="inventory" rows="1" cols="3" pos="3,-3" cell_width="75" cell_height="75" controller="WorkstationToolGrid" repeat_content="true"
-				required_tools="toolDewGatherer,toolDewTarp,toolDewFilter" required_tools_only="true">
-					<item_stack controller="RequiredItemStack" name="0"/>
-				</grid>
-			</rect>
-		</window>
+    <!-- Custom Dew Collector Tools Window -->
+    <window name="windowToolsDew" width="228" height="121" panel="Right" cursor_area="true">
+      <panel style="header.panel">
+        <sprite style="header.icon" sprite="ui_game_symbol_wrench"/>
+        <label style="header.name.shrink" text="TOOLS" text_key="xuiTools" />
+      </panel>
 
-		<!-- Custom Dew Collector Output Window -->
-		<window name="windowDewOutput" width="228" height="198" panel="Right" cursor_area="true" >
-			<panel style="header.panel">
-				<sprite style="header.icon" sprite="ui_game_symbol_loot_sack"/>
-				<label style="header.name.shrink" text="OUTPUT" text_key="xuiOutput" />
-			</panel>
-			<rect name="content" depth="0" pos="0,-46" height="153">
-				<sprite depth="2" name="backgroundMain" sprite="menu_empty3px" height="153" color="[black]" type="sliced" fillcenter="false" />
-				<!-- 6 slots (3x2) for output. Pos adjusted to standard margin. -->
-				<grid name="inventory" depth="10" rows="2" cols="3" pos="3,-3" cell_width="75" cell_height="75" controller="WorkstationOutputGrid" repeat_content="true">
-					<item_stack name="0"/>
-				</grid>
-			</rect>
-		</window>
+      <rect name="content" depth="0" pos="0,-46" height="75" disablefallthrough="true">
+        <grid name="inventory" rows="1" cols="3" pos="3,-3" cell_width="75" cell_height="75" controller="WorkstationToolGrid" repeat_content="true" required_tools="toolDewGatherer,toolDewTarp,toolDewFilter" required_tools_only="true">
+          <item_stack controller="RequiredItemStack" name="0"/>
+        </grid>
+      </rect>
+    </window>
+
+    <!-- Custom Dew Collector Output Window -->
+    <window name="windowDewOutput" width="228" height="198" panel="Right" cursor_area="true">
+      <panel style="header.panel">
+        <sprite style="header.icon" sprite="ui_game_symbol_loot_sack"/>
+        <label style="header.name.shrink" text="OUTPUT" text_key="xuiOutput" />
+      </panel>
+      <rect name="content" depth="0" pos="0,-46" height="153">
+        <sprite depth="2" name="backgroundMain" sprite="menu_empty3px" height="153" color="[black]" type="sliced" fillcenter="false" />
+        <!-- 6 slots (3x2) for output. Pos adjusted to standard margin. -->
+        <grid name="inventory" depth="10" rows="2" cols="3" pos="3,-3" cell_width="75" cell_height="75" controller="WorkstationOutputGrid" repeat_content="true">
+          <item_stack name="0"/>
+        </grid>
+      </rect>
+    </window>
   </append>
 </configs>
