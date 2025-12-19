@@ -167,10 +167,10 @@
   -->
   <!-- FULL APIARY CONVERSION TO WORKSTATION -->
   <!--Remove the existing Apiary block -->
-	<remove xpath="/blocks/block[@name='cntApiary']"/>
+  <remove xpath="/blocks/block[@name='cntApiary']"/>
   <!-- Append the new Apiary Workstation -->
-	<append xpath="/blocks">
-		<block name="cntApiary">
+  <append xpath="/blocks">
+    <block name="cntApiary">
       <property name="Class" value="Workstation"/>
       <property name="Material" value="Mmetal"/>
       <property name="Shape" value="ModelEntity"/>
@@ -178,8 +178,8 @@
       <property name="ImposterExchange" value="imposterBlock" param1="77"/>
       <property name="MultiBlockDim" value="3,2,1"/>
       <property class="Workstation">
-          <property name="Modules" value="tools,input,output"/>
-          <property name="CraftingAreaRecipes" value="apiary"/>
+        <property name="Modules" value="tools,input,output"/>
+        <property name="CraftingAreaRecipes" value="apiary"/>
       </property>
       <property name="UnlockedBy" value="craftingWorkstations"/>
       <property name="CreativeMode" value="Player"/>
@@ -189,7 +189,7 @@
       <property name="WorkstationWindow" value="workstation_apiary"/>
       <property name="OpenSound" value="collector_open"/>
       <property name="CloseSound" value="collector_close"/>
-      <property name="CraftSound" value="block_apiary_bees"/> 
+      <property name="CraftSound" value="block_apiary_bees"/>
       <property name="SoundPickup" value="apiary_grab"/>
       <property name="SoundPlace" value="apiary_place"/>
       <property name="CraftCompleteSound" value="collector_complete_item"/>
@@ -209,7 +209,7 @@
       <property name="MaxDamage" value="200"/>
       <property name="DestroyFX" value="blockdestroy_cloth,collector_destroy"/>
       <property class="RepairItems">
-          <property name="resourceForgedIron" value="10"/>
+        <property name="resourceForgedIron" value="10"/>
       </property>
       <drop event="Harvest" name="resourceWood" count="20,30" tag="allHarvest,perkJunkMiner"/>
       <drop event="Harvest" name="resourceScrapIron" count="50,80" tag="allHarvest,perkJunkMiner"/>
@@ -220,11 +220,11 @@
       <property name="Tags" value="workstationSkill,twitch_workstation"/>
       <property name="FilterTags" value="MC_playerBlocks,SC_decor"/>
     </block>
-	</append>
+  </append>
   <!--FULL DEW COLLECTOR CONVERSION TO WORKSTATION -->
   <!-- Remove Existing Dew Collector -->
   <remove xpath="/blocks/block[@name='cntDewCollector']"/>
-  <!-- Append the new Dew Collector Worstation -->
+  <!-- Append the new Dew Collector Workstation -->
   <append xpath="/blocks">
     <block name="cntDewCollector">
       <property name="Class" value="Workstation"/>
@@ -243,10 +243,10 @@
       <property name="LootLabelKey" value="xuiDewCollector"/>
       <property name="DescriptionKey" value="dewCollectorDesc"/>
       <property name="WorkstationIcon" value="ui_game_symbol_water"/>
-      <property name="WorkstationWindow" value="workstation_dew"/> 
+      <property name="WorkstationWindow" value="workstation_dew"/>
       <property name="OpenSound" value="collector_open"/>
       <property name="CloseSound" value="collector_close"/>
-      <property name="CraftSound" value="collector_complete_item"/> 
+      <property name="CraftSound" value="collector_complete_item"/>
       <property name="SoundPickup" value="dewcollector_grab"/>
       <property name="SoundPlace" value="dewcollector_place"/>
       <property name="Place" value="TowardsPlacerInverted"/>
