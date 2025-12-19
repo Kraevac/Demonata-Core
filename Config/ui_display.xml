@@ -13,7 +13,7 @@
   @group       UIDisplayEnhancements
   @description
     Adds dysentery risk display for consumables like Sham Chowder
-    and Hobo Stew. 
+    and Hobo Stew.
   @xref        items.xml → SECTION: FOOD VALUE AND DISEASE RISK
   ==================================================
 -->
