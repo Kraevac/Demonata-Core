@@ -1,27 +1,47 @@
-# OS junk
+# System files
 Thumbs.db
-ehthumbs.db
 .DS_Store
+ehthumbs.db
 
-# Editor / IDE
-.vscode/
-*.code-workspace
+# VSCode
+.vscode/*
+!.vscode/settings.json
 
-# Build / packaging artifacts
-build/
-*.zip
-*.7z
-*.rar
+# Workspaces
+!*.code-workspace
 
-# Logs & temp files
-*.log
+# Temporary and backup files
 *.bak
 *.tmp
 *.swp
 *.swo
-*~
+*.~*
+
+# Archives
+*.zip
+*.7z
+*.rar
+
+# Logs
+*.log
+
+# Ignore Git metadata
+.git/
 
 # Ignore compiled output (just in case)
-# Accidentally committed binaries (just in case)
 *.dll
 *.exe
+
+# Ignore manual metadata validator
+dev/xml_metadata_validator.py
+
+# Toolchain: Ignore local dev tools and dependencies
+Tools/
+**/node_modules/
+**/package-lock.json
+
+# Prettier / Formatting Configs
+**/.prettierrc
+**/.prettierrc.json
+**/.prettierrc.js
+**/.prettierignore
