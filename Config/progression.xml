@@ -87,30 +87,36 @@
   @xref          buffs.xml → SECTION: WELL INSULATED BUFF REINTEGRATED
   -->
   <append xpath="/progression/perks">
-		<perk name="perkWellInsulated" max_level="3" parent="skillFortitudeSurvival" name_key="perkWellInsulatedName" desc_key="perkWellInsulatedDesc" icon="ui_game_symbol_temperature">
-			<level_requirements level="1"><requirement name="ProgressionLevel" progression_name="attFortitude" operation="GTE" value="1" desc_key="reqFortitudeLevel01"/></level_requirements>
-			<level_requirements level="2"><requirement name="ProgressionLevel" progression_name="attFortitude" operation="GTE" value="4" desc_key="reqFortitudeLevel04"/></level_requirements>
-			<level_requirements level="3"><requirement name="ProgressionLevel" progression_name="attFortitude" operation="GTE" value="7" desc_key="reqFortitudeLevel07"/></level_requirements>
+    <perk name="perkWellInsulated" max_level="3" parent="skillFortitudeSurvival" name_key="perkWellInsulatedName" desc_key="perkWellInsulatedDesc" icon="ui_game_symbol_temperature">
+      <level_requirements level="1">
+        <requirement name="ProgressionLevel" progression_name="attFortitude" operation="GTE" value="1" desc_key="reqFortitudeLevel01"/>
+      </level_requirements>
+      <level_requirements level="2">
+        <requirement name="ProgressionLevel" progression_name="attFortitude" operation="GTE" value="4" desc_key="reqFortitudeLevel04"/>
+      </level_requirements>
+      <level_requirements level="3">
+        <requirement name="ProgressionLevel" progression_name="attFortitude" operation="GTE" value="7" desc_key="reqFortitudeLevel07"/>
+      </level_requirements>
       <effect_group>
-				<passive_effect name="HypothermalResist" operation="base_add" level="1,2,3" value="10,20,20"/>
-				<passive_effect name="HyperthermalResist" operation="base_add" level="1,2,3" value="10,20,20"/>
-				<!-- T3 effect is in buffElementHot/buffElementCold -->
+        <passive_effect name="HypothermalResist" operation="base_add" level="1,2,3" value="10,20,20"/>
+        <passive_effect name="HyperthermalResist" operation="base_add" level="1,2,3" value="10,20,20"/>
+        <!-- T3 effect is in buffElementHot/buffElementCold -->
         <effect_description level="1" desc_key="perkWellInsulatedRank1Desc" long_desc_key="perkWellInsulatedRank1LongDesc"/>
-				<effect_description level="2" desc_key="perkWellInsulatedRank2Desc" long_desc_key="perkWellInsulatedRank2LongDesc"/>
-				<effect_description level="3" desc_key="perkWellInsulatedRank3Desc" long_desc_key="perkWellInsulatedRank3LongDesc"/>
-			</effect_group>
+        <effect_description level="2" desc_key="perkWellInsulatedRank2Desc" long_desc_key="perkWellInsulatedRank2LongDesc"/>
+        <effect_description level="3" desc_key="perkWellInsulatedRank3Desc" long_desc_key="perkWellInsulatedRank3LongDesc"/>
+      </effect_group>
       <effect_group>
-				<!-- Increase the chance to find Fireman's Almanac books until each book is read -->
-				<passive_effect name="LootProb" operation="perc_add" level="1,3" value="2,10" tags="firemansProb">
-					<requirement name="ProgressionLevel" progression_name="perkFiremansAlmanacComplete" operation="LT" value="1"/>
-				</passive_effect>
+        <!-- Increase the chance to find Fireman's Almanac books until each book is read -->
+        <passive_effect name="LootProb" operation="perc_add" level="1,3" value="2,10" tags="firemansProb">
+          <requirement name="ProgressionLevel" progression_name="perkFiremansAlmanacComplete" operation="LT" value="1"/>
+        </passive_effect>
         <!-- When all Fireman's Almanac books have been read, set the probability bonus of finding them to 0 -->
-				<passive_effect name="LootProb" operation="perc_add" level="1,3" value="1,1" tags="firemansProb">
-					<requirement name="ProgressionLevel" progression_name="perkFiremansAlmanacComplete" operation="Equals" value="1"/>
-				</passive_effect>
-			</effect_group>
-		</perk>
-	</append>
+        <passive_effect name="LootProb" operation="perc_add" level="1,3" value="1,1" tags="firemansProb">
+          <requirement name="ProgressionLevel" progression_name="perkFiremansAlmanacComplete" operation="Equals" value="1"/>
+        </passive_effect>
+      </effect_group>
+    </perk>
+  </append>
   <!--
   ===============================
   SECTION: HONEY CRAFTING UNLOCK
