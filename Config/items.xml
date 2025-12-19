@@ -297,7 +297,7 @@
   SECTION: EFFECTS CHANGES AND REMOVALS
   ===============================
   @group    Collectors
-  @desc       Removes the Aipary Smoker.
+  @desc       Removes the Apiary Smoker.
                       Changes the passive effects to bring Apiary and Dew
                         Collectors tools inline with the conversion of those
                         blocks.
@@ -305,7 +305,7 @@
   -->
   <!-- TEST Adding effects to the Dew Collector and Apiary tools and removing the Apiary Smoker  -->
   <!-- TEST Apiary Tools -->
-  <!--Remove Aipary Smoker  no longer used in Apiary Conversion -->
+  <!--Remove Apiary Smoker  no longer used in Apiary Conversion -->
   <remove xpath="/items/item[@name='toolApiarySmoker']" />
   <!-- Adjusts Apiary Tools passive effects -->
   <append xpath="/items/item[@name='toolApiaryExtractor']">
@@ -329,10 +329,10 @@
       <passive_effect name="CraftingTime" operation="perc_add" value="-.15"/>
     </effect_group>
   </append>
-  
+
   <!-- TEST Add/Removed Jar Returns from certain food items in game -->
-  <remove xpath="/items/item[@name='foodChiliDog']/property[@class='Action0']/property[@name='Create_item']" ></remove>
-  <append xpath="/items/item[@name='foodGumboStew']" >
+  <remove xpath="/items/item[@name='foodChiliDog']/property[@class='Action0']/property[@name='Create_item']"></remove>
+  <append xpath="/items/item[@name='foodGumboStew']">
     <property name="Create_Item" value="drinkJarEmpty"/>
   </append>
 </configs>
