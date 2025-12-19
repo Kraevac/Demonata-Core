@@ -27,14 +27,14 @@
   <set xpath="/worldglobal/environment/property[@name='fogPower']/@value">0.9, 0.75</set>
   <!-- Ambient lighting tuned for atmospheric play without overwhelming darkness -->
   <set xpath="/worldglobal/environment/property[@name='ambientMoon']/@value">0.01, 0.01</set>
-	<set xpath="/worldglobal/environment/property[@name='ambientEquatorScale']/@value">0.01</set>
-	<set xpath="/worldglobal/environment/property[@name='ambientGroundScale']/@value">0.01</set>
-	<set xpath="/worldglobal/environment/property[@name='ambientSkyScale']/@value">0.01, 0.01</set>
-	<set xpath="/worldglobal/environment/property[@name='ambientSkyDesat']/@value">.5, .5</set>
+  <set xpath="/worldglobal/environment/property[@name='ambientEquatorScale']/@value">0.01</set>
+  <set xpath="/worldglobal/environment/property[@name='ambientGroundScale']/@value">0.01</set>
+  <set xpath="/worldglobal/environment/property[@name='ambientSkyScale']/@value">0.01, 0.01</set>
+  <set xpath="/worldglobal/environment/property[@name='ambientSkyDesat']/@value">.5, .5</set>
   <!-- Indoor lighting logic (moderate transition & scale) -->
   <set xpath="/worldglobal/environment/property[@name='ambientInsideSpeed']/@value">0.01</set>
-	<set xpath="/worldglobal/environment/property[@name='ambientInsideThreshold']/@value">0.01</set>
-	<set xpath="/worldglobal/environment/property[@name='ambientInsideEquatorScale']/@value">0.01</set>
-	<set xpath="/worldglobal/environment/property[@name='ambientInsideGroundScale']/@value">0.01</set>
-	<set xpath="/worldglobal/environment/property[@name='ambientInsideSkyScale']/@value">0.01</set>
+  <set xpath="/worldglobal/environment/property[@name='ambientInsideThreshold']/@value">0.01</set>
+  <set xpath="/worldglobal/environment/property[@name='ambientInsideEquatorScale']/@value">0.01</set>
+  <set xpath="/worldglobal/environment/property[@name='ambientInsideGroundScale']/@value">0.01</set>
+  <set xpath="/worldglobal/environment/property[@name='ambientInsideSkyScale']/@value">0.01</set>
 </configs>
