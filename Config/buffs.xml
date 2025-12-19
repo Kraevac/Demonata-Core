@@ -7,8 +7,8 @@
 <!--
   ==================================================
   Buffs Modification - Debuff Persistence, Hazard Effect Removal, and Respawn Health Override
-  @version     1.0.1
-  @date        2025-08-11
+  @version     1.2.0
+  @date        2025-12-17
   @author      Demonata Gaming
 
   @group       BuffSystemReworks
@@ -16,6 +16,7 @@
     Adjusts player debuff persistence rules to retain negative statuses after death,
     removes intrusive screen tint effects tied to biome-specific hazard buffs,
     and overrides vanilla respawn behavior to prevent automatic full-health restoration.
+    Reintegrates the old Well Insulated perk buffs back into the game.
 
   @notes
     - Negative buffs like infection and broken limbs persist through death.
@@ -69,4 +70,77 @@
     </effect_group>
   </append>
   <set xpath="/buffs/buff[@name='buffInfection04']/effect_group/triggered_effect[@trigger='onSelfDied' and @action='ModifyCVar' and @cvar='infectionCounter' and @operation='set']/@value">0</set>
+  <!--
+  ===============================
+  SECTION: WELL INSULATED BUFF REINTEGRATED
+  ===============================
+  @group      PlayerBuffStatusChanges
+  @desc         Ties the Well Insulated perk to the the elemental buffs.
+  @notes       These changes rely on changes in the progression system.
+  @xref          progression.xml → SECTION: WELL INSULATED PERK REINTEGRATED
+  -->
+  <!-- HOT BUFF -->
+	<append xpath="/buffs/buff[@name='buffElementHot']">
+		<effect_group>
+			<!-- Level 1: -45% Water Loss -->
+			<passive_effect name="WaterLossPerStaminaPointGained" operation="perc_add" value="-0.45">
+				<requirement name="ProgressionLevel" progression_name="perkWellInsulated" operation="Equals" value="1"/>
+			</passive_effect>
+			<!-- Level 2: -90% Water Loss -->
+			<passive_effect name="WaterLossPerStaminaPointGained" operation="perc_add" value="-0.9">
+				<requirement name="ProgressionLevel" progression_name="perkWellInsulated" operation="GTE" value="2"/>
+			</passive_effect>
+		</effect_group>
+	</append>
+  <!-- SWELTERING BUFF -->
+	<append xpath="/buffs/buff[@name='buffElementSweltering']">
+		<effect_group>
+			<!-- Level 1: -90% Water Loss -->
+			<passive_effect name="WaterLossPerStaminaPointGained" operation="perc_add" value="-0.9">
+				<requirement name="ProgressionLevel" progression_name="perkWellInsulated" operation="Equals" value="1"/>
+			</passive_effect>
+			<!-- Level 2: -180% Water Loss -->
+			<passive_effect name="WaterLossPerStaminaPointGained" operation="perc_add" value="-1.8">
+				<requirement name="ProgressionLevel" progression_name="perkWellInsulated" operation="GTE" value="2"/>
+			</passive_effect>
+		</effect_group>
+	</append>
+  <!-- COLD BUFF (Consolidated) -->
+	<append xpath="/buffs/buff[@name='buffElementCold']">
+		<effect_group>
+			<!-- Food Change OT -->
+			<passive_effect name="FoodChangeOT" operation="perc_add" value="-0.45">
+				<requirement name="ProgressionLevel" progression_name="perkWellInsulated" operation="Equals" value="1"/>
+			</passive_effect>
+			<passive_effect name="FoodChangeOT" operation="perc_add" value="-0.9">
+				<requirement name="ProgressionLevel" progression_name="perkWellInsulated" operation="GTE" value="2"/>
+			</passive_effect>
+  		<!-- Food Loss Per Stamina -->
+			<passive_effect name="FoodLossPerStaminaPointGained" operation="perc_add" value="-0.15">
+				<requirement name="ProgressionLevel" progression_name="perkWellInsulated" operation="Equals" value="1"/>
+			</passive_effect>
+			<passive_effect name="FoodLossPerStaminaPointGained" operation="perc_add" value="-0.3">
+				<requirement name="ProgressionLevel" progression_name="perkWellInsulated" operation="GTE" value="2"/>
+			</passive_effect>
+		</effect_group>
+	</append>
+  <!-- FREEZING BUFF (Consolidated) -->
+	<append xpath="/buffs/buff[@name='buffElementFreezing']">
+		<effect_group>
+			<!-- Food Change OT -->
+			<passive_effect name="FoodChangeOT" operation="perc_add" value="-0.09">
+				<requirement name="ProgressionLevel" progression_name="perkWellInsulated" operation="Equals" value="1"/>
+			</passive_effect>
+			<passive_effect name="FoodChangeOT" operation="perc_add" value="-0.18">
+				<requirement name="ProgressionLevel" progression_name="perkWellInsulated" operation="GTE" value="2"/>
+			</passive_effect>
+      <!-- Food Loss Per Stamina -->
+			<passive_effect name="FoodLossPerStaminaPointGained" operation="perc_add" value="-0.3">
+				<requirement name="ProgressionLevel" progression_name="perkWellInsulated" operation="Equals" value="1"/>
+			</passive_effect>
+			<passive_effect name="FoodLossPerStaminaPointGained" operation="perc_add" value="-0.6">
+				<requirement name="ProgressionLevel" progression_name="perkWellInsulated" operation="GTE" value="2"/>
+			</passive_effect>
+		</effect_group>
+	</append>
 </configs>

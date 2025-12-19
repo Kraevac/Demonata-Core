@@ -49,3 +49,5 @@ drugHerbalAntibioticsDesc,items,Medical,,,Cure Infection: 10%\n\nHerbal Antibiot
 drugRecogDesc,items,Medical,,,Ranged Damage: +50%\nWater: -30\nDuration: 5min\n\nRecog enhances ranged damage.
 drugSteroidsDesc,items,Medical,,,"Carrying Capacity: 50\nRun Speed: +10%\nWater: -30\nDuration: 10min\n\nSteroids decrease encumbrance, allowing you to carry more items, and allow you to run faster."
 drugFortBitesDesc,items,Medical,,,Damage Mitigation: +50%\nWater: -30\nDuration: 2min\n\nFort Bites greatly increase your damage resistance.
+perkWasteTreasuresHoneyDesc,progression,perk,,,Adds a small chance to harvest honey and bees wax from trees.
+cntApiaryDesc,blocks,Block,,,"Slowly produces honey over time.\n\nCan be fueled with 10 Chrysanthemum, 10 Goldenrod, or 10 Cotton.\nWithout a Smoker tool mod, opening the hive may have a chance to provoke an angry swarm.\nRepair with Forged Iron."
