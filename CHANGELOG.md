@@ -18,7 +18,6 @@
     * **Crafting Time:** Items take **2 hours real-time** to craft honey and **8 hours real-time** to craft water.
       These times keep the base game values intact. Changing the in-game 24-hour cycle speed **does not** speed this up.
 
-
 * **Apiary Changes:**
   * **Honey:** Now craftable via the Apiary using Empty Jars. There are **3 recipes**, one for each flower type.
   * **Tool Updates:**
@@ -51,7 +50,6 @@
   * Infection cure reduced from **5% → 2.5%** for **Honey Glazed Sham**, **Honey Brisket**, and **Honey Tea**.
     This aligns them with previous nerfs to raw Honey.
 
-
 ### Skills & Perks
 
 * **Fortitude Tree:** **Well Insulated** has been added back to the Fortitude skill tree.
@@ -62,7 +60,6 @@
 * Localizations have not been updated to include any of these new changes. This is still a WIP and will come in a later update.
 
 ---
-
 
 ## Demonata Core — Player Patch Notes (v1.0.0)
 
